@@ -2,9 +2,9 @@ name: Publish GK Reels Hindi
 
 on:
   schedule:
-    # 2 videos/day at 08:00 and 18:00 IST = 02:30 and 12:30 UTC
-    - cron: "30 2 * * *"
-    - cron: "30 12 * * *"
+    # 2 videos/day at ~08:00 and ~18:00 IST = 02:37 and 12:37 UTC (odd minute to avoid GitHub Actions queue congestion)
+    - cron: "37 2 * * *"
+    - cron: "37 12 * * *"
   workflow_dispatch: {}
 
 permissions:
