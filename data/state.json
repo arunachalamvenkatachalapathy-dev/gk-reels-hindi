@@ -1,5 +1,5 @@
 {
-  "next_index": 1,
+  "next_index": 2,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,13 +10,16 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 1,
+  "palette_cursor": 2,
   "audio_cursor": 0,
   "current_day": 1,
-  "current_slot": 2,
-  "total_published": 1,
+  "current_slot": 1,
+  "total_published": 2,
   "published_ids": [
-    "q0000"
+    "q0000",
+    "q0001"
   ],
-  "published_history": []
+  "published_history": [],
+  "last_published_date": "2026-09-09",
+  "published_today_count": 1
 }
