@@ -1,0 +1,64 @@
+name: Publish GK Reels Hindi
+
+on:
+  schedule:
+    # 2 videos/day at 08:00 and 18:00 IST = 02:30 and 12:30 UTC
+    - cron: "30 2 * * *"
+    - cron: "30 12 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ffmpeg and fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-noto-cjk fonts-indic
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install Playwright browser
+        run: python -m playwright install --with-deps chromium
+
+      - name: Run pipeline (render + upload)
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python scripts/run_pipeline.py
+
+      - name: Upload Video Artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gk-reels-hindi-video
+          path: output/*.mp4
+          retention-days: 7
+
+      - name: Commit updated state
+        run: |
+          git config user.name "gk-reels-hindi-bot"
+          git config user.email "actions@github.com"
+          git add data/state.json
+          git diff --staged --quiet || git commit -m "Advance question index [skip ci]"
+          git push

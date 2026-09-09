@@ -1,0 +1,55 @@
+"""
+Sends an automated post to the Telegram channel with the question and
+links to YouTube Shorts, Instagram Reels, and Facebook Page.
+No MCQ options shown. No video uploaded.
+"""
+import os
+import html
+import requests
+
+
+def send_telegram_update(day, slot, q, yt_url=None, ig_url=None, fb_url=None):
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip().replace("\ufeff", "")
+    chat_id   = os.environ.get("TELEGRAM_CHAT_ID", "").strip().replace("\ufeff", "")
+
+    if not bot_token or not chat_id:
+        print("WARNING: Telegram credentials not set -- skipping Telegram post.")
+        return False
+
+    q_text = html.escape(q.get("question", ""))
+
+    links = []
+    if yt_url:
+        links.append(f'📺 <a href="{yt_url}"><b>YouTube Shorts पर देखें</b></a>')
+    if ig_url:
+        links.append(f'📸 <a href="{ig_url}"><b>Instagram Reels पर देखें</b></a>')
+    if fb_url:
+        links.append(f'👥 <a href="{fb_url}"><b>Facebook पर देखें</b></a>')
+
+    links_str = "\n".join(links) if links else "Links updating shortly!"
+
+    msg = (
+        f"🎯 <b>100 दिन 100 GK सवाल • Day {day:02d} (Part {slot}/2)</b>\n\n"
+        f"❓ <b>{q_text}</b>\n\n"
+        f"👇 <b>18-सेकंड का वीडियो देखकर सही उत्तर जानें:</b>\n"
+        f"{links_str}\n\n"
+        f"🎁 <i>कमेंट में सही उत्तर बताएं और संडे स्टडी गिफ्ट जीतें!</i>\n"
+        f"💡 <b>GK Snippets Hindi</b> • सही ज्ञान. कम समय."
+    )
+
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = {
+        "chat_id":                  chat_id,
+        "text":                     msg,
+        "parse_mode":               "HTML",
+        "disable_web_page_preview": False,
+    }
+
+    try:
+        resp = requests.post(url, json=payload, timeout=15)
+        resp.raise_for_status()
+        print("  Telegram channel notification posted successfully!")
+        return True
+    except Exception as e:
+        print(f"  Telegram notification FAILED: {e}")
+        return False
