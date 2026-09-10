@@ -3,11 +3,10 @@ name: Publish GK Reels Hindi
 on:
   schedule:
     # 2 videos/day in global LOW-LOAD GitHub Actions windows:
-    #   - Morning Drill: 07:55 AM IST (02:25 UTC - US/EU overnight lull, near-zero queue)
-    #   - Early Evening: 05:25 PM IST (11:55 UTC - before peak 13:00-16:00 UTC US/EU surge)
-    # Staggered 10 mins from English pipeline; non-round minutes (:25, :55).
-    - cron: "25 2 * * *"
-    - cron: "55 11 * * *"
+    #   - Morning Drill: 07:59 AM IST (02:29 UTC - US/EU overnight lull, near-zero queue)
+    #   - Early Evening: 05:28 PM IST (11:58 UTC - before peak 13:00-16:00 UTC US/EU surge)
+    - cron: "29 2 * * *"
+    - cron: "58 11 * * *"
   workflow_dispatch:
     inputs:
       force:
