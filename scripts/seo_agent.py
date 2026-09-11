@@ -113,11 +113,13 @@ HOOK_TEMPLATES_HI = [
 ]
 
 
-def clean_question_for_title(q_text):
+def clean_question_for_title(q_text, fallback_topic="सामान्य ज्ञान"):
     """Strip filler question words to extract the core subject for high-impact titles."""
     q_clean = re.sub(r'(निम्निलिखित|निम्नलिखित|निम्न|इनमें)\s*(में से|से)?', '', q_text).strip()
     q_clean = re.sub(r'[\?।!]+$', '', q_clean).strip()
     q_clean = re.sub(r'\s+', ' ', q_clean)
+    if not q_clean or len(q_clean) < 5:
+        q_clean = fallback_topic
     return q_clean
 
 
@@ -185,8 +187,8 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
 
     question_text = q.get("question", "").strip()
     options = q.get("options", [])
-    q_clean = clean_question_for_title(question_text)
     topic_name, topic_tags, topic_hashtags = detect_topic_hi(question_text)
+    q_clean = clean_question_for_title(question_text, fallback_topic=topic_name)
 
     # ── 1. QUESTION-FIRST VIRAL TITLE (< 68 CHARACTERS) ──────────────────
     # Rotate hooks deterministically per question hash so each video feels fresh and unique
@@ -277,3 +279,17 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         "fb_caption": fb_caption,
         "audit": audit
     }
+
+
+if __name__ == "__main__":
+    test_q = {
+        "id": "hi_0001",
+        "question": "सिंधु घाटी सभ्यता का कौन सा स्थल भारत में स्थित है?",
+        "options": ["हड़प्पा", "मोहनजोदड़ो", "लोथल", "राखीगढ़ी"]
+    }
+    seo = generate_seo_hi(test_q, day=1, slot=1, videos_per_day=2)
+    print("Detected Topic:", seo["topic"])
+    print("Generated Title:", seo["title"])
+    print("Tags count:", len(seo["tags"]))
+    print("Description Preview:\n", seo["description"][:250], "...")
+
