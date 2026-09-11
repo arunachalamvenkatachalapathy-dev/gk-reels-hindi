@@ -15,6 +15,7 @@ Features:
 import re
 import html
 import random
+import hashlib
 import sys
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -92,23 +93,32 @@ TOPIC_RULES_HI = [
 ]
 
 UNIVERSAL_TAGS_HI = [
-    "GK Snippets Hindi", "GK in Hindi", "सामान्य ज्ञान", "Hindi GK Quiz",
-    "SSC GD GK 2026", "UP Police GK", "RRB NTPC GK", "BPSC GK", "Shorts",
-    "YouTube Shorts Hindi", "Quiz Time Hindi", "Daily GK Practice", "Exam Prep Hindi"
+    "GK in Hindi", "सामान्य ज्ञान", "Hindi GK Questions", "GK Short Video",
+    "Daily GK Quiz", "Samanya Gyan Quiz", "Lucent GK in Hindi",
+    "SSC GD GK 2026", "UP Police GK", "RRB NTPC GK", "Shorts", "YouTube Shorts Hindi"
 ]
 
 UNIVERSAL_HASHTAGS_HI = [
-    "#samanyagyan", "#hindigk", "#gkinhindi", "#dailygk", "#shorts",
-    "#reels", "#quiz", "#upschindi", "#sscgd", "#uppolice", "#rrbntpc"
+    "#Shorts", "#ShortsFeed", "#YouTubeShorts", "#GKInHindi", "#SamanyaGyan",
+    "#HindiGK", "#GKQuiz", "#LucentGK", "#SSCGD", "#UPPolice", "#RRBNTPC"
 ]
 
 HOOK_TEMPLATES_HI = [
-    "90% लोग इस सवाल में फेल! 🎯 {topic}",
-    "क्या आप 5 सेकंड में बता सकते हैं? 🧠 {topic}",
-    "टेस्ट करें अपनी मेमोरी! ⚡ {topic}",
-    "परीक्षा में बार-बार पूछा गया सवाल! 🏛️ {topic}",
-    "सिर्फ 5% ही सही उत्तर दे पाए! 🔥 {topic}"
+    ("{q}? 99% लोग फेल! ❌ #Shorts", 68),
+    ("{q}? क्या आपको पता है? 🤔 #Shorts", 68),
+    ("{q}? SSC GD में पूछा गया! 🎯 #Shorts", 68),
+    ("{q}? 5s चैलेंज ⚡ #Shorts", 68),
+    ("{q}? सिर्फ 1% को पता है! 🤯 #Shorts", 68),
+    ("{q}? बार-बार पूछा गया सवाल! 🏛️ #Shorts", 68)
 ]
+
+
+def clean_question_for_title(q_text):
+    """Strip filler question words to extract the core subject for high-impact titles."""
+    q_clean = re.sub(r'(निम्निलिखित|निम्नलिखित|निम्न|इनमें)\s*(में से|से)?', '', q_text).strip()
+    q_clean = re.sub(r'[\?।!]+$', '', q_clean).strip()
+    q_clean = re.sub(r'\s+', ' ', q_clean)
+    return q_clean
 
 
 def audit_recent_performance(yt_client, published_history=None):
@@ -165,55 +175,96 @@ def detect_topic_hi(question_text):
 
 
 def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_history=None):
+    """
+    Overhauled Hindi SEO Generator:
+    Produces question-first high-CTR titles, comment-driving descriptions, and search-indexed tags.
+    """
     audit = {}
     if yt_client and published_history:
         audit = audit_recent_performance(yt_client, published_history)
 
-    question_text = q.get("question", "")
+    question_text = q.get("question", "").strip()
+    options = q.get("options", [])
+    q_clean = clean_question_for_title(question_text)
     topic_name, topic_tags, topic_hashtags = detect_topic_hi(question_text)
 
-    hook_tpl = random.choice(HOOK_TEMPLATES_HI)
-    short_topic = topic_name.split("(")[0].strip()
-    title_hook = hook_tpl.format(topic=short_topic)
+    # ── 1. QUESTION-FIRST VIRAL TITLE (< 68 CHARACTERS) ──────────────────
+    # Rotate hooks deterministically per question hash so each video feels fresh and unique
+    h_idx = int(hashlib.md5(q_clean.encode("utf-8")).hexdigest(), 16) % len(HOOK_TEMPLATES_HI)
+    ordered_hooks = HOOK_TEMPLATES_HI[h_idx:] + HOOK_TEMPLATES_HI[:h_idx]
 
-    title_candidate = f"{title_hook} • Day {day:02d} #Shorts"
-    if len(title_candidate) > 70:
-        title_candidate = f"Day {day:02d} क्विज: {short_topic} 🎯 #Shorts"
-    if len(title_candidate) > 70:
-        title_candidate = f"Day {day:02d} | 100 दिन 100 GK सवाल 🎯 #Shorts"
+    title = None
+    for tpl, max_len in ordered_hooks:
+        cand = tpl.format(q=q_clean)
+        if len(cand) <= max_len:
+            title = cand
+            break
 
-    title = title_candidate
+    if not title:
+        # Try compact fallback hook first
+        compact_title = f"{q_clean}? 99% फेल! ❌ #Shorts"
+        if len(compact_title) <= 68:
+            title = compact_title
+        else:
+            # If still over 68 chars, trim cleanly at word boundary (~45 chars)
+            words = q_clean.split()
+            shortened = ""
+            for w in words:
+                if len(shortened + " " + w) > 45:
+                    break
+                shortened = (shortened + " " + w).strip()
+            title = f"{shortened}? 99% फेल! ❌ #Shorts"
 
-    all_hashtags = list(dict.fromkeys(topic_hashtags + UNIVERSAL_HASHTAGS_HI))
-    hashtag_string = " ".join(all_hashtags[:12])
+    # ── 2. HIGH-ENGAGEMENT DESCRIPTION WITH TIMESTAMPS & OPTIONS ──────────
+    options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(options)])
+    all_hashtags = list(dict.fromkeys(UNIVERSAL_HASHTAGS_HI[:6] + topic_hashtags + UNIVERSAL_HASHTAGS_HI[6:]))
+    hashtag_str = " ".join(all_hashtags[:12])
 
     description = (
-        f"🎯 Day {day:02d} (Part {slot}/{videos_per_day}) | 100 दिन 100 GK सवाल\n\n"
-        f"❓ {question_text}\n\n"
-        f"⏱️ 10 सेकंड में उत्तर कमेंट बॉक्स में बताएं!\n\n"
-        f"📚 विषय: {topic_name}\n"
-        f"🎯 टारगेट एग्जाम्स: RRB NTPC, SSC GD/CGL, UP Police, BPSC, MPPSC, RAS, Army & Banking.\n\n"
-        f"🎁 संडे गिवअवे: रोजाना वीडियो को लाइक करें, चैनल सब्सक्राइब करें और सही जवाब कमेंट करें!\n"
-        f"📲 फ्री PDF नोट्स और क्विज के लिए हमारे टेलीग्राम चैनल से जुड़ें: @GK_Snippets_Hindi\n\n"
-        f"{hashtag_string}\n\n"
-        f"#Shorts"
+        f"❓ {question_text}\n"
+        f"👉 अपना उत्तर कमेंट बॉक्स में बताएं: {options_str}\n\n"
+        f"🎯 100 दिन 100 GK सवाल • Day {day:02d} (Part {slot}/{videos_per_day})\n"
+        f"📚 विषय: {topic_name}\n\n"
+        f"⏱️ वीडियो टाइमलाइन:\n"
+        f"00:00 🎯 प्रश्न (Question)\n"
+        f"00:05 ⏳ 10s टाइमर चैलेंज (Countdown)\n"
+        f"00:15 🎉 सही उत्तर रिवील्ड (Answer Reveal)\n\n"
+        f"🏆 टारगेट एग्जाम्स:\n"
+        f"SSC GD 2026 | UP Police Constable | RRB NTPC | Railway Group D | BPSC | MPPSC | All State Exams\n\n"
+        f"🔍 महत्वपूर्ण सर्च कीवर्ड्स:\n"
+        f"• {topic_name} महत्वपूर्ण प्रश्न\n"
+        f"• GK in Hindi 2026 Important Questions\n"
+        f"• Lucent GK निचोड़ सामान्य ज्ञान\n"
+        f"• Daily Hindi GK Quiz by GK Snippets Hindi\n\n"
+        f"🎁 संडे गिवअवे: वीडियो को लाइक करें, चैनल सब्सक्राइब करें और अपना जवाब कमेंट करें!\n"
+        f"📄 फ्री PDF & नोट्स के लिए टेलीग्राम जॉइन करें: GK Snippets Hindi\n\n"
+        f"{hashtag_str}"
     )
 
-    tags = list(dict.fromkeys(topic_tags + UNIVERSAL_TAGS_HI))[:20]
+    # ── 3. HIGH-VOLUME 20 TARGET TAGS (TOPIC + EXAMS + QUESTION) ───────────
+    tags = list(dict.fromkeys(
+        [q_clean[:30]] +
+        topic_tags +
+        UNIVERSAL_TAGS_HI +
+        ["Lucent GK", "Khan Sir GK Style", "Crazy GK Trick Style", "Study IQ GK", "Rojgar With Ankit GK"]
+    ))[:20]
 
+    # ── 4. ENGAGING INSTAGRAM & FACEBOOK REELS CAPTIONS ───────────────────
     ig_caption = (
-        f"✨ Day {day:02d} | 100 दिन 100 GK सवाल (Part {slot}/{videos_per_day})\n\n"
-        f"❓ {question_text}\n\n"
-        f"👇 अपना सही जवाब (A, B, C या D) कमेंट में बताएं!\n"
-        f"🎁 फॉलो करें @GK_Snippets_Hindi और संडे गिवअवे जीतें!\n\n"
+        f"🔥 {question_text}\n\n"
+        f"👇 सही जवाब कमेंट करें: {options_str}\n"
+        f"⏱️ क्या आप 10 सेकंड में बता सकते हैं?\n\n"
+        f"🎯 Day {day:02d} • 100 दिन 100 GK सवाल (Part {slot}/{videos_per_day})\n"
+        f"🎁 फॉलो करें @GKSnippetsHindi और संडे गिवअवे जीतें!\n\n"
         f"{' '.join(all_hashtags[:15])}"
     )
 
     fb_caption = (
         f"🎯 100 दिन 100 GK सवाल • Day {day:02d} (Part {slot}/{videos_per_day})\n\n"
-        f"❓ {question_text}\n\n"
+        f"❓ {question_text}\n"
+        f"👉 विकल्प: {options_str}\n\n"
         f"👇 18 सेकंड का वीडियो देखें और जानें सही उत्तर!\n"
-        f"🎁 कमेंट करें और वीकली स्टडी गिफ्ट जीतें।\n\n"
+        f"🎁 कमेंट करें और संडे स्टडी गिफ्ट जीतें।\n\n"
         f"{' '.join(all_hashtags[:10])}"
     )
 

@@ -170,15 +170,22 @@ def main():
         fb_caption = seo_data["fb_caption"]
     else:
         # High quality Hindi fallback
-        title = f"Day {day:02d} (Part {slot}/{videos_per_day}) | 100 दिन 100 GK सवाल 🎯 #Shorts"
+        q_clean = q.get("question", "").rstrip("?।! ").strip()
+        if len(q_clean) > 42:
+            q_clean = q_clean[:40].rsplit(' ', 1)[0]
+        title = f"{q_clean}? 99% लोग फेल! ❌ #Shorts"
+        options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(q.get("options", []))])
         caption = (
-            f"✨ Day {day:02d} | 100 दिन 100 GK सवाल (Part {slot}/{videos_per_day})\n\n"
-            f"❓ {q['question']}\n\n"
-            f"👇 अपना सही जवाब कमेंट बॉक्स में बताएं और संडे गिवअवे जीतें! 🎁\n"
-            f"📄 डेली फ्री PDF नोट्स के लिए टेलीग्राम जॉइन करें!\n\n"
-            f"#samanyagyan #hindigk #gkinhindi #dailygk #shorts #reels #quiz"
+            f"❓ {q.get('question', '')}\n"
+            f"👉 उत्तर कमेंट करें: {options_str}\n\n"
+            f"🎯 100 दिन 100 GK सवाल • Day {day:02d} (Part {slot}/{videos_per_day})\n"
+            f"⏱️ 10 सेकंड में उत्तर कमेंट बॉक्स में बताएं!\n\n"
+            f"🏆 उपयोगी एग्जाम्स: SSC GD 2026 | UP Police Constable | RRB NTPC | BPSC | State PSCs\n\n"
+            f"🎁 संडे गिवअवे: वीडियो लाइक करें और सही जवाब कमेंट करें!\n"
+            f"📄 फ्री PDF नोट्स के लिए टेलीग्राम जॉइन करें: GK Snippets Hindi\n\n"
+            f"#Shorts #ShortsFeed #YouTubeShorts #GKInHindi #SamanyaGyan #HindiGK #GKQuiz #LucentGK #SSCGD #UPPolice #RRBNTPC"
         )
-        tags = ["GK Snippets Hindi", "GK in Hindi", "सामान्य ज्ञान", "Hindi GK Quiz", "SSC GD", "Shorts"]
+        tags = ["GK in Hindi", "सामान्य ज्ञान", "Hindi GK Questions", "GK Short Video", "Daily GK Quiz", "Lucent GK", "SSC GD GK 2026", "UP Police GK", "RRB NTPC GK", "Shorts"]
         ig_caption = caption
         fb_caption = caption
 
