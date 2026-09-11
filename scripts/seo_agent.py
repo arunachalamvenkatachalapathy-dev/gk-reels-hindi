@@ -103,13 +103,14 @@ UNIVERSAL_HASHTAGS_HI = [
     "#HindiGK", "#GKQuiz", "#LucentGK", "#SSCGD", "#UPPolice", "#RRBNTPC"
 ]
 
-HOOK_TEMPLATES_HI = [
-    ("{q}? 99% लोग फेल! ❌ #Shorts", 68),
-    ("{q}? क्या आपको पता है? 🤔 #Shorts", 68),
-    ("{q}? SSC GD में पूछा गया! 🎯 #Shorts", 68),
-    ("{q}? 5s चैलेंज ⚡ #Shorts", 68),
-    ("{q}? सिर्फ 1% को पता है! 🤯 #Shorts", 68),
-    ("{q}? बार-बार पूछा गया सवाल! 🏛️ #Shorts", 68)
+KEYWORD_TEMPLATES_HI = [
+    ("{q} | GK In Hindi | Samanya Gyan #shorts", 68),
+    ("{q} महत्वपूर्ण प्रश्न | GK In Hindi | GK Quiz #shorts", 68),
+    ("{q} | GK Question and Answer | GK Quiz #shorts", 68),
+    ("{q} | Lucent GK In Hindi | सामान्य ज्ञान #shorts", 68),
+    ("{q} | GK in Hindi | SSC GD UP Police GK #shorts", 68),
+    ("{q} | GK Question | सामान्य ज्ञान प्रश्न उत्तर #shorts", 68),
+    ("{q} | GK In Hindi | GK Quiz #shorts", 68)
 ]
 
 
@@ -117,6 +118,7 @@ def clean_question_for_title(q_text, fallback_topic="सामान्य ज�
     """Strip filler question words to extract the core subject for high-impact titles."""
     q_clean = re.sub(r'(निम्निलिखित|निम्नलिखित|निम्न|इनमें)\s*(में से|से)?', '', q_text).strip()
     q_clean = re.sub(r'[\?।!]+$', '', q_clean).strip()
+    q_clean = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|को)\s*$', '', q_clean).strip()
     q_clean = re.sub(r'\s+', ' ', q_clean)
     if not q_clean or len(q_clean) < 5:
         q_clean = fallback_topic
@@ -189,11 +191,13 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
     options = q.get("options", [])
     topic_name, topic_tags, topic_hashtags = detect_topic_hi(question_text)
     q_clean = clean_question_for_title(question_text, fallback_topic=topic_name)
+    if len(q_clean) < 6 or q_clean in ["सही", "कथन", "उत्तर", "सुमेलित"]:
+        q_clean = topic_name
 
-    # ── 1. QUESTION-FIRST VIRAL TITLE (< 68 CHARACTERS) ──────────────────
-    # Rotate hooks deterministically per question hash so each video feels fresh and unique
-    h_idx = int(hashlib.md5(q_clean.encode("utf-8")).hexdigest(), 16) % len(HOOK_TEMPLATES_HI)
-    ordered_hooks = HOOK_TEMPLATES_HI[h_idx:] + HOOK_TEMPLATES_HI[:h_idx]
+    # ── 1. HIGH-REACH KEYWORD-RICH TITLE (< 68 CHARACTERS) ──────────────────
+    # Rotate keyword templates deterministically per question hash for maximum search visibility
+    h_idx = int(hashlib.md5(q_clean.encode("utf-8")).hexdigest(), 16) % len(KEYWORD_TEMPLATES_HI)
+    ordered_hooks = KEYWORD_TEMPLATES_HI[h_idx:] + KEYWORD_TEMPLATES_HI[:h_idx]
 
     title = None
     for tpl, max_len in ordered_hooks:
@@ -203,19 +207,19 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
             break
 
     if not title:
-        # Try compact fallback hook first
-        compact_title = f"{q_clean}? 99% फेल! ❌ #Shorts"
-        if len(compact_title) <= 68:
-            title = compact_title
+        # If full q_clean is too long, shorten cleanly at word boundary to make space for high-reach keywords
+        words = q_clean.split()
+        shortened = ""
+        for w in words:
+            if len(shortened + " " + w) > 22:
+                break
+            shortened = (shortened + " " + w).strip()
+        shortened = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|को)\s*$', '', shortened).strip()
+        compact_cand = f"{shortened} | GK In Hindi | Samanya Gyan #shorts"
+        if len(compact_cand) <= 68:
+            title = compact_cand
         else:
-            # If still over 68 chars, trim cleanly at word boundary (~45 chars)
-            words = q_clean.split()
-            shortened = ""
-            for w in words:
-                if len(shortened + " " + w) > 45:
-                    break
-                shortened = (shortened + " " + w).strip()
-            title = f"{shortened}? 99% फेल! ❌ #Shorts"
+            title = f"{shortened} | GK In Hindi #shorts"
 
     # ── 2. HIGH-ENGAGEMENT DESCRIPTION WITH TIMESTAMPS & OPTIONS ──────────
     options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(options)])

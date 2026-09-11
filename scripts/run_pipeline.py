@@ -171,9 +171,9 @@ def main():
     else:
         # High quality Hindi fallback
         q_clean = q.get("question", "").rstrip("?।! ").strip()
-        if len(q_clean) > 42:
-            q_clean = q_clean[:40].rsplit(' ', 1)[0]
-        title = f"{q_clean}? 99% लोग फेल! ❌ #Shorts"
+        if len(q_clean) > 24:
+            q_clean = q_clean[:24].rsplit(' ', 1)[0]
+        title = f"{q_clean} | GK In Hindi | Samanya Gyan #shorts"
         options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(q.get("options", []))])
         caption = (
             f"❓ {q.get('question', '')}\n"
