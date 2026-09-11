@@ -1,5 +1,5 @@
 {
-  "next_index": 5,
+  "next_index": 6,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,17 +10,18 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 5,
+  "palette_cursor": 0,
   "audio_cursor": 0,
   "current_day": 3,
-  "current_slot": 1,
-  "total_published": 5,
+  "current_slot": 2,
+  "total_published": 6,
   "published_ids": [
     "q0000",
     "q0001",
     "q0002",
     "q0003",
-    "q0004"
+    "q0004",
+    "q0005"
   ],
   "published_history": [
     {
@@ -29,8 +30,15 @@
       "title": "अखिल भारतीय ट्रेेड यूनियन कांग्रेस के प्रथम? 99% फेल! ❌ #Shorts",
       "day": 3,
       "slot": 1
+    },
+    {
+      "id": "q0005",
+      "yt_id": "Zbnt7yqa9v4",
+      "title": "भारतीय राष्ट्रीीय कांग्रेस का प्रथम अध्यक्ष? 99% फेल! ❌ #Shorts",
+      "day": 3,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-09-11",
-  "published_today_count": 1
+  "published_today_count": 2
 }
