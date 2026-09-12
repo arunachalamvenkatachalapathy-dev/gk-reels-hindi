@@ -1,5 +1,5 @@
 {
-  "next_index": 7,
+  "next_index": 8,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 1,
+  "palette_cursor": 2,
   "audio_cursor": 0,
   "current_day": 4,
-  "current_slot": 1,
-  "total_published": 7,
+  "current_slot": 2,
+  "total_published": 8,
   "published_ids": [
     "q0000",
     "q0001",
@@ -22,7 +22,8 @@
     "q0003",
     "q0004",
     "q0005",
-    "q0006"
+    "q0006",
+    "q0007"
   ],
   "published_history": [
     {
@@ -45,8 +46,15 @@
       "title": "भारत का ग्रैण्ड ओल्ड | GK In Hindi | Samanya Gyan #shorts",
       "day": 4,
       "slot": 1
+    },
+    {
+      "id": "q0007",
+      "yt_id": "sSeYDbxaorU",
+      "title": "किसने कहा था कि | GK In Hindi | Samanya Gyan #shorts",
+      "day": 4,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-09-12",
-  "published_today_count": 1
+  "published_today_count": 2
 }
