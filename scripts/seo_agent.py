@@ -12,11 +12,14 @@ Features:
 4. Robust Pre-filled Fallback: If YouTube API or network fails, uses a comprehensive Hindi keyword bank.
 """
 
+import os
 import re
 import html
+import json
 import random
 import hashlib
 import sys
+import requests
 
 if hasattr(sys.stdout, "reconfigure"):
     try:
@@ -229,10 +232,85 @@ def detect_topic_hi(question_text):
     )
 
 
+def query_gemini_ai_agent_hi(question_text, options, topic_name, day, slot):
+    """
+    Calls Google Gemini 3.6 Flash foundation model to act as the Senior Hindi Creative & SEO Agent.
+    Generates high-CTR mobile title in Hindi/Hinglish, platform-specific hooks, and targeted search tags.
+    """
+    api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    if not api_key:
+        return None
+
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={api_key}"
+
+    prompt = f"""You are an elite YouTube Shorts & Reels SEO Agent specializing in Hindi Indian competitive exams (SSC GD, UP Police Constable, RRB NTPC, BPSC, UPSC Hindi).
+Analyze this Hindi question and produce high-reach, viral, search-optimized metadata in valid JSON.
+
+Question: "{question_text}"
+Options: {json.dumps(options, ensure_ascii=False)}
+Topic: "{topic_name}"
+Language: Hindi
+Day: {day}, Slot: {slot}
+
+Rules:
+1. "title": MUST be strictly <= 68 characters including "#shorts". Front-load the key concept/entity in Hindi/Hinglish. It must be highly engaging, natural, and clickable for Indian exam aspirants without sounding robotic.
+2. "tags": 15-20 highly relevant Hindi & Hinglish search tags for competitive exams.
+3. "ig_hook": High-retention Hindi 1-2 sentence hook for Instagram Reels.
+4. "fb_hook": Engaging conversational discussion prompt in Hindi for Facebook Page Reels.
+
+Respond ONLY with a valid JSON object:
+{{
+  "entity": "...",
+  "title": "...",
+  "tags": ["..."],
+  "ig_hook": "...",
+  "fb_hook": "..."
+}}"""
+
+    try:
+        resp = requests.post(
+            url,
+            json={
+                "contents": [{"parts": [{"text": prompt}]}],
+                "generationConfig": {
+                    "response_mime_type": "application/json",
+                    "temperature": 0.3
+                }
+            },
+            timeout=15
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            raw_text = data["candidates"][0]["content"]["parts"][0]["text"]
+            parsed = json.loads(raw_text)
+
+            title = parsed.get("title", "").strip()
+            title = re.sub(r'[\*\"\_]', '', title).strip()
+            if "#Shorts" not in title and "#shorts" not in title:
+                if len(title) + 8 <= 68:
+                    title = f"{title} #shorts"
+                else:
+                    title = f"{title[:59].rsplit(' ', 1)[0]} #shorts"
+            if len(title) > 68:
+                tag = "#shorts" if "#shorts" in title else "#Shorts"
+                base = title.replace(tag, "").strip()
+                title = f"{base[:68 - len(tag) - 1].rsplit(' ', 1)[0]} {tag}"
+
+            parsed["title"] = title
+            print(f"[SEO Super Agent Hindi] 🤖 Gemini AI Agent generated title ({len(title)} chars): {title}")
+            return parsed
+        else:
+            print(f"[SEO Super Agent Hindi] Gemini API returned status {resp.status_code}: {resp.text[:120]}")
+    except Exception as ge:
+        print(f"[SEO Super Agent Hindi] Notice: Gemini AI Agent query encountered: {ge}. Using rule-based fallback.")
+
+    return None
+
+
 def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_history=None):
     """
     Overhauled Hindi SEO Generator:
-    Produces question-first high-CTR titles, comment-driving descriptions, and search-indexed tags.
+    First leverages Google Gemini Foundation Model AI Agent; falls back to rule-based engine if offline.
     """
     audit = {}
     if yt_client and published_history:
@@ -242,8 +320,23 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
     options = q.get("options", [])
     topic_name, topic_tags, topic_hashtags = detect_topic_hi(question_text)
 
-    # Format smart title using rotating frameworks and entity extraction
-    title, entity = format_smart_title_hi(q, day, slot, topic_name=topic_name)
+    # Try Gemini AI Agent first
+    ai_result = query_gemini_ai_agent_hi(question_text, options, topic_name, day, slot)
+    if ai_result and ai_result.get("title"):
+        title = ai_result["title"]
+        entity = ai_result.get("entity", topic_name)
+        ig_hook = ai_result.get("ig_hook")
+        fb_hook = ai_result.get("fb_hook")
+        ai_tags = ai_result.get("tags")
+        if ai_tags and isinstance(ai_tags, list):
+            tags = list(dict.fromkeys(ai_tags + UNIVERSAL_TAGS_HI))[:20]
+        else:
+            tags = None
+    else:
+        title, entity = format_smart_title_hi(q, day, slot, topic_name=topic_name)
+        ig_hook = None
+        fb_hook = None
+        tags = None
 
     # ── 2. HIGH-ENGAGEMENT DESCRIPTION WITH TIMESTAMPS & OPTIONS ──────────
     options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(options)])
@@ -272,16 +365,19 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
     )
 
     # ── 3. HIGH-VOLUME 20 TARGET TAGS (TOPIC + EXAMS + QUESTION) ───────────
-    tags = list(dict.fromkeys(
-        [entity[:30]] +
-        topic_tags +
-        UNIVERSAL_TAGS_HI +
-        ["Lucent GK", "Khan Sir GK Style", "Crazy GK Trick Style", "Study IQ GK", "Rojgar With Ankit GK"]
-    ))[:20]
+    if not tags:
+        tags = list(dict.fromkeys(
+            [entity[:30]] +
+            topic_tags +
+            UNIVERSAL_TAGS_HI +
+            ["Lucent GK", "Khan Sir GK Style", "Crazy GK Trick Style", "Study IQ GK", "Rojgar With Ankit GK"]
+        ))[:20]
 
     # ── 4. ENGAGING INSTAGRAM & FACEBOOK REELS CAPTIONS ───────────────────
+    ig_lead = ig_hook or f"🔥 {question_text}"
     ig_caption = (
-        f"🔥 {question_text}\n\n"
+        f"{ig_lead}\n\n"
+        f"❓ {question_text}\n\n"
         f"👇 सही जवाब कमेंट करें: {options_str}\n"
         f"⏱️ क्या आप 10 सेकंड में बता सकते हैं?\n\n"
         f"🎯 Day {day:02d} • 100 दिन 100 GK सवाल (Part {slot}/{videos_per_day})\n"
@@ -289,9 +385,10 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         f"{' '.join(all_hashtags[:15])}"
     )
 
+    fb_lead = fb_hook or f"❓ {question_text}"
     fb_caption = (
         f"🎯 100 दिन 100 GK सवाल • Day {day:02d} (Part {slot}/{videos_per_day})\n\n"
-        f"❓ {question_text}\n"
+        f"{fb_lead}\n\n"
         f"👉 विकल्प: {options_str}\n\n"
         f"👇 18 सेकंड का वीडियो देखें और जानें सही उत्तर!\n"
         f"🎁 कमेंट करें और संडे स्टडी गिफ्ट जीतें।\n\n"
