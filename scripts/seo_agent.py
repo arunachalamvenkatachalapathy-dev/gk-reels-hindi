@@ -255,14 +255,18 @@ Day: {day}, Slot: {slot}
 Rules:
 1. "title": MUST be strictly <= 68 characters including "#shorts". Front-load the key concept/entity in Hindi/Hinglish. It must be highly engaging, natural, and clickable for Indian exam aspirants without sounding robotic.
 2. "tags": 15-20 highly relevant Hindi & Hinglish search tags for competitive exams.
-3. "ig_hook": High-retention Hindi 1-2 sentence hook for Instagram Reels.
-4. "fb_hook": Engaging conversational discussion prompt in Hindi for Facebook Page Reels.
+3. "yt_hook": An intriguing, curiosity-driven 1-sentence hook in Hindi for YouTube Shorts description.
+4. "yt_fact": A 1-2 sentence high-yield exam concept explanation in Hindi.
+5. "ig_hook": High-retention Hindi 1-2 sentence hook for Instagram Reels.
+6. "fb_hook": Engaging conversational discussion prompt in Hindi for Facebook Page Reels.
 
 Respond ONLY with a valid JSON object:
 {{
   "entity": "...",
   "title": "...",
   "tags": ["..."],
+  "yt_hook": "...",
+  "yt_fact": "...",
   "ig_hook": "...",
   "fb_hook": "..."
 }}"""
@@ -325,6 +329,8 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
     if ai_result and ai_result.get("title"):
         title = ai_result["title"]
         entity = ai_result.get("entity", topic_name)
+        yt_hook = ai_result.get("yt_hook")
+        yt_fact = ai_result.get("yt_fact")
         ig_hook = ai_result.get("ig_hook")
         fb_hook = ai_result.get("fb_hook")
         ai_tags = ai_result.get("tags")
@@ -334,6 +340,8 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
             tags = None
     else:
         title, entity = format_smart_title_hi(q, day, slot, topic_name=topic_name)
+        yt_hook = None
+        yt_fact = None
         ig_hook = None
         fb_hook = None
         tags = None
@@ -343,7 +351,14 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
     all_hashtags = list(dict.fromkeys(UNIVERSAL_HASHTAGS_HI[:6] + topic_hashtags + UNIVERSAL_HASHTAGS_HI[6:]))
     hashtag_str = " ".join(all_hashtags[:12])
 
+    yt_header = ""
+    if yt_hook:
+        yt_header += f"🔥 {yt_hook}\n"
+    if yt_fact:
+        yt_header += f"💡 महत्वपूर्ण परीक्षा तथ्य: {yt_fact}\n\n"
+
     description = (
+        f"{yt_header}"
         f"❓ {question_text}\n"
         f"👉 अपना उत्तर कमेंट बॉक्स में बताएं: {options_str}\n\n"
         f"🎯 100 दिन 100 GK सवाल • Day {day:02d} (Part {slot}/{videos_per_day})\n"
