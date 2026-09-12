@@ -114,15 +114,66 @@ KEYWORD_TEMPLATES_HI = [
 ]
 
 
-def clean_question_for_title(q_text, fallback_topic="सामान्य ज्ञान"):
-    """Strip filler question words to extract the core subject for high-impact titles."""
-    q_clean = re.sub(r'(निम्निलिखित|निम्नलिखित|निम्न|इनमें)\s*(में से|से)?', '', q_text).strip()
-    q_clean = re.sub(r'[\?।!]+$', '', q_clean).strip()
-    q_clean = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|को)\s*$', '', q_clean).strip()
-    q_clean = re.sub(r'\s+', ' ', q_clean)
-    if not q_clean or len(q_clean) < 5:
-        q_clean = fallback_topic
-    return q_clean
+def extract_core_entity_hi(q_text, fallback_topic="सामान्य ज्ञान"):
+    """Extracts the key conceptual entity or proper noun phrase from a Hindi GK question."""
+    quotes = re.findall(r"[\'\‘\“\"]([^\'\’\”\"]{2,30})[\'\’\”\"]", q_text)
+    if quotes:
+        valid_q = [q.strip() for q in quotes if len(q.strip()) > 2]
+        if valid_q:
+            return valid_q[0]
+
+    clean = re.sub(r'^(निम्निलिखित|निम्नलिखित|निम्न|इनमें)\s*(में से|से)?\s*', '', q_text).strip()
+    clean = re.sub(r'[\?।!:,]+$', '', clean).strip()
+
+    # If it starts with question words, clean them
+    clean = re.sub(r'^(किस|कौन|किसे|कहां|कहाँ|कब|किस वर्ष|किसने)\s+', '', clean).strip()
+
+    # Word boundary extraction
+    words = clean.split()
+    cand = ""
+    for w in words:
+        if len(cand + " " + w) > 28:
+            break
+        cand = (cand + " " + w).strip()
+
+    while re.search(r'\s*(का|के|की|में|से|पर|द्वारा|द्वाारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|के दौरान|दौरान)\s*$', cand):
+        cand = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|द्वाारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|के दौरान|दौरान)\s*$', '', cand).strip()
+
+    if len(cand) >= 4:
+        return cand
+    return fallback_topic
+
+
+def format_smart_title_hi(q, day, slot, topic_name="सामान्य ज्ञान"):
+    """
+    Rotates deterministically across 7 high-reach Hindi archetypes.
+    Guarantees title <= 68 characters, contains #shorts, and front-loads key concepts.
+    """
+    q_text = q.get("question", "").strip()
+    entity = extract_core_entity_hi(q_text, fallback_topic=topic_name)
+
+    topic_short = topic_name.split()[0]
+    direct_q = re.sub(r'[\?।!]+$', '', q_text).strip()
+    is_direct_usable = len(direct_q) <= 45 and ("?" in q_text or "कौन" in q_text or "क्या" in q_text or "कहाँ" in q_text)
+
+    templates = [
+        f"{entity} महत्वपूर्ण प्रश्न | GK In Hindi #shorts",
+        f"{entity} | SSC GD & UP Police GK #shorts",
+        f"{direct_q}? #shorts" if is_direct_usable else f"{entity} | Lucent GK निचोड़ #shorts",
+        f"{entity} क्या है? | सामान्य ज्ञान प्रश्नोत्तरी #shorts",
+        f"{entity} | {topic_short} GK Quiz #shorts",
+        f"{entity} | बार-बार पूछे जाने वाले प्रश्न #shorts",
+        f"{entity} प्रश्नोत्तरी | Samanya Gyan #shorts",
+    ]
+
+    idx = (day * 3 + slot) % len(templates)
+    title = templates[idx]
+    if len(title) > 68:
+        title = f"{entity} | GK In Hindi #shorts"
+        if len(title) > 68:
+            title = f"{topic_short} महत्वपूर्ण प्रश्न #shorts"
+
+    return title, entity
 
 
 def audit_recent_performance(yt_client, published_history=None):
@@ -190,36 +241,9 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
     question_text = q.get("question", "").strip()
     options = q.get("options", [])
     topic_name, topic_tags, topic_hashtags = detect_topic_hi(question_text)
-    q_clean = clean_question_for_title(question_text, fallback_topic=topic_name)
-    if len(q_clean) < 6 or q_clean in ["सही", "कथन", "उत्तर", "सुमेलित"]:
-        q_clean = topic_name
 
-    # ── 1. HIGH-REACH KEYWORD-RICH TITLE (< 68 CHARACTERS) ──────────────────
-    # Rotate keyword templates deterministically per question hash for maximum search visibility
-    h_idx = int(hashlib.md5(q_clean.encode("utf-8")).hexdigest(), 16) % len(KEYWORD_TEMPLATES_HI)
-    ordered_hooks = KEYWORD_TEMPLATES_HI[h_idx:] + KEYWORD_TEMPLATES_HI[:h_idx]
-
-    title = None
-    for tpl, max_len in ordered_hooks:
-        cand = tpl.format(q=q_clean)
-        if len(cand) <= max_len:
-            title = cand
-            break
-
-    if not title:
-        # If full q_clean is too long, shorten cleanly at word boundary to make space for high-reach keywords
-        words = q_clean.split()
-        shortened = ""
-        for w in words:
-            if len(shortened + " " + w) > 22:
-                break
-            shortened = (shortened + " " + w).strip()
-        shortened = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|को)\s*$', '', shortened).strip()
-        compact_cand = f"{shortened} | GK In Hindi | Samanya Gyan #shorts"
-        if len(compact_cand) <= 68:
-            title = compact_cand
-        else:
-            title = f"{shortened} | GK In Hindi #shorts"
+    # Format smart title using rotating frameworks and entity extraction
+    title, entity = format_smart_title_hi(q, day, slot, topic_name=topic_name)
 
     # ── 2. HIGH-ENGAGEMENT DESCRIPTION WITH TIMESTAMPS & OPTIONS ──────────
     options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(options)])
@@ -249,7 +273,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
 
     # ── 3. HIGH-VOLUME 20 TARGET TAGS (TOPIC + EXAMS + QUESTION) ───────────
     tags = list(dict.fromkeys(
-        [q_clean[:30]] +
+        [entity[:30]] +
         topic_tags +
         UNIVERSAL_TAGS_HI +
         ["Lucent GK", "Khan Sir GK Style", "Crazy GK Trick Style", "Study IQ GK", "Rojgar With Ankit GK"]
