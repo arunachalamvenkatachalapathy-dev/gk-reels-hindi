@@ -1,5 +1,5 @@
 {
-  "next_index": 6,
+  "next_index": 7,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,18 +10,19 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 0,
+  "palette_cursor": 1,
   "audio_cursor": 0,
-  "current_day": 3,
-  "current_slot": 2,
-  "total_published": 6,
+  "current_day": 4,
+  "current_slot": 1,
+  "total_published": 7,
   "published_ids": [
     "q0000",
     "q0001",
     "q0002",
     "q0003",
     "q0004",
-    "q0005"
+    "q0005",
+    "q0006"
   ],
   "published_history": [
     {
@@ -37,8 +38,15 @@
       "title": "भारतीय राष्ट्रीीय कांग्रेस का प्रथम अध्यक्ष? 99% फेल! ❌ #Shorts",
       "day": 3,
       "slot": 2
+    },
+    {
+      "id": "q0006",
+      "yt_id": "eDXaR4VHdXI",
+      "title": "भारत का ग्रैण्ड ओल्ड | GK In Hindi | Samanya Gyan #shorts",
+      "day": 4,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-09-11",
-  "published_today_count": 2
+  "last_published_date": "2026-09-12",
+  "published_today_count": 1
 }
