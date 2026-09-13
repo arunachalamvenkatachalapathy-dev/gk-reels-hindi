@@ -1,5 +1,5 @@
 {
-  "next_index": 9,
+  "next_index": 10,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
   "current_day": 5,
-  "current_slot": 1,
-  "total_published": 9,
+  "current_slot": 2,
+  "total_published": 10,
   "published_ids": [
     "q0000",
     "q0001",
@@ -24,7 +24,8 @@
     "q0005",
     "q0006",
     "q0007",
-    "q0008"
+    "q0008",
+    "q0009"
   ],
   "published_history": [
     {
@@ -61,8 +62,15 @@
       "title": "महात्मा गांधी ने कब हरिजन | Lucent GK निचोड़ #shorts",
       "day": 5,
       "slot": 1
+    },
+    {
+      "id": "q0009",
+      "yt_id": "9DPbjC21-D8",
+      "title": "रौलेट एक्ट किस वर्ष क्या है? | सामान्य ज्ञान प्रश्नोत्तरी #shorts",
+      "day": 5,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-09-13",
-  "published_today_count": 1
+  "published_today_count": 2
 }
