@@ -1,5 +1,5 @@
 {
-  "next_index": 10,
+  "next_index": 11,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 4,
+  "palette_cursor": 5,
   "audio_cursor": 0,
-  "current_day": 5,
-  "current_slot": 2,
-  "total_published": 10,
+  "current_day": 6,
+  "current_slot": 1,
+  "total_published": 11,
   "published_ids": [
     "q0000",
     "q0001",
@@ -25,7 +25,8 @@
     "q0006",
     "q0007",
     "q0008",
-    "q0009"
+    "q0009",
+    "q0010"
   ],
   "published_history": [
     {
@@ -69,8 +70,15 @@
       "title": "रौलेट एक्ट किस वर्ष क्या है? | सामान्य ज्ञान प्रश्नोत्तरी #shorts",
       "day": 5,
       "slot": 2
+    },
+    {
+      "id": "q0010",
+      "yt_id": "Cid8HDA1vFw",
+      "title": "स्टैफोर्ड क्रि प्स | बार-बार पूछे जाने वाले प्रश्न #shorts",
+      "day": 6,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-09-13",
-  "published_today_count": 2
+  "last_published_date": "2026-09-14",
+  "published_today_count": 1
 }
