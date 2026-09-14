@@ -237,7 +237,7 @@ def query_gemini_ai_agent_hi(question_text, options, topic_name, day, slot):
     Calls Google Gemini 3.6 Flash foundation model to act as the Senior Hindi Creative & SEO Agent.
     Generates high-CTR mobile title in Hindi/Hinglish, platform-specific hooks, and targeted search tags.
     """
-    api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    api_key = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or "").strip()
     if not api_key:
         return None
 
