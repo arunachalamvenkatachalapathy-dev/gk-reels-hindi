@@ -124,16 +124,25 @@ def main():
     accent = next_accent(state)
     bg_music = get_slot_track(slot)
 
+    # Detect topic for category badge and branding
+    topic_name = "सामान्य ज्ञान"
+    try:
+        from seo_agent import detect_topic_hi
+        topic_name, _, _ = detect_topic_hi(q.get("question", ""))
+    except Exception:
+        pass
+
     today = datetime.date.today().isoformat()
     out_mp4 = os.path.join(OUT_DIR, f"{today}_{q['id']}.mp4")
     tmp_dir = os.path.join(OUT_DIR, f"tmp_{q['id']}")
 
     print(f"=== Publishing Day {day} (Part {slot}/{videos_per_day}) ===")
     print(f"Question ID: {q['id']}")
+    print(f"Topic: {topic_name}")
     print(f"Audio Track: {os.path.basename(bg_music)}")
-    print(f"Rendering 18s Video with ~4.5s Buffer Outro...")
+    print(f"Rendering Dynamic High-Retention Video (10-12s) with Animated Timer...")
 
-    render_video(q, accent, out_mp4, tmp_dir, bg_music=bg_music, day=day, slot=slot)
+    render_video(q, accent, out_mp4, tmp_dir, bg_music=bg_music, day=day, slot=slot, topic_name=topic_name)
 
     have_youtube = all(os.environ.get(k) for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN"))
     have_instagram = all(os.environ.get(k) for k in ("IG_ACCESS_TOKEN", "IG_USER_ID", "GITHUB_TOKEN", "GITHUB_REPOSITORY"))
