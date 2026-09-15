@@ -1,5 +1,5 @@
 {
-  "next_index": 14,
+  "next_index": 15,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 2,
+  "palette_cursor": 3,
   "audio_cursor": 0,
-  "current_day": 7,
-  "current_slot": 2,
-  "total_published": 14,
+  "current_day": 8,
+  "current_slot": 1,
+  "total_published": 15,
   "published_ids": [
     "q0000",
     "q0001",
@@ -29,7 +29,8 @@
     "q0010",
     "q0011",
     "q0012",
-    "q0013"
+    "q0013",
+    "q0014"
   ],
   "published_history": [
     {
@@ -101,8 +102,15 @@
       "title": "भारत छोड़ो आन्दोलन कांग्रेस ने कब शुरू किया था? #shorts",
       "day": 7,
       "slot": 2
+    },
+    {
+      "id": "q0014",
+      "yt_id": "Xv99J-Otcww",
+      "title": "स्वराज मेरा जन्मसिद्ध अधिकार है किसका नारा था? #shorts",
+      "day": 8,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-09-15",
-  "published_today_count": 2
+  "last_published_date": "2026-09-16",
+  "published_today_count": 1
 }
