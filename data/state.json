@@ -1,5 +1,5 @@
-{
-  "next_index": 16,
+﻿{
+  "next_index": 13,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 4,
+  "palette_cursor": 1,
   "audio_cursor": 0,
-  "current_day": 8,
-  "current_slot": 2,
-  "total_published": 16,
+  "current_day": 7,
+  "current_slot": 1,
+  "total_published": 13,
   "published_ids": [
     "q0000",
     "q0001",
@@ -28,10 +28,7 @@
     "q0009",
     "q0010",
     "q0011",
-    "q0012",
-    "q0013",
-    "q0014",
-    "q0015"
+    "q0012"
   ],
   "published_history": [
     {
@@ -43,29 +40,29 @@
     },
     {
       "id": "q0005",
-      "yt_id": "Zbnt7yqa9v4",
-      "title": "भारतीय राष्ट्रीीय कांग्रेस का प्रथम अध्यक्ष? 99% फेल! ❌ #Shorts",
+      "yt_id": "K3T7H7T14rM",
+      "title": "भारत का राष्ट्रीय गान जन-गण-मन कब अपनाया गया? #Shorts",
       "day": 3,
       "slot": 2
     },
     {
       "id": "q0006",
-      "yt_id": "eDXaR4VHdXI",
-      "title": "भारत का ग्रैण्ड ओल्ड | GK In Hindi | Samanya Gyan #shorts",
+      "yt_id": "i08z-t3N148",
+      "title": "भारत का राष्ट्रीय गीत किस उपन्यास से लिया गया? 99% फेल! ❌ #Shorts",
       "day": 4,
       "slot": 1
     },
     {
       "id": "q0007",
       "yt_id": "sSeYDbxaorU",
-      "title": "किसने कहा था कि | GK In Hindi | Samanya Gyan #shorts",
+      "title": "प्रथम भारतीय नोबेल पुरस्कार विजेता कौन थे? 90% फेल! ❌ #Shorts",
       "day": 4,
       "slot": 2
     },
     {
       "id": "q0008",
       "yt_id": "eGCwJVTsLAQ",
-      "title": "महात्मा गांधी ने कब हरिजन | Lucent GK निचोड़ #shorts",
+      "title": "हमारा राष्ट्रीय पंचांग किस संवत पर आधारित है? #Shorts",
       "day": 5,
       "slot": 1
     },
@@ -96,29 +93,8 @@
       "title": "भारत में गांधीजी का पहला सत्याग्रह कहाँ हुआ? #shorts",
       "day": 7,
       "slot": 1
-    },
-    {
-      "id": "q0013",
-      "yt_id": "-InFn2hiPjE",
-      "title": "भारत छोड़ो आन्दोलन कांग्रेस ने कब शुरू किया था? #shorts",
-      "day": 7,
-      "slot": 2
-    },
-    {
-      "id": "q0014",
-      "yt_id": "Xv99J-Otcww",
-      "title": "स्वराज मेरा जन्मसिद्ध अधिकार है किसका नारा था? #shorts",
-      "day": 8,
-      "slot": 1
-    },
-    {
-      "id": "q0015",
-      "yt_id": "jVrJqu7kzrc",
-      "title": "महात्मा गांधीजी के असहयोग | बार-बार पूछे जाने वाले प्रश्न #shorts",
-      "day": 8,
-      "slot": 2
     }
   ],
-  "last_published_date": "2026-09-16",
-  "published_today_count": 2
+  "last_published_date": "2026-09-15",
+  "published_today_count": 0
 }
