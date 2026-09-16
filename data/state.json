@@ -1,5 +1,5 @@
 {
-  "next_index": 15,
+  "next_index": 16,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
   "current_day": 8,
-  "current_slot": 1,
-  "total_published": 15,
+  "current_slot": 2,
+  "total_published": 16,
   "published_ids": [
     "q0000",
     "q0001",
@@ -30,7 +30,8 @@
     "q0011",
     "q0012",
     "q0013",
-    "q0014"
+    "q0014",
+    "q0015"
   ],
   "published_history": [
     {
@@ -109,8 +110,15 @@
       "title": "स्वराज मेरा जन्मसिद्ध अधिकार है किसका नारा था? #shorts",
       "day": 8,
       "slot": 1
+    },
+    {
+      "id": "q0015",
+      "yt_id": "jVrJqu7kzrc",
+      "title": "महात्मा गांधीजी के असहयोग | बार-बार पूछे जाने वाले प्रश्न #shorts",
+      "day": 8,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-09-16",
-  "published_today_count": 1
+  "published_today_count": 2
 }
