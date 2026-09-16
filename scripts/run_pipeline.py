@@ -136,14 +136,6 @@ def main():
     out_mp4 = os.path.join(OUT_DIR, f"{today}_{q['id']}.mp4")
     tmp_dir = os.path.join(OUT_DIR, f"tmp_{q['id']}")
 
-    print(f"=== Publishing Day {day} (Part {slot}/{videos_per_day}) ===")
-    print(f"Question ID: {q['id']}")
-    print(f"Topic: {topic_name}")
-    print(f"Audio Track: {os.path.basename(bg_music)}")
-    print(f"Rendering Dynamic High-Retention Video (10-12s) with Animated Timer...")
-
-    render_video(q, accent, out_mp4, tmp_dir, bg_music=bg_music, day=day, slot=slot, topic_name=topic_name)
-
     have_youtube = all(os.environ.get(k) for k in ("YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN"))
     have_instagram = all(os.environ.get(k) for k in ("IG_ACCESS_TOKEN", "IG_USER_ID", "GITHUB_TOKEN", "GITHUB_REPOSITORY"))
 
@@ -171,12 +163,16 @@ def main():
     except Exception as se:
         print(f"  [SEO Agent Hindi] Fallback to standard metadata due to: {se}")
 
+    viral_badge = None
+    pinned_comment = None
     if seo_data:
         title = seo_data["title"]
         caption = seo_data["description"]
         tags = seo_data["tags"]
         ig_caption = seo_data["ig_caption"]
         fb_caption = seo_data["fb_caption"]
+        viral_badge = seo_data.get("viral_badge")
+        pinned_comment = seo_data.get("pinned_comment")
     else:
         # High quality Hindi fallback
         q_clean = q.get("question", "").rstrip("?।! ").strip()
@@ -197,6 +193,17 @@ def main():
         tags = ["GK in Hindi", "सामान्य ज्ञान", "Hindi GK Questions", "GK Short Video", "Daily GK Quiz", "Lucent GK", "SSC GD GK 2026", "UP Police GK", "RRB NTPC GK", "Shorts"]
         ig_caption = caption
         fb_caption = caption
+        viral_badge = "🔥 99% लोग फेल!"
+        pinned_comment = "क्या आपको इसका जवाब पहले से पता था? अपना स्कोर नीचे कमेंट करें! 👇"
+
+    print(f"=== Publishing Day {day} (Part {slot}/{videos_per_day}) ===")
+    print(f"Question ID: {q['id']}")
+    print(f"Topic: {topic_name}")
+    print(f"Viral Badge: {viral_badge}")
+    print(f"Audio Track: {os.path.basename(bg_music)}")
+    print(f"Rendering Dynamic High-Retention Video (9.5-10.5s) with Animated Timer...")
+
+    render_video(q, accent, out_mp4, tmp_dir, bg_music=bg_music, day=day, slot=slot, topic_name=topic_name, viral_badge=viral_badge)
 
     if not have_youtube:
         print("WARNING: YouTube credentials not fully set -- skipping YouTube upload.")
@@ -210,7 +217,7 @@ def main():
     if have_youtube:
         try:
             from upload_youtube import upload_short
-            yt_id = upload_short(out_mp4, title, caption, tags=tags)
+            yt_id = upload_short(out_mp4, title, caption, tags=tags, pinned_comment=pinned_comment)
             if yt_id:
                 yt_url = f"https://youtube.com/shorts/{yt_id}"
                 # Record in state for SEO historical tracking
