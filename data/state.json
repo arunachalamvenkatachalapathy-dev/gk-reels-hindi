@@ -1,5 +1,5 @@
 {
-  "next_index": 13,
+  "next_index": 14,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 1,
+  "palette_cursor": 2,
   "audio_cursor": 0,
-  "current_day": 7,
+  "current_day": 8,
   "current_slot": 1,
-  "total_published": 13,
+  "total_published": 14,
   "published_ids": [
     "q0000",
     "q0001",
@@ -28,7 +28,8 @@
     "q0009",
     "q0010",
     "q0011",
-    "q0012"
+    "q0012",
+    "q0013"
   ],
   "published_history": [
     {
@@ -93,8 +94,15 @@
       "title": "भारत में गांधीजी का पहला सत्याग्रह कहाँ हुआ? #shorts",
       "day": 7,
       "slot": 1
+    },
+    {
+      "id": "q0013",
+      "yt_id": "qswBBVLDKnc",
+      "title": "भारत छोड़ो आंदोलन कब शुरू हुआ? 🔥 GK Questions #shorts",
+      "day": 8,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-09-15",
-  "published_today_count": 0
+  "last_published_date": "2026-09-16",
+  "published_today_count": 1
 }
