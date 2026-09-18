@@ -1,5 +1,5 @@
 {
-  "next_index": 20,
+  "next_index": 21,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 2,
+  "palette_cursor": 3,
   "audio_cursor": 0,
   "current_day": 10,
-  "current_slot": 3,
-  "total_published": 20,
+  "current_slot": 4,
+  "total_published": 21,
   "published_ids": [
     "q0000",
     "q0001",
@@ -35,7 +35,8 @@
     "q0016",
     "q0017",
     "q0018",
-    "q0019"
+    "q0019",
+    "q0020"
   ],
   "published_history": [
     {
@@ -149,8 +150,15 @@
       "title": "सुभाष बोस ने बनाई ये पार्टी? #shorts #gkquiz",
       "day": 10,
       "slot": 3
+    },
+    {
+      "id": "q0020",
+      "yt_id": "mHCKzq5vRxw",
+      "title": "गांधी जी का अंग्रेजी अखबार? 99% लोग गलत जवाब देते हैं! #shorts",
+      "day": 10,
+      "slot": 4
     }
   ],
   "last_published_date": "2026-09-18",
-  "published_today_count": 3
+  "published_today_count": 4
 }
