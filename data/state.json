@@ -1,5 +1,5 @@
 {
-  "next_index": 19,
+  "next_index": 20,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 1,
+  "palette_cursor": 2,
   "audio_cursor": 0,
   "current_day": 10,
-  "current_slot": 2,
-  "total_published": 19,
+  "current_slot": 3,
+  "total_published": 20,
   "published_ids": [
     "q0000",
     "q0001",
@@ -34,7 +34,8 @@
     "q0015",
     "q0016",
     "q0017",
-    "q0018"
+    "q0018",
+    "q0019"
   ],
   "published_history": [
     {
@@ -141,8 +142,15 @@
       "title": "इलबर्ट बिल का सच! क्या आप जानते हैं? 🤔 #shorts",
       "day": 10,
       "slot": 2
+    },
+    {
+      "id": "q0019",
+      "yt_id": "SC-b-9TBRJw",
+      "title": "सुभाष बोस ने बनाई ये पार्टी? #shorts #gkquiz",
+      "day": 10,
+      "slot": 3
     }
   ],
   "last_published_date": "2026-09-18",
-  "published_today_count": 2
+  "published_today_count": 3
 }
