@@ -1,5 +1,5 @@
 {
-  "next_index": 18,
+  "next_index": 19,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 0,
+  "palette_cursor": 1,
   "audio_cursor": 0,
   "current_day": 10,
-  "current_slot": 1,
-  "total_published": 18,
+  "current_slot": 2,
+  "total_published": 19,
   "published_ids": [
     "q0000",
     "q0001",
@@ -33,7 +33,8 @@
     "q0014",
     "q0015",
     "q0016",
-    "q0017"
+    "q0017",
+    "q0018"
   ],
   "published_history": [
     {
@@ -133,8 +134,15 @@
       "title": "लंदन में भारत की आवाज़ किसने उठाई? 🤔 | GK Quiz | #shorts",
       "day": 10,
       "slot": 1
+    },
+    {
+      "id": "q0018",
+      "yt_id": "y0PFIvTVU7I",
+      "title": "इलबर्ट बिल का सच! क्या आप जानते हैं? 🤔 #shorts",
+      "day": 10,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-09-18",
-  "published_today_count": 1
+  "published_today_count": 2
 }
