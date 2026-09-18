@@ -13,6 +13,8 @@ import json
 import base64
 import asyncio
 import subprocess
+import urllib.request
+import urllib.error
 from playwright.sync_api import sync_playwright
 import edge_tts
 
@@ -161,12 +163,84 @@ def format_question_for_speech_hindi(text):
     return s.strip()
 
 
+
+# ── Fish Audio Voice Config (Hindi Channel: Amitabh Bachchan) ────────────────
+FISH_AUDIO_API_URL = "https://api.fish.audio/v1/tts"
+# Amitabh Bachchan Hindi voice — most used Hindi model (7,949 tasks) — KBC-style authority
+FISH_VOICE_MODEL_ID = "ea7cdc74aeae4b608be27fdc37fdcb05"
+FISH_FALLBACK_MODEL_ID = "cb5df820ca3f4ec6882131029ab63392"  # backup Amitabh Hindi model
+
+
+def _fish_audio_tts(text: str, out_path: str, api_key: str, model_id: str) -> bool:
+    """
+    Call Fish Audio TTS API and save the MP3 to out_path.
+    Returns True on success, False on any failure.
+    Fish Audio streams raw MP3 bytes — no special codec needed.
+    """
+    try:
+        import json as _json
+        payload = _json.dumps({
+            "text": text,
+            "reference_id": model_id,
+            "format": "mp3",
+            "mp3_bitrate": 128,
+            "latency": "normal",
+        }).encode("utf-8")
+
+        req = urllib.request.Request(
+            FISH_AUDIO_API_URL,
+            data=payload,
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            method="POST",
+        )
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = resp.read()
+        if len(data) < 500:
+            print(f"  [Fish Audio] Response too small ({len(data)} bytes) — likely an error, skipping.")
+            return False
+        with open(out_path, "wb") as f:
+            f.write(data)
+        print(f"  [Fish Audio] OK Generated {os.path.basename(out_path)} ({len(data)//1024} KB)")
+        return True
+    except Exception as exc:
+        print(f"  [Fish Audio] WARN Failed: {exc}")
+        return False
+
+
 async def generate_voiceover_hindi(question_text, answer_text, q_voice_path, ans_voice_path):
-    voice = "hi-IN-MadhurNeural"
-    comm_q = edge_tts.Communicate(question_text, voice, rate="+22%")
-    await comm_q.save(q_voice_path)
-    comm_ans = edge_tts.Communicate(answer_text, voice, rate="+24%")
-    await comm_ans.save(ans_voice_path)
+    """
+    Generate voiceover MP3s for Hindi channel.
+    Primary: Fish Audio (Amitabh Bachchan Hindi voice) — authoritative KBC-style narrator.
+    Fallback: edge-tts hi-IN-MadhurNeural.
+    """
+    fish_api_key = os.environ.get("FISH_AUDIO_API_KEY", "")
+    used_fish = False
+
+    if fish_api_key:
+        print("  [Fish Audio] Attempting Amitabh Bachchan Hindi voiceover...")
+        ok_q = _fish_audio_tts(question_text, q_voice_path, fish_api_key, FISH_VOICE_MODEL_ID)
+        ok_a = _fish_audio_tts(answer_text, ans_voice_path, fish_api_key, FISH_VOICE_MODEL_ID)
+        if ok_q and ok_a:
+            used_fish = True
+        else:
+            # Try backup Amitabh model before falling to edge-tts
+            print("  [Fish Audio] Trying backup model...")
+            ok_q = _fish_audio_tts(question_text, q_voice_path, fish_api_key, FISH_FALLBACK_MODEL_ID)
+            ok_a = _fish_audio_tts(answer_text, ans_voice_path, fish_api_key, FISH_FALLBACK_MODEL_ID)
+            if ok_q and ok_a:
+                used_fish = True
+
+    if not used_fish:
+        print("  [Edge-TTS] Falling back to hi-IN-MadhurNeural...")
+        voice = "hi-IN-MadhurNeural"
+        comm_q = edge_tts.Communicate(question_text, voice, rate="+22%")
+        await comm_q.save(q_voice_path)
+        comm_ans = edge_tts.Communicate(answer_text, voice, rate="+24%")
+        await comm_ans.save(ans_voice_path)
+        print("  [Edge-TTS] OK Voiceover generated.")
 
 
 def render_video(question_obj, accent, out_mp4, tmp_dir, bg_music=None, day=1, slot=1, topic_name=None, viral_badge=None):
