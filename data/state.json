@@ -1,5 +1,5 @@
 {
-  "next_index": 21,
+  "next_index": 22,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
-  "current_day": 10,
-  "current_slot": 4,
-  "total_published": 21,
+  "current_day": 11,
+  "current_slot": 1,
+  "total_published": 22,
   "published_ids": [
     "q0000",
     "q0001",
@@ -36,7 +36,8 @@
     "q0017",
     "q0018",
     "q0019",
-    "q0020"
+    "q0020",
+    "q0021"
   ],
   "published_history": [
     {
@@ -157,8 +158,15 @@
       "title": "गांधी जी का अंग्रेजी अखबार? 99% लोग गलत जवाब देते हैं! #shorts",
       "day": 10,
       "slot": 4
+    },
+    {
+      "id": "q0021",
+      "yt_id": "xAGMzhfqLkg",
+      "title": "फूट डालो राज करो! किस अंग्रेज ने अपनाई थी ये नीति? #shorts",
+      "day": 11,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-09-18",
-  "published_today_count": 4
+  "last_published_date": "2026-09-19",
+  "published_today_count": 1
 }
