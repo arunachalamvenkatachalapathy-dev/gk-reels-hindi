@@ -117,8 +117,37 @@ KEYWORD_TEMPLATES_HI = [
 ]
 
 
+def clean_hindi_text(text):
+    if not isinstance(text, str):
+        return text
+    text = re.sub(r'ी{2,}', 'ी', text)
+    text = re.sub(r'ा{2,}', 'ा', text)
+    text = re.sub(r'ु{2,}', 'ु', text)
+    text = re.sub(r'ू{2,}', 'ू', text)
+    text = re.sub(r'े{2,}', 'े', text)
+    text = re.sub(r'ै{2,}', 'ै', text)
+    text = re.sub(r'ं{2,}', 'ं', text)
+    text = re.sub(r'्\s+', '्', text)
+    text = re.sub(r'([क-ह])\s+([ािीुूृेैोौंँ])', r'\1\2', text)
+    text = re.sub(r'द्वाारा', 'द्वारा', text)
+    text = re.sub(r'द्वाार\b', 'द्वार', text)
+    text = re.sub(r'गवर्नल', 'गवर्नर', text)
+    text = re.sub(r'लाला राजपत', 'लाला लाजपत', text)
+    text = re.sub(r'ट्रेेड', 'ट्रेड', text)
+    text = re.sub(r'फ़्रांांस', 'फ्रांस', text)
+    text = re.sub(r'राष्ट्रीीय', 'राष्ट्रीय', text)
+    text = re.sub(r'क्रि\s*प्स', 'क्रिप्स', text)
+    text = re.sub(r'इण्डि\s*या', 'इण्डिया', text)
+    text = re.sub(r'क्रान्ति\s*कारी', 'क्रांतिकारी', text)
+    text = re.sub(r'बल्ल्भभाई', 'वल्लभभाई', text)
+    text = re.sub(r'निम्निलिखित', 'निम्नलिखित', text)
+    text = re.sub(r'\s{2,}', ' ', text)
+    return text.strip()
+
+
 def extract_core_entity_hi(q_text, fallback_topic="सामान्य ज्ञान"):
     """Extracts the key conceptual entity or proper noun phrase from a Hindi GK question."""
+    q_text = clean_hindi_text(q_text)
     quotes = re.findall(r"[\'\‘\“\"]([^\'\’\”\"]{2,30})[\'\’\”\"]", q_text)
     if quotes:
         valid_q = [q.strip() for q in quotes if len(q.strip()) > 2]
@@ -139,8 +168,8 @@ def extract_core_entity_hi(q_text, fallback_topic="सामान्य ज्�
             break
         cand = (cand + " " + w).strip()
 
-    while re.search(r'\s*(का|के|की|में|से|पर|द्वारा|द्वाारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|के दौरान|दौरान)\s*$', cand):
-        cand = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|द्वाारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|के दौरान|दौरान)\s*$', '', cand).strip()
+    while re.search(r'\s*(का|के|की|में|से|पर|द्वारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|के दौरान|दौरान)\s*$', cand):
+        cand = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|के दौरान|दौरान)\s*$', '', cand).strip()
 
     if len(cand) >= 4:
         return cand
@@ -149,32 +178,34 @@ def extract_core_entity_hi(q_text, fallback_topic="सामान्य ज्�
 
 def format_smart_title_hi(q, day, slot, topic_name="सामान्य ज्ञान"):
     """
-    Rotates deterministically across 7 high-reach Hindi archetypes.
+    Rotates deterministically across 7 high-reach curiosity-driven Hindi archetypes.
     Guarantees title <= 68 characters, contains #shorts, and front-loads key concepts.
     """
-    q_text = q.get("question", "").strip()
+    q_text = clean_hindi_text(q.get("question", "").strip())
     entity = extract_core_entity_hi(q_text, fallback_topic=topic_name)
 
     topic_short = topic_name.split()[0]
     direct_q = re.sub(r'[\?।!]+$', '', q_text).strip()
-    is_direct_usable = len(direct_q) <= 45 and ("?" in q_text or "कौन" in q_text or "क्या" in q_text or "कहाँ" in q_text)
+    is_direct_usable = len(direct_q) <= 48 and ("?" in q_text or "कौन" in q_text or "क्या" in q_text or "कहाँ" in q_text or "कब" in q_text)
 
     templates = [
-        f"{entity} महत्वपूर्ण प्रश्न | GK In Hindi #shorts",
-        f"{entity} | SSC GD & UP Police GK #shorts",
-        f"{direct_q}? #shorts" if is_direct_usable else f"{entity} | Lucent GK निचोड़ #shorts",
-        f"{entity} क्या है? | सामान्य ज्ञान प्रश्नोत्तरी #shorts",
-        f"{entity} | {topic_short} GK Quiz #shorts",
-        f"{entity} | बार-बार पूछे जाने वाले प्रश्न #shorts",
-        f"{entity} प्रश्नोत्तरी | Samanya Gyan #shorts",
+        f"{entity} का सच! क्या आप जानते हैं? 🤔 #shorts",
+        f"{direct_q}? 99% लोग फेल! ❌ #shorts" if is_direct_usable else f"{entity} महत्वपूर्ण प्रश्न | 99% फेल! #shorts",
+        f"{entity} से जुड़े सवाल! क्या आपको पता है? 🔥 #shorts",
+        f"{direct_q}? 🤔 #shorts" if is_direct_usable else f"{entity} का सही उत्तर क्या है? ⚡ #shorts",
+        f"{entity} परीक्षा में बार-बार पूछा गया सवाल! 🎯 #shorts",
+        f"{entity} स्पेशल क्विज | क्या आप जानते हैं? #shorts",
+        f"{entity} | 5 सेकंड में जवाब दो! ⏱️ #shorts",
     ]
 
     idx = (day * 3 + slot) % len(templates)
     title = templates[idx]
     if len(title) > 68:
-        title = f"{entity} | GK In Hindi #shorts"
+        title = f"{entity} का सच! क्या आप जानते हैं? #shorts"
         if len(title) > 68:
-            title = f"{topic_short} महत्वपूर्ण प्रश्न #shorts"
+            title = f"{entity}? 99% लोग फेल! #shorts"
+            if len(title) > 68:
+                title = f"{topic_short} GK Quiz #shorts"
 
     return title, entity
 
@@ -320,8 +351,8 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
     if yt_client and published_history:
         audit = audit_recent_performance(yt_client, published_history)
 
-    question_text = q.get("question", "").strip()
-    options = q.get("options", [])
+    question_text = clean_hindi_text(q.get("question", "").strip())
+    options = [clean_hindi_text(opt) for opt in q.get("options", [])]
     topic_name, topic_tags, topic_hashtags = detect_topic_hi(question_text)
 
     # Try OpenRouter AI engine for viral package first

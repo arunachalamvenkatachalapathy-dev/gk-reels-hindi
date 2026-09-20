@@ -1,4 +1,4 @@
-﻿import os
+import os
 import sys
 import json
 import requests
@@ -9,10 +9,35 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip().strip('"\'')
 
 OPENROUTER_MODELS = [
     "deepseek/deepseek-chat",
-    "meta-llama/llama-3.3-70b-instruct:free",
-    "google/gemini-2.0-flash-exp:free",
+    "meta-llama/llama-3.3-70b-instruct",
+    "google/gemini-2.5-flash",
     "openai/gpt-4o-mini",
 ]
+
+
+def clean_hindi_text(text):
+    if not isinstance(text, str):
+        return text
+    text = re.sub(r'ी{2,}', 'ी', text)
+    text = re.sub(r'ा{2,}', 'ा', text)
+    text = re.sub(r'ु{2,}', 'ु', text)
+    text = re.sub(r'ू{2,}', 'ू', text)
+    text = re.sub(r'े{2,}', 'े', text)
+    text = re.sub(r'ै{2,}', 'ै', text)
+    text = re.sub(r'ं{2,}', 'ं', text)
+    text = re.sub(r'्\s+', '्', text)
+    text = re.sub(r'([क-ह])\s+([ािीुूृेैोौंँ])', r'\1\2', text)
+    text = re.sub(r'द्वाारा', 'द्वारा', text)
+    text = re.sub(r'गवर्नल', 'गवर्नर', text)
+    text = re.sub(r'लाला राजपत', 'लाला लाजपत', text)
+    text = re.sub(r'ट्रेेड', 'ट्रेड', text)
+    text = re.sub(r'फ़्रांांस', 'फ्रांस', text)
+    text = re.sub(r'राष्ट्रीीय', 'राष्ट्रीय', text)
+    text = re.sub(r'क्रि\s*प्स', 'क्रिप्स', text)
+    text = re.sub(r'इण्डि\s*या', 'इण्डिया', text)
+    text = re.sub(r'क्रान्ति\s*कारी', 'क्रांतिकारी', text)
+    text = re.sub(r'\s{2,}', ' ', text)
+    return text.strip()
 
 
 def call_openrouter(prompt, system_prompt="You are a viral YouTube Shorts and Instagram Reels algorithm expert."):
@@ -22,8 +47,8 @@ def call_openrouter(prompt, system_prompt="You are a viral YouTube Shorts and In
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://github.com/arunachalamvenkatachalapathy-dev/gk-reels",
-        "X-Title": "GK Reels Viral Engine"
+        "HTTP-Referer": "https://github.com/arunachalamvenkatachalapathy-dev/gk-reels-hindi",
+        "X-Title": "GK Reels Hindi Viral Engine"
     }
 
     for model in OPENROUTER_MODELS:
@@ -53,9 +78,10 @@ def call_openrouter(prompt, system_prompt="You are a viral YouTube Shorts and In
 
 
 def call_gemini_fallback(prompt):
-    if not GEMINI_API_KEY:
+    key = GEMINI_API_KEY or os.environ.get("GOOGLE_API_KEY", "").strip().strip('"\'')
+    if not key:
         return None
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={GEMINI_API_KEY}"
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={key}"
     try:
         resp = requests.post(
             url,
@@ -72,6 +98,8 @@ def call_gemini_fallback(prompt):
             data = resp.json()
             raw_text = data["candidates"][0]["content"]["parts"][0]["text"]
             return json.loads(raw_text)
+        else:
+            print(f"[AI Engine] Gemini returned HTTP {resp.status_code}: {resp.text[:100]}")
     except Exception as ge:
         print(f"[AI Engine] Gemini fallback error: {ge}")
     return None
@@ -84,6 +112,9 @@ def generate_viral_package(q, day, slot, language="English"):
     correct_opt = opts[correct_idx] if opts and correct_idx < len(opts) else ""
 
     if language.lower() == "hindi":
+        q_text = clean_hindi_text(q_text)
+        opts = [clean_hindi_text(o) for o in opts]
+        correct_opt = clean_hindi_text(correct_opt)
         prompt = f"""You are a master of viral Indian educational YouTube Shorts and Reels (targeting SSC, Railway, UP Police, and KBC fans).
 Analyze this Hindi GK question:
 Question: "{q_text}"
@@ -133,12 +164,20 @@ Output ONLY a JSON object with these exact keys:
     # 3. Rule-based fallback
     print(f"[AI Engine] Using rule-based viral fallback for {q.get('id')}")
     if language.lower() == "hindi":
+        clean_q = re.sub(r'[\?।!:,]+$', '', q_text).strip()
+        if len(clean_q) <= 48:
+            fall_title = f"{clean_q}? 99% लोग फेल! #shorts"
+        else:
+            fall_title = f"{clean_q[:44].rsplit(' ', 1)[0]}...? #shorts"
         return {
             "viral_hook": "99% लोग इस सवाल का गलत जवाब देते हैं! क्या आप जानते हैं?",
-            "title": f"{q_text[:45]} | GK Quiz Hindi #shorts",
+            "title": fall_title,
             "badge_text": "🔥 99% लोग फेल!",
-            "tags": ["gk in hindi", "samanya gyan", "gk quiz", "shorts", "daily gk"],
-            "pinned_comment": f"क्या आपको इसका जवाब पहले से पता था? अपना स्कोर नीचे कमेंट करें! 👇",
+            "tags": [
+                "GK in Hindi", "सामान्य ज्ञान", "Hindi GK Questions", "GK Quiz Hindi",
+                "SSC GD GK 2026", "UP Police GK", "RRB NTPC GK", "Lucent GK in Hindi", "Shorts"
+            ],
+            "pinned_comment": "क्या आपको इसका जवाब पहले से पता था? अपना स्कोर नीचे कमेंट करें! 👇",
             "short_fact": f"सही उत्तर '{correct_opt}' है।"
         }
     else:

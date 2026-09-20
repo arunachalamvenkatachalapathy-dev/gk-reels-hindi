@@ -82,10 +82,15 @@ def get_slot_track(slot):
     return tracks[0] if tracks else os.path.join(BASE, "assets", "tension_bed.mp3")
 
 
+def get_ist_now():
+    """Return current datetime in Indian Standard Time (UTC+05:30)."""
+    ist = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
+    return datetime.datetime.now(ist)
+
+
 def get_ist_date():
     """Return current date in Indian Standard Time (UTC+05:30)."""
-    ist = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
-    return datetime.datetime.now(ist).date().isoformat()
+    return get_ist_now().date().isoformat()
 
 
 def main():
@@ -95,7 +100,9 @@ def main():
     state = load_json(STATE_PATH)
 
     videos_per_day = state.get("videos_per_day", 2)
-    today_ist = get_ist_date()
+    now_ist = get_ist_now()
+    today_ist = now_ist.date().isoformat()
+    hour_ist = now_ist.hour
     last_date = state.get("last_published_date")
     current_day = state.get("current_day", 1)
     published_today = state.get("published_today_count", 0)
@@ -103,21 +110,41 @@ def main():
     # Support manual override via CLI --force or env FORCE_PUBLISH=true
     force = ("--force" in sys.argv) or (os.environ.get("FORCE_PUBLISH", "").lower() in ("true", "1"))
 
-    # ── CALENDAR-DATE LOCKED PROGRESSION ─────────────────────────────────
+    # ── CALENDAR-DATE & SLOT TIME-LOCKED PROGRESSION ─────────────────────────
     # A new Day number only unlocks when the calendar date changes in IST.
     if last_date != today_ist:
-        # Brand new calendar day in India -> Advance day (if previously published), reset slot to 1
+        # Brand new calendar day in India -> Advance day (if previously published), reset published count
         day = (current_day + 1) if (last_date is not None and state.get("total_published", 0) > 0) else current_day
-        slot = 1
         published_today = 0
     else:
         # Same calendar day in India
-        if published_today >= videos_per_day and not force:
-            print(f"Daily quota of {videos_per_day} videos already reached for today ({today_ist}, Day {current_day}).")
-            print(f"Holding Day {current_day + 1} until tomorrow morning. Exiting gracefully without error.")
-            return
         day = current_day
-        slot = published_today + 1
+
+    if not force:
+        # Slot 1 is Morning (scheduled for 06:00 AM IST)
+        # Slot 2 is Afternoon (scheduled for 03:00 PM IST)
+        if hour_ist < 13:
+            # Morning window (before 1:00 PM IST): Only publish Slot 1
+            if published_today >= 1:
+                print(f"[Slot Lock] Morning Slot (Part 1/{videos_per_day}) for Day {day} already published today ({published_today} published).")
+                print(f"[Slot Lock] Afternoon Slot (Part 2) will publish after 03:00 PM IST. Exiting gracefully without error.")
+                return
+            slot = 1
+        else:
+            # Afternoon/Evening window (1:00 PM IST or later)
+            if published_today >= videos_per_day:
+                print(f"[Slot Lock] Daily quota of {videos_per_day} videos already reached for today ({today_ist}, Day {day}).")
+                print(f"[Slot Lock] Holding Day {day + 1} until tomorrow morning. Exiting gracefully without error.")
+                return
+            slot = published_today + 1
+    else:
+        # Forced publish: calculate slot sequentially
+        if published_today >= videos_per_day:
+            day = current_day + 1
+            slot = 1
+            published_today = 0
+        else:
+            slot = published_today + 1
 
     # Non-repetition question pick
     q = pick_next_question(questions, state)

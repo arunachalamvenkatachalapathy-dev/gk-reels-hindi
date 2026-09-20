@@ -67,6 +67,8 @@ def upload_short(video_path, title, description, tags=None, pinned_comment=None)
             "description": description[:5000],
             "tags": tags or ["GK", "SSC", "quiz", "generalknowledge"],
             "categoryId": "27",  # Education
+            "defaultLanguage": "hi",
+            "defaultAudioLanguage": "hi",
         },
         "status": {
             "privacyStatus": "public",
