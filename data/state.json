@@ -1,5 +1,5 @@
 {
-  "next_index": 24,
+  "next_index": 25,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 0,
+  "palette_cursor": 1,
   "audio_cursor": 0,
   "current_day": 12,
-  "current_slot": 1,
-  "total_published": 24,
+  "current_slot": 2,
+  "total_published": 25,
   "published_ids": [
     "q0000",
     "q0001",
@@ -39,16 +39,10 @@
     "q0020",
     "q0021",
     "q0022",
-    "q0023"
+    "q0023",
+    "q0024"
   ],
   "published_history": [
-    {
-      "id": "q0004",
-      "yt_id": "wxmmfPGaRPQ",
-      "title": "अखिल भारतीय ट्रेेड यूनियन कांग्रेस के प्रथम? 99% फेल! ❌ #Shorts",
-      "day": 3,
-      "slot": 1
-    },
     {
       "id": "q0005",
       "yt_id": "K3T7H7T14rM",
@@ -181,8 +175,15 @@
       "title": "सुभाषचन्द्र बोस ने कब छोड़ी कांग्रेस? #shorts #gkquiz",
       "day": 12,
       "slot": 1
+    },
+    {
+      "id": "q0024",
+      "yt_id": "GzUoxUpf0F8",
+      "title": "कौन थे लोकहितवादी? 🤔 #shorts | GK Quiz | SSC, Railway, UP Police",
+      "day": 12,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-09-20",
-  "published_today_count": 1
+  "published_today_count": 2
 }
