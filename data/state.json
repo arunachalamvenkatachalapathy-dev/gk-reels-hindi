@@ -1,5 +1,5 @@
 {
-  "next_index": 23,
+  "next_index": 24,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 5,
+  "palette_cursor": 0,
   "audio_cursor": 0,
-  "current_day": 11,
-  "current_slot": 2,
-  "total_published": 23,
+  "current_day": 12,
+  "current_slot": 1,
+  "total_published": 24,
   "published_ids": [
     "q0000",
     "q0001",
@@ -38,7 +38,8 @@
     "q0019",
     "q0020",
     "q0021",
-    "q0022"
+    "q0022",
+    "q0023"
   ],
   "published_history": [
     {
@@ -173,8 +174,15 @@
       "title": "गदर पार्टी का मुख्यालय? 99% लोग गलत जवाब देते हैं! #shorts",
       "day": 11,
       "slot": 2
+    },
+    {
+      "id": "q0023",
+      "yt_id": "5ewiU6a66Hs",
+      "title": "सुभाषचन्द्र बोस ने कब छोड़ी कांग्रेस? #shorts #gkquiz",
+      "day": 12,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-09-19",
-  "published_today_count": 2
+  "last_published_date": "2026-09-20",
+  "published_today_count": 1
 }
