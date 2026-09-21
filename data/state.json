@@ -1,5 +1,5 @@
 {
-  "next_index": 25,
+  "next_index": 26,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 1,
+  "palette_cursor": 2,
   "audio_cursor": 0,
-  "current_day": 12,
-  "current_slot": 2,
-  "total_published": 25,
+  "current_day": 13,
+  "current_slot": 1,
+  "total_published": 26,
   "published_ids": [
     "q0000",
     "q0001",
@@ -40,16 +40,10 @@
     "q0021",
     "q0022",
     "q0023",
-    "q0024"
+    "q0024",
+    "q0025"
   ],
   "published_history": [
-    {
-      "id": "q0005",
-      "yt_id": "K3T7H7T14rM",
-      "title": "भारत का राष्ट्रीय गान जन-गण-मन कब अपनाया गया? #Shorts",
-      "day": 3,
-      "slot": 2
-    },
     {
       "id": "q0006",
       "yt_id": "i08z-t3N148",
@@ -182,8 +176,15 @@
       "title": "कौन थे लोकहितवादी? 🤔 #shorts | GK Quiz | SSC, Railway, UP Police",
       "day": 12,
       "slot": 2
+    },
+    {
+      "id": "q0025",
+      "yt_id": "GAhUq3ZLGdE",
+      "title": "हड़प्पा सभ्यता की खोज किसने की? 🤔 #shorts #gkquiz",
+      "day": 13,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-09-20",
-  "published_today_count": 2
+  "last_published_date": "2026-09-21",
+  "published_today_count": 1
 }
