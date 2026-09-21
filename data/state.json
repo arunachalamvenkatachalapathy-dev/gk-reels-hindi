@@ -1,5 +1,5 @@
 {
-  "next_index": 26,
+  "next_index": 27,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 2,
+  "palette_cursor": 3,
   "audio_cursor": 0,
   "current_day": 13,
-  "current_slot": 1,
-  "total_published": 26,
+  "current_slot": 2,
+  "total_published": 27,
   "published_ids": [
     "q0000",
     "q0001",
@@ -41,16 +41,10 @@
     "q0022",
     "q0023",
     "q0024",
-    "q0025"
+    "q0025",
+    "q0026"
   ],
   "published_history": [
-    {
-      "id": "q0006",
-      "yt_id": "i08z-t3N148",
-      "title": "भारत का राष्ट्रीय गीत किस उपन्यास से लिया गया? 99% फेल! ❌ #Shorts",
-      "day": 4,
-      "slot": 1
-    },
     {
       "id": "q0007",
       "yt_id": "sSeYDbxaorU",
@@ -183,8 +177,15 @@
       "title": "हड़प्पा सभ्यता की खोज किसने की? 🤔 #shorts #gkquiz",
       "day": 13,
       "slot": 1
+    },
+    {
+      "id": "q0026",
+      "yt_id": "vQWI3auRtrY",
+      "title": "इस शासक ने जैन मुनि की तरह त्याग दिया शरीर! 😱 #shorts",
+      "day": 13,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-09-21",
-  "published_today_count": 1
+  "published_today_count": 2
 }
