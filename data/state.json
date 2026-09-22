@@ -1,5 +1,5 @@
 {
-  "next_index": 28,
+  "next_index": 29,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 4,
+  "palette_cursor": 5,
   "audio_cursor": 0,
   "current_day": 14,
-  "current_slot": 1,
-  "total_published": 28,
+  "current_slot": 2,
+  "total_published": 29,
   "published_ids": [
     "q0000",
     "q0001",
@@ -43,16 +43,10 @@
     "q0024",
     "q0025",
     "q0026",
-    "q0027"
+    "q0027",
+    "q0028"
   ],
   "published_history": [
-    {
-      "id": "q0008",
-      "yt_id": "eGCwJVTsLAQ",
-      "title": "हमारा राष्ट्रीय पंचांग किस संवत पर आधारित है? #Shorts",
-      "day": 5,
-      "slot": 1
-    },
     {
       "id": "q0009",
       "yt_id": "9DPbjC21-D8",
@@ -185,8 +179,15 @@
       "title": "तराइन का पहला युद्ध किसने जीता? #shorts #gkquiz",
       "day": 14,
       "slot": 1
+    },
+    {
+      "id": "q0028",
+      "yt_id": "LXJqAKepB1E",
+      "title": "बंगाल को मुगलों से किसने अलग किया? 🤔 #shorts #gkquiz",
+      "day": 14,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-09-22",
-  "published_today_count": 1
+  "published_today_count": 2
 }
