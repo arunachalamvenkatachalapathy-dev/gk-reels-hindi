@@ -1,5 +1,5 @@
 {
-  "next_index": 27,
+  "next_index": 28,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
-  "current_day": 13,
-  "current_slot": 2,
-  "total_published": 27,
+  "current_day": 14,
+  "current_slot": 1,
+  "total_published": 28,
   "published_ids": [
     "q0000",
     "q0001",
@@ -42,16 +42,10 @@
     "q0023",
     "q0024",
     "q0025",
-    "q0026"
+    "q0026",
+    "q0027"
   ],
   "published_history": [
-    {
-      "id": "q0007",
-      "yt_id": "sSeYDbxaorU",
-      "title": "प्रथम भारतीय नोबेल पुरस्कार विजेता कौन थे? 90% फेल! ❌ #Shorts",
-      "day": 4,
-      "slot": 2
-    },
     {
       "id": "q0008",
       "yt_id": "eGCwJVTsLAQ",
@@ -184,8 +178,15 @@
       "title": "इस शासक ने जैन मुनि की तरह त्याग दिया शरीर! 😱 #shorts",
       "day": 13,
       "slot": 2
+    },
+    {
+      "id": "q0027",
+      "yt_id": "i0PVTBsgmu0",
+      "title": "तराइन का पहला युद्ध किसने जीता? #shorts #gkquiz",
+      "day": 14,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-09-21",
-  "published_today_count": 2
+  "last_published_date": "2026-09-22",
+  "published_today_count": 1
 }
