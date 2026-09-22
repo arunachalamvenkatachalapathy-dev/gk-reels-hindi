@@ -125,10 +125,10 @@ Generate a viral metadata package that hooks the viewer in the first 1.5 seconds
 Output ONLY a JSON object with these exact keys:
 {{
   "viral_hook": "A short, addictive 1-sentence hook in Hindi to show at the top of the video or voiceover (e.g., '99% लोग गलत जवाब देते हैं! क्या आप जानते हैं?')",
-  "title": "High-CTR YouTube Shorts Title in Hindi with emoji and #shorts (< 65 chars, provocative/curiosity)",
+  "title": "High-CTR Bilingual Hybrid YouTube Shorts Title combining Hindi curiosity hook + English exam keyword + #shorts (< 65 chars, e.g. 'नेताजी ने कांग्रेस कब छोड़ी? 🎯 Modern History GK #shorts')",
   "badge_text": "Ultra-short 3-4 word punchy badge for top of video (e.g. '🔥 99% लोग फेल!', '⚡ 5-सेकंड टेस्ट', '🎯 KBC स्पेशल')",
   "tags": ["15-20 viral Hindi GK exam tags like 'gk in hindi', 'samanya gyan', 'gk quiz', etc."],
-  "pinned_comment": "An irresistible bonus trivia question in Hindi with 'Comment your answer below 👇' to trigger 100+ comments",
+  "pinned_comment": "Irresistible challenge comment ending with: लाइक और सब्सक्राइब करें, फिर फ्री नोट्स के लिए नीचे 'GUIDE' कमेंट करें! 📚👇",
   "short_fact": "A punchy 1-sentence interesting explanation of why the answer is correct"
 }}"""
     else:
@@ -165,10 +165,10 @@ Output ONLY a JSON object with these exact keys:
     print(f"[AI Engine] Using rule-based viral fallback for {q.get('id')}")
     if language.lower() == "hindi":
         clean_q = re.sub(r'[\?।!:,]+$', '', q_text).strip()
-        if len(clean_q) <= 48:
-            fall_title = f"{clean_q}? 99% लोग फेल! #shorts"
+        if len(clean_q) <= 35:
+            fall_title = f"{clean_q}? 🎯 Exam GK Quiz #shorts"
         else:
-            fall_title = f"{clean_q[:44].rsplit(' ', 1)[0]}...? #shorts"
+            fall_title = f"{clean_q[:32].rsplit(' ', 1)[0]}... 🎯 Exam GK #shorts"
         return {
             "viral_hook": "99% लोग इस सवाल का गलत जवाब देते हैं! क्या आप जानते हैं?",
             "title": fall_title,
@@ -177,7 +177,7 @@ Output ONLY a JSON object with these exact keys:
                 "GK in Hindi", "सामान्य ज्ञान", "Hindi GK Questions", "GK Quiz Hindi",
                 "SSC GD GK 2026", "UP Police GK", "RRB NTPC GK", "Lucent GK in Hindi", "Shorts"
             ],
-            "pinned_comment": "क्या आपको इसका जवाब पहले से पता था? अपना स्कोर नीचे कमेंट करें! 👇",
+            "pinned_comment": "क्या आपने सही उत्तर दिया? वीडियो लाइक और सब्सक्राइब करें, फिर फ्री नोट्स के लिए नीचे 'GUIDE' कमेंट करें! 📚👇",
             "short_fact": f"सही उत्तर '{correct_opt}' है।"
         }
     else:

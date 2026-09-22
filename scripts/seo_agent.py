@@ -168,44 +168,55 @@ def extract_core_entity_hi(q_text, fallback_topic="सामान्य ज्�
             break
         cand = (cand + " " + w).strip()
 
-    while re.search(r'\s*(का|के|की|में|से|पर|द्वारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|के दौरान|दौरान)\s*$', cand):
-        cand = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|के दौरान|दौरान)\s*$', '', cand).strip()
+    while re.search(r'\s*(का|के|की|में|से|पर|द्वारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|कौन|कौन सा|कौन सी|क्या|किसे|किस वर्ष|के दौरान|दौरान)\s*$', cand):
+        cand = re.sub(r'\s*(का|के|की|में|से|पर|द्वारा|को|है|था|थी|थे|होता|होती|हुई|हुआ|गया|गई|गए|ने|किस|कब|कहाँ|कहा|कौन|कौन सा|कौन सी|क्या|किसे|किस वर्ष|के दौरान|दौरान)\s*$', '', cand).strip()
 
     if len(cand) >= 4:
         return cand
     return fallback_topic
 
 
+ENGLISH_KEYWORD_MAP = {
+    "प्राचीन भारत का इतिहास": "Ancient History GK",
+    "मध्यकालीन भारत का इतिहास": "Medieval History GK",
+    "आधुनिक भारत एवं स्वतंत्रता संग्राम": "Modern History GK",
+    "भारतीय संविधान एवं राजव्यवस्था": "Indian Polity GK",
+    "भारत एवं विश्व का भूगोल": "Geography GK",
+    "सामान्य विज्ञान (Science GK)": "Science GK",
+    "भारतीय अर्थव्यवस्था (Economics)": "Economy GK",
+}
+
+
 def format_smart_title_hi(q, day, slot, topic_name="सामान्य ज्ञान"):
     """
-    Rotates deterministically across 7 high-reach curiosity-driven Hindi archetypes.
+    Bilingual Hybrid Titles: Combines Hindi curiosity hook + English search keyword + #shorts.
     Guarantees title <= 68 characters, contains #shorts, and front-loads key concepts.
     """
     q_text = clean_hindi_text(q.get("question", "").strip())
     entity = extract_core_entity_hi(q_text, fallback_topic=topic_name)
 
-    topic_short = topic_name.split()[0]
+    en_keyword = ENGLISH_KEYWORD_MAP.get(topic_name, "Exam GK Quiz")
     direct_q = re.sub(r'[\?।!]+$', '', q_text).strip()
-    is_direct_usable = len(direct_q) <= 48 and ("?" in q_text or "कौन" in q_text or "क्या" in q_text or "कहाँ" in q_text or "कब" in q_text)
+    is_direct_usable = len(direct_q) <= 38 and ("?" in q_text or "कौन" in q_text or "क्या" in q_text or "कहाँ" in q_text or "कब" in q_text)
 
     templates = [
-        f"{entity} का सच! क्या आप जानते हैं? 🤔 #shorts",
-        f"{direct_q}? 99% लोग फेल! ❌ #shorts" if is_direct_usable else f"{entity} महत्वपूर्ण प्रश्न | 99% फेल! #shorts",
-        f"{entity} से जुड़े सवाल! क्या आपको पता है? 🔥 #shorts",
-        f"{direct_q}? 🤔 #shorts" if is_direct_usable else f"{entity} का सही उत्तर क्या है? ⚡ #shorts",
-        f"{entity} परीक्षा में बार-बार पूछा गया सवाल! 🎯 #shorts",
-        f"{entity} स्पेशल क्विज | क्या आप जानते हैं? #shorts",
-        f"{entity} | 5 सेकंड में जवाब दो! ⏱️ #shorts",
+        f"{entity} का सच! 😱 {en_keyword} #shorts",
+        f"{direct_q}? ❌ {en_keyword} #shorts" if is_direct_usable else f"{entity} महत्वपूर्ण सवाल! 🎯 {en_keyword} #shorts",
+        f"{entity} 99% लोग फेल! 🔥 {en_keyword} #shorts",
+        f"{entity} का सही उत्तर क्या है? ⚡ {en_keyword} #shorts",
+        f"{entity} स्पेशल क्विज! 🧠 {en_keyword} #shorts",
+        f"{entity} क्या आप जानते हैं? 🤔 {en_keyword} #shorts",
+        f"{entity} बार-बार पूछा गया! 🎯 {en_keyword} #shorts",
     ]
 
     idx = (day * 3 + slot) % len(templates)
     title = templates[idx]
     if len(title) > 68:
-        title = f"{entity} का सच! क्या आप जानते हैं? #shorts"
+        title = f"{entity} का सच! {en_keyword} #shorts"
         if len(title) > 68:
-            title = f"{entity}? 99% लोग फेल! #shorts"
+            title = f"{entity} | {en_keyword} #shorts"
             if len(title) > 68:
-                title = f"{topic_short} GK Quiz #shorts"
+                title = f"{en_keyword} Important MCQs #shorts"
 
     return title, entity
 
@@ -284,7 +295,7 @@ Language: Hindi
 Day: {day}, Slot: {slot}
 
 Rules:
-1. "title": MUST be strictly <= 68 characters including "#shorts". Front-load the key concept/entity in Hindi/Hinglish. It must be highly engaging, natural, and clickable for Indian exam aspirants without sounding robotic.
+1. "title": MUST be strictly <= 68 characters including "#shorts". Use a BILINGUAL HYBRID format: combine an intriguing Hindi/Hinglish curiosity hook with high-volume English search keywords (e.g. "नमक सत्याग्रह का सच! 😱 Modern History GK #shorts" or "नेताजी ने कांग्रेस कब छोड़ी? 🎯 Modern History GK #shorts"). Never output pure Devanagari titles without English search keywords.
 2. "tags": 15-20 highly relevant Hindi & Hinglish search tags for competitive exams.
 3. "yt_hook": An intriguing, curiosity-driven 1-sentence hook in Hindi for YouTube Shorts description.
 4. "yt_fact": A 1-2 sentence high-yield exam concept explanation in Hindi.
@@ -400,17 +411,23 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         else:
             title, entity = format_smart_title_hi(q, day, slot, topic_name=topic_name)
             viral_badge = "🔥 99% लोग फेल!"
-            pinned_comment = "क्या आपको इसका जवाब पहले से पता था? अपना स्कोर नीचे कमेंट करें! 👇"
+            pinned_comment = "क्या आपने सही उत्तर दिया? वीडियो लाइक और सब्सक्राइब करें, फिर फ्री नोट्स के लिए नीचे 'GUIDE' कमेंट करें! 📚👇"
             yt_hook = None
             yt_fact = None
             ig_hook = None
             fb_hook = None
             tags = None
 
+    # Always ensure pinned comment includes the high-converting Outro CTA
+    if not pinned_comment or "GUIDE" not in pinned_comment:
+        pinned_comment = "क्या आपने सही उत्तर दिया? वीडियो लाइक और सब्सक्राइब करें, फिर फ्री नोट्स के लिए नीचे 'GUIDE' कमेंट करें! 📚👇"
+
     # ── 2. HIGH-ENGAGEMENT DESCRIPTION WITH TIMESTAMPS & OPTIONS ──────────
     options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(options)])
     all_hashtags = list(dict.fromkeys(UNIVERSAL_HASHTAGS_HI[:6] + topic_hashtags + UNIVERSAL_HASHTAGS_HI[6:]))
     hashtag_str = " ".join(all_hashtags[:12])
+
+    cta_lead = "🎁 फ्री रिवीजन नोट्स: वीडियो लाइक करें, सब्सक्राइब करें और फ्री PDF के लिए नीचे \"GUIDE\" कमेंट करें! 👇\n\n"
 
     yt_header = ""
     if yt_hook:
@@ -419,6 +436,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         yt_header += f"💡 महत्वपूर्ण परीक्षा तथ्य: {yt_fact}\n\n"
 
     description = (
+        f"{cta_lead}"
         f"{yt_header}"
         f"❓ {question_text}\n"
         f"👉 अपना उत्तर कमेंट बॉक्स में बताएं: {options_str}\n\n"
