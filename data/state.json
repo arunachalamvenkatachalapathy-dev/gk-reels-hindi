@@ -1,5 +1,5 @@
 {
-  "next_index": 33,
+  "next_index": 34,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
-  "current_day": 16,
-  "current_slot": 2,
-  "total_published": 33,
+  "current_day": 17,
+  "current_slot": 1,
+  "total_published": 34,
   "published_ids": [
     "q0000",
     "q0001",
@@ -48,7 +48,8 @@
     "q0029",
     "q0030",
     "q0031",
-    "q0032"
+    "q0032",
+    "q0033"
   ],
   "published_history": [
     {
@@ -192,6 +193,6 @@
       "slot": 2
     }
   ],
-  "last_published_date": "2026-09-24",
-  "published_today_count": 2
+  "last_published_date": "2026-09-25",
+  "published_today_count": 1
 }
