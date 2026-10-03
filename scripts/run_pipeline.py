@@ -1,18 +1,4 @@
-"""
-Entry point run by the GitHub Actions workflow, 4x per day.
-
-Scheduled Runs (IST):
-  - 08:00 IST -> Morning Drill (Part 1/4) -> slot1_one_answer_left.mp3
-  - 13:00 IST -> Afternoon Drill (Part 2/4) -> slot2_the_final_second.mp3
-  - 18:00 IST -> Evening Drill (Part 3/4) -> slot3_final_second_alt.mp3
-  - 21:00 IST -> Night Revision (Part 4/4) -> slot4_heavy_hourglass.mp3
-
-Features:
-  1. Strict Non-Repetition: tracks published_ids, so no question is ever repeated.
-  2. Day & Slot Sequencing: Day (total // 4) + 1, Slot (total % 4) + 1.
-  3. 18-second video render with 3+ second buffer outro.
-  4. Automatic rotation across user's 4 distinct tension tracks.
-"""
+"""Render and publish two daily GK slots with persistent per-destination retry state."""
 import os
 import sys
 import json
@@ -49,12 +35,6 @@ def save_json(path, obj):
 def pick_next_question(questions, state):
     published_ids = set(state.get("published_ids", []))
     
-    # If all questions were used, reset cycle and start fresh revision
-    if len(published_ids) >= len(questions):
-        print("All questions in the bank published! Resetting cycle for round 2 revision.")
-        published_ids = set()
-        state["published_ids"] = []
-        state["next_index"] = 0
 
     # Strictly sequential: iterate through the question bank in order (0 to 386)
     for i, q in enumerate(questions):
@@ -62,7 +42,7 @@ def pick_next_question(questions, state):
             state["next_index"] = (i + 1) % len(questions)
             return q
 
-    return questions[0]
+    raise RuntimeError("No unpublished suitable questions remain; replenish the bank before publishing.")
 
 
 def next_accent(state):
@@ -123,15 +103,15 @@ def main():
     if not force:
         # Slot 1 is Morning (scheduled for 06:00 AM IST)
         # Slot 2 is Afternoon (scheduled for 03:00 PM IST)
-        if hour_ist < 13:
-            # Morning window (before 1:00 PM IST): Only publish Slot 1
+        if hour_ist < 15:
+            # Morning window (before 3:00 PM IST): Only publish Slot 1
             if published_today >= 1:
                 print(f"[Slot Lock] Morning Slot (Part 1/{videos_per_day}) for Day {day} already published today ({published_today} published).")
                 print(f"[Slot Lock] Afternoon Slot (Part 2) will publish after 03:00 PM IST. Exiting gracefully without error.")
                 return
             slot = 1
         else:
-            # Afternoon/Evening window (1:00 PM IST or later)
+            # Afternoon/Evening window (3:00 PM IST or later)
             if published_today >= videos_per_day:
                 print(f"[Slot Lock] Daily quota of {videos_per_day} videos already reached for today ({today_ist}, Day {day}).")
                 print(f"[Slot Lock] Holding Day {day + 1} until tomorrow morning. Exiting gracefully without error.")
@@ -147,7 +127,16 @@ def main():
             slot = published_today + 1
 
     # Non-repetition question pick
-    q = pick_next_question(questions, state)
+    pending = state.get("pending_publication")
+    if pending:
+        if pending.get("date") != today_ist:
+            raise RuntimeError("Unfinished publication from an earlier date; reconcile destinations before continuing.")
+        q = next((item for item in questions if item["id"] == pending["question_id"]), None)
+        if q is None:
+            raise RuntimeError("Pending question is missing from the bank; manual reconciliation required.")
+        day, slot = pending["day"], pending["slot"]
+    else:
+        q = pick_next_question(questions, state)
     accent = next_accent(state)
     bg_music = get_slot_track(slot)
 
@@ -159,7 +148,7 @@ def main():
     except Exception:
         pass
 
-    today = datetime.date.today().isoformat()
+    today = today_ist
     out_mp4 = os.path.join(OUT_DIR, f"{today}_{q['id']}.mp4")
     tmp_dir = os.path.join(OUT_DIR, f"tmp_{q['id']}")
 
@@ -237,11 +226,16 @@ def main():
     if not have_instagram:
         print("WARNING: Instagram credentials not fully set -- skipping Instagram upload.")
 
-    yt_url = None
-    ig_url = None
-    fb_url = None
+    results = dict(pending.get("results", {})) if pending else {}
+    yt_url = results.get("youtube")
+    ig_url = results.get("instagram")
+    fb_url = results.get("facebook")
+    have_facebook = all(os.environ.get(k) for k in ("IG_ACCESS_TOKEN", "FB_PAGE_ID"))
+    expected = [name for name, enabled in (("youtube", have_youtube), ("instagram", have_instagram), ("facebook", have_facebook)) if enabled]
+    if not expected:
+        raise RuntimeError("No publishing destination has complete credentials; question remains unpublished.")
 
-    if have_youtube:
+    if have_youtube and not yt_url:
         try:
             from upload_youtube import upload_short
             yt_id = upload_short(out_mp4, title, caption, tags=tags, pinned_comment=pinned_comment)
@@ -261,7 +255,7 @@ def main():
             print(f"  YouTube upload FAILED for {q['id']}: {e}")
 
     public_url = None
-    if have_instagram:
+    if have_instagram and not ig_url:
         try:
             from upload_instagram import upload_to_github_release, publish_reel
             tag_name = f"assets-{today}"
@@ -272,7 +266,7 @@ def main():
             print(f"  Instagram upload FAILED for {q['id']}: {e}")
 
     # Publish to Facebook Page Reels (tab-specific Reels upload via Meta Graph API)
-    if os.environ.get("IG_ACCESS_TOKEN"):
+    if have_facebook and not fb_url:
         try:
             from upload_facebook import publish_facebook_reel
             fb_id = publish_facebook_reel(out_mp4, title, fb_caption, public_url=public_url)
@@ -280,6 +274,14 @@ def main():
                 fb_url = f"https://www.facebook.com/reel/{fb_id}"
         except Exception as fe:
             print(f"  Facebook Reels upload FAILED for {q['id']}: {fe}")
+
+    results.update({name: url for name, url in (("youtube", yt_url), ("instagram", ig_url), ("facebook", fb_url)) if url})
+    missing = [name for name in expected if not results.get(name)]
+    if missing:
+        state["pending_publication"] = {"question_id": q["id"], "date": today_ist, "day": day, "slot": slot, "results": results}
+        save_json(STATE_PATH, state)
+        raise RuntimeError("Publication incomplete on: " + ", ".join(missing) + ". Successful destinations retained; retry will skip them.")
+    state.pop("pending_publication", None)
 
     # Send instant update to Telegram channel
     try:
