@@ -31,9 +31,8 @@ def send_telegram_update(day, slot, q, yt_url=None, ig_url=None, fb_url=None):
     msg = (
         f"🎯 <b>100 दिन 100 GK सवाल • Day {day:02d} (Part {slot}/2)</b>\n\n"
         f"❓ <b>{q_text}</b>\n\n"
-        f"👇 <b>18-सेकंड का वीडियो देखकर सही उत्तर जानें:</b>\n"
+        f"👇 <b>क्विज वीडियो देखकर सही उत्तर जानें:</b>\n"
         f"{links_str}\n\n"
-        f"🎁 <i>कमेंट में सही उत्तर बताएं और संडे स्टडी गिफ्ट जीतें!</i>\n"
         f"💡 <b>GK Snippets Hindi</b> • सही ज्ञान. कम समय."
     )
 
