@@ -202,7 +202,7 @@ def format_smart_title_hi(q, day, slot, topic_name="सामान्य ज्
     templates = [
         f"{entity} का सच! 😱 {en_keyword} #shorts",
         f"{direct_q}? ❌ {en_keyword} #shorts" if is_direct_usable else f"{entity} महत्वपूर्ण सवाल! 🎯 {en_keyword} #shorts",
-        f"{entity} 99% लोग फेल! 🔥 {en_keyword} #shorts",
+        f"{entity} आज का GK सवाल 🔥 {en_keyword} #shorts",
         f"{entity} का सही उत्तर क्या है? ⚡ {en_keyword} #shorts",
         f"{entity} स्पेशल क्विज! 🧠 {en_keyword} #shorts",
         f"{entity} क्या आप जानते हैं? 🤔 {en_keyword} #shorts",
@@ -382,7 +382,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         entity = viral_pkg.get("entity", topic_name)
         yt_hook = viral_pkg.get("viral_hook")
         yt_fact = viral_pkg.get("short_fact")
-        viral_badge = viral_pkg.get("badge_text", "🔥 99% लोग फेल!")
+        viral_badge = viral_pkg.get("badge_text", "आज का GK सवाल")
         pinned_comment = viral_pkg.get("pinned_comment")
         ig_hook = None
         fb_hook = None
@@ -399,7 +399,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
             entity = ai_result.get("entity", topic_name)
             yt_hook = ai_result.get("yt_hook")
             yt_fact = ai_result.get("yt_fact")
-            viral_badge = ai_result.get("badge_text", "🔥 99% लोग फेल!")
+            viral_badge = ai_result.get("badge_text", "आज का GK सवाल")
             pinned_comment = ai_result.get("pinned_comment")
             ig_hook = ai_result.get("ig_hook")
             fb_hook = ai_result.get("fb_hook")
@@ -410,8 +410,8 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
                 tags = None
         else:
             title, entity = format_smart_title_hi(q, day, slot, topic_name=topic_name)
-            viral_badge = "🔥 99% लोग फेल!"
-            pinned_comment = "क्या आपने सही उत्तर दिया? वीडियो लाइक और सब्सक्राइब करें, फिर फ्री नोट्स के लिए नीचे 'GUIDE' कमेंट करें! 📚👇"
+            viral_badge = "आज का GK सवाल"
+            pinned_comment = "Comment your answer below."
             yt_hook = None
             yt_fact = None
             ig_hook = None
@@ -420,14 +420,14 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
 
     # Always ensure pinned comment includes the high-converting Outro CTA
     if not pinned_comment or "GUIDE" not in pinned_comment:
-        pinned_comment = "क्या आपने सही उत्तर दिया? वीडियो लाइक और सब्सक्राइब करें, फिर फ्री नोट्स के लिए नीचे 'GUIDE' कमेंट करें! 📚👇"
+        pinned_comment = "Comment your answer below."
 
     # ── 2. HIGH-ENGAGEMENT DESCRIPTION WITH TIMESTAMPS & OPTIONS ──────────
     options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(options)])
     all_hashtags = list(dict.fromkeys(UNIVERSAL_HASHTAGS_HI[:6] + topic_hashtags + UNIVERSAL_HASHTAGS_HI[6:]))
     hashtag_str = " ".join(all_hashtags[:12])
 
-    cta_lead = "🎁 फ्री रिवीजन नोट्स: वीडियो लाइक करें, सब्सक्राइब करें और फ्री PDF के लिए नीचे \"GUIDE\" कमेंट करें! 👇\n\n"
+    cta_lead = "Comment your answer below.\n\n"
 
     yt_header = ""
     if yt_hook:
@@ -455,8 +455,6 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         f"• GK in Hindi 2026 Important Questions\n"
         f"• Lucent GK निचोड़ सामान्य ज्ञान\n"
         f"• Daily Hindi GK Quiz by GK Snippets Hindi\n\n"
-        f"🎁 संडे गिवअवे: वीडियो को लाइक करें, चैनल सब्सक्राइब करें और अपना जवाब कमेंट करें!\n"
-        f"📄 फ्री PDF & नोट्स के लिए टेलीग्राम जॉइन करें: GK Snippets Hindi\n\n"
         f"{hashtag_str}"
     )
 
@@ -517,4 +515,3 @@ if __name__ == "__main__":
     print("Generated Title:", seo["title"])
     print("Tags count:", len(seo["tags"]))
     print("Description Preview:\n", seo["description"][:250], "...")
-
