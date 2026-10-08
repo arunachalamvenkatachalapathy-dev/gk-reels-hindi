@@ -79,5 +79,175 @@
   "verified_topic": "इतिहास",
   "speech_question": "कांग्रेस की पहली महिला अध्यक्ष कौन थीं?",
   "speech_answer": "एनी बेसेंट।"
+ },
+ "q0068": {
+  "display_question": "दो बार लगातार राष्ट्रपति कौन बने?",
+  "speech_question": "दो बार लगातार राष्ट्रपति कौन बने?",
+  "speech_answer": "राजेन्द्र प्रसाद।",
+  "options": [
+   "एस. राधाकृष्णन",
+   "आर. वेंकटरमण",
+   "राजेन्द्र प्रसाद",
+   "वी. वी. गिरि"
+  ],
+  "correct_index": 2,
+  "explanation": "प्रसाद 1952 और 1957 में चुने गए।",
+  "memory_key": "दो बार राष्ट्रपति: प्रसाद",
+  "source_url": "https://www.britannica.com/biography/Rajendra-Prasad",
+  "source_label": "स्रोत: Britannica | Rajendra Prasad",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0084": {
+  "display_question": "जलियाँवाला बाग हत्याकांड का ज़िम्मेदार जनरल कौन था?",
+  "speech_question": "जलियाँवाला बाग हत्याकांड का ज़िम्मेदार जनरल कौन था?",
+  "speech_answer": "जनरल डायर।",
+  "options": [
+   "लॉर्ड डलहौज़ी",
+   "विलियम बेंटिंक",
+   "जनरल डायर",
+   "जनरल माउंटबेटन"
+  ],
+  "correct_index": 2,
+  "explanation": "जनरल डायर ने अमृतसर में गोली चलवाई।",
+  "memory_key": "जलियाँवाला: जनरल डायर",
+  "source_url": "https://www.britannica.com/biography/Reginald-Edward-Harry-Dyer",
+  "source_label": "स्रोत: Britannica | Reginald Dyer",
+  "verified_topic": "इतिहास"
+ },
+ "q0086": {
+  "display_question": "सती प्रथा पर रोक किसने लगाई?",
+  "speech_question": "सती प्रथा पर रोक किसने लगाई?",
+  "speech_answer": "लॉर्ड विलियम बेंटिंक।",
+  "options": [
+   "विलियम बेंटिंक",
+   "लॉर्ड माउंटबेटन",
+   "लॉर्ड डलहौज़ी",
+   "लॉर्ड कर्ज़न"
+  ],
+  "correct_index": 0,
+  "explanation": "1829 में बेंटिंक के समय सती पर रोक लगी।",
+  "memory_key": "सती पर रोक: बेंटिंक 1829",
+  "source_url": "https://www.britannica.com/topic/suttee",
+  "source_label": "स्रोत: Britannica | Suttee",
+  "verified_topic": "इतिहास"
+ },
+ "q0088": {
+  "display_question": "अलीगढ़ का एंग्लो-ओरिएंटल कॉलेज किसने बनाया?",
+  "speech_question": "अलीगढ़ का एंग्लो-ओरिएंटल कॉलेज किसने बनाया?",
+  "speech_answer": "सर सैयद अहमद ख़ान।",
+  "options": [
+   "मुहम्मद अली जिन्ना",
+   "डॉ. ज़ाकिर हुसैन",
+   "सर सैयद अहमद ख़ान",
+   "मौलाना आज़ाद"
+  ],
+  "correct_index": 2,
+  "explanation": "सर सैयद ने यह कॉलेज बनाया।",
+  "memory_key": "अलीगढ़: सर सैयद",
+  "source_url": "https://www.britannica.com/biography/Sayyid-Ahmad-Khan",
+  "source_label": "स्रोत: Britannica | Sayyid Ahmad Khan",
+  "verified_topic": "इतिहास"
+ },
+ "q0101": {
+  "display_question": "योग दर्शन के प्रतिपादक कौन माने जाते हैं?",
+  "speech_question": "योग दर्शन के प्रतिपादक कौन माने जाते हैं?",
+  "speech_answer": "पतंजलि।",
+  "options": [
+   "पतंजलि",
+   "चाणक्य",
+   "गौतम",
+   "विदुर"
+  ],
+  "correct_index": 0,
+  "explanation": "योगसूत्र पतंजलि का माना जाता है।",
+  "memory_key": "योगसूत्र: पतंजलि",
+  "source_url": "https://www.britannica.com/biography/Patanjali",
+  "source_label": "स्रोत: Britannica | Patanjali",
+  "verified_topic": "इतिहास"
+ },
+ "q0107": {
+  "display_question": "भारत गणतंत्र कब बना?",
+  "speech_question": "भारत गणतंत्र कब बना?",
+  "speech_answer": "26 जनवरी 1950।",
+  "options": [
+   "26 जनवरी 1950",
+   "15 अगस्त 1952",
+   "26 नवंबर 1949",
+   "15 अगस्त 1947"
+  ],
+  "correct_index": 0,
+  "explanation": "संविधान उसी दिन लागू हुआ।",
+  "memory_key": "गणतंत्र: 26 जनवरी 1950",
+  "source_url": "https://www.britannica.com/topic/Constitution-of-India",
+  "source_label": "स्रोत: Britannica | Constitution of India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0106": {
+  "display_question": "संयुक्त बैठक की अध्यक्षता कौन करता है?",
+  "speech_question": "संयुक्त बैठक की अध्यक्षता कौन करता है?",
+  "speech_answer": "लोक सभा अध्यक्ष।",
+  "options": [
+   "राज्य सभा सभापति",
+   "प्रधानमंत्री",
+   "राष्ट्रपति",
+   "लोक सभा अध्यक्ष"
+  ],
+  "correct_index": 3,
+  "explanation": "लोक सभा अध्यक्ष पीठासीन होते हैं।",
+  "memory_key": "संयुक्त बैठक: लोक सभा अध्यक्ष",
+  "source_url": "https://en.wikipedia.org/wiki/Joint_session_of_the_Parliament_of_India",
+  "source_label": "स्रोत: Wikipedia | Joint session of Parliament",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0077": {
+  "display_question": "राज्य सभा के बारे में सही क्या है?",
+  "speech_question": "राज्य सभा के बारे में सही क्या है?",
+  "speech_answer": "यह कभी भंग नहीं होती।",
+  "options": [
+   "हर 4 साल में भंग होती है",
+   "यह कभी भंग नहीं होती",
+   "हर 6 साल में भंग होती है",
+   "आपातकाल में भंग होती है"
+  ],
+  "correct_index": 1,
+  "explanation": "यह स्थायी सदन है।",
+  "memory_key": "राज्य सभा: स्थायी सदन",
+  "source_url": "https://cms.rajyasabha.nic.in/documents/CouncilOfState/1657796269327.93_Council%20of%20States(2)%20(1).pdf",
+  "source_label": "स्रोत: राज्य सभा सचिवालय",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0079": {
+  "display_question": "जर्मन एकीकरण कब पूरा हुआ?",
+  "speech_question": "जर्मन एकीकरण कब पूरा हुआ?",
+  "speech_answer": "1871।",
+  "options": [
+   "1871",
+   "1890",
+   "1849",
+   "1870"
+  ],
+  "correct_index": 0,
+  "explanation": "1871 में जर्मन साम्राज्य बना।",
+  "memory_key": "जर्मन एकीकरण: 1871",
+  "source_url": "https://www.britannica.com/place/German-Empire",
+  "source_label": "स्रोत: Britannica | German Empire",
+  "verified_topic": "इतिहास"
+ },
+ "q0070": {
+  "display_question": "उद्देश्य प्रस्ताव किसने पेश किया?",
+  "speech_question": "उद्देश्य प्रस्ताव किसने पेश किया?",
+  "speech_answer": "जवाहरलाल नेहरू।",
+  "options": [
+   "सुभाषचंद्र बोस",
+   "महात्मा गांधी",
+   "स्वामी सहजानंद",
+   "पं. जवाहरलाल नेहरू"
+  ],
+  "correct_index": 3,
+  "explanation": "नेहरू ने 13 दिसंबर 1946 को पेश किया।",
+  "memory_key": "उद्देश्य प्रस्ताव: नेहरू",
+  "source_url": "https://www.thenehru.org/2020/12/objective-resolution-moved-by.html",
+  "source_label": "स्रोत: Nehru Archive | Objective Resolution",
+  "verified_topic": "राजव्यवस्था"
  }
 }
