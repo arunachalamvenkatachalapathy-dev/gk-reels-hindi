@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 4,
+  "palette_cursor": 5,
   "audio_cursor": 0,
   "current_day": 31,
-  "current_slot": 1,
-  "total_published": 62,
+  "current_slot": 2,
+  "total_published": 63,
   "published_ids": [
     "q0000",
     "q0001",
@@ -77,16 +77,10 @@
     "q0058",
     "q0059",
     "q0060",
-    "q0061"
+    "q0061",
+    "q0062"
   ],
   "published_history": [
-    {
-      "id": "q0010",
-      "yt_id": "Cid8HDA1vFw",
-      "title": "स्टैफोर्ड क्रि प्स | बार-बार पूछे जाने वाले प्रश्न #shorts",
-      "day": 6,
-      "slot": 1
-    },
     {
       "id": "q0011",
       "yt_id": "eUjdyHgjtHs",
@@ -219,15 +213,15 @@
       "title": "1905 में ये सोसाइटी किसने शुरू की? 🚨 GK for SSC/Railway #shorts",
       "day": 31,
       "slot": 1
+    },
+    {
+      "id": "q0062",
+      "yt_id": "cN-cd1zqqsU",
+      "title": "दिल्ली चलो का नारा किसने दिया? 🎯 GK Quiz for SSC, Railway #shorts",
+      "day": 31,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-08",
-  "published_today_count": 1,
-  "pending_publication": {
-    "question_id": "q0062",
-    "date": "2026-10-08",
-    "day": 31,
-    "slot": 2,
-    "results": {}
-  }
+  "published_today_count": 2
 }
