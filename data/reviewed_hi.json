@@ -1,0 +1,83 @@
+{
+ "q0061": {
+  "speech_answer": "गोपाल कृष्ण गोखले।",
+  "display_question": "सर्वेंट्स ऑफ इंडिया सोसाइटी किसने बनाई?",
+  "options": [
+   "गोपाल कृष्ण गोखले",
+   "महात्मा गांधी",
+   "मोतीलाल नेहरू",
+   "लोकमान्य तिलक"
+  ],
+  "correct_index": 0,
+  "explanation": "गोखले ने इसे देश की सेवा के लिए लोगों को तैयार करने के लिए बनाया।",
+  "source_url": "https://www.mcgm.gov.in/irj/go/km/docs/documents/D%20Ward/Heritage-Sites/72_Legacy%20of%20D%20Ward_Article_Servants%20of%20India%20Society.pdf",
+  "source_label": "स्रोत: BMC | Servants of India Society",
+  "verified_topic": "आधुनिक भारत"
+ },
+ "q0062": {
+  "display_question": "दिल्ली चलो का नारा किसने दिया?",
+  "options": [
+   "महात्मा गांधी",
+   "सुभाष चंद्र बोस",
+   "लाला लाजपत राय",
+   "इनमें से कोई नहीं"
+  ],
+  "correct_index": 1,
+  "speech_answer": "सुभाष चंद्र बोस।",
+  "explanation": "बोस ने यह नारा आज़ाद हिंद फौज को दिल्ली की ओर बढ़ने के लिए दिया।",
+  "memory_key": "बोस और आज़ाद हिंद फौज",
+  "source_url": "https://www.ndtv.com/world-news/singapore-s-padang-from-where-netaji-made-delhi-chalo-call-becomes-national-monument-3239687",
+  "source_label": "स्रोत: NDTV / PTI | Delhi Chalo",
+  "verified_topic": "स्वतंत्रता संग्राम"
+ },
+ "q0063": {
+  "display_question": "किस घटना के बाद असहयोग आंदोलन बंद हुआ?",
+  "options": [
+   "चौरी चौरा",
+   "चंपारण",
+   "दांडी",
+   "इनमें से कोई नहीं"
+  ],
+  "correct_index": 0,
+  "speech_answer": "चौरी चौरा।",
+  "explanation": "चौरी चौरा की हिंसा के बाद गांधी ने आंदोलन वापस लिया।",
+  "memory_key": "हिंसा हुई, आंदोलन रुका",
+  "source_url": "https://www.britannica.com/place/Chauri-Chaura",
+  "source_label": "स्रोत: Britannica | Chauri Chaura",
+  "verified_topic": "स्वतंत्रता संग्राम"
+ },
+ "q0064": {
+  "display_question": "\"सीमांत गांधी\" किन्हें कहा जाता है?",
+  "options": [
+   "लॉर्ड माउंटबेटन",
+   "सरदार पटेल",
+   "ख़ान अब्दुल ग़फ़्फ़ार ख़ान",
+   "लॉर्ड डलहौज़ी"
+  ],
+  "correct_index": 2,
+  "explanation": "वे गांधीजी के अनुयायी थे।",
+  "memory_key": "सीमांत गांधी = ग़फ़्फ़ार ख़ान",
+  "source_url": "https://www.britannica.com/biography/Khan-Abdul-Ghaffar-Khan",
+  "source_label": "स्रोत: Britannica | Abdul Ghaffar Khan",
+  "verified_topic": "इतिहास",
+  "speech_question": "सीमांत गांधी किन्हें कहा जाता है?",
+  "speech_answer": "ख़ान अब्दुल ग़फ़्फ़ार ख़ान।"
+ },
+ "q0065": {
+  "display_question": "कांग्रेस की पहली महिला अध्यक्ष कौन थीं?",
+  "options": [
+   "सरोजिनी नायडू",
+   "एनी बेसेंट",
+   "सुचेता कृपलानी",
+   "इनमें से कोई नहीं"
+  ],
+  "correct_index": 1,
+  "explanation": "एनी बेसेंट 1917 में अध्यक्ष बनीं।",
+  "memory_key": "बेसेंट 1917, नायडू 1925",
+  "source_url": "https://www.britannica.com/topic/Indian-National-Congress",
+  "source_label": "स्रोत: Britannica | Indian National Congress",
+  "verified_topic": "इतिहास",
+  "speech_question": "कांग्रेस की पहली महिला अध्यक्ष कौन थीं?",
+  "speech_answer": "एनी बेसेंट।"
+ }
+}
