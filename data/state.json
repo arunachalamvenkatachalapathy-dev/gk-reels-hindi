@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 2,
+  "palette_cursor": 3,
   "audio_cursor": 0,
-  "current_day": 30,
-  "current_slot": 2,
-  "total_published": 61,
+  "current_day": 31,
+  "current_slot": 1,
+  "total_published": 62,
   "published_ids": [
     "q0000",
     "q0001",
@@ -76,16 +76,10 @@
     "q0057",
     "q0058",
     "q0059",
-    "q0060"
+    "q0060",
+    "q0061"
   ],
   "published_history": [
-    {
-      "id": "q0009",
-      "yt_id": "9DPbjC21-D8",
-      "title": "रौलेट एक्ट किस वर्ष क्या है? | सामान्य ज्ञान प्रश्नोत्तरी #shorts",
-      "day": 5,
-      "slot": 2
-    },
     {
       "id": "q0010",
       "yt_id": "Cid8HDA1vFw",
@@ -218,15 +212,15 @@
       "title": "बंगाल को मुगलों से किसने अलग किया? 🤔 #shorts #gkquiz",
       "day": 14,
       "slot": 2
+    },
+    {
+      "id": "q0061",
+      "yt_id": "zxcwCMn7_t8",
+      "title": "1905 में ये सोसाइटी किसने शुरू की? 🚨 GK for SSC/Railway #shorts",
+      "day": 31,
+      "slot": 1
     }
   ],
   "last_published_date": "2026-10-08",
-  "published_today_count": 2,
-  "pending_publication": {
-    "question_id": "q0061",
-    "date": "2026-10-08",
-    "day": 31,
-    "slot": 1,
-    "results": {}
-  }
+  "published_today_count": 1
 }
