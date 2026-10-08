@@ -249,5 +249,141 @@
   "source_url": "https://www.thenehru.org/2020/12/objective-resolution-moved-by.html",
   "source_label": "स्रोत: Nehru Archive | Objective Resolution",
   "verified_topic": "राजव्यवस्था"
+ },
+ "q0067": {
+  "display_question": "इनमें से कौन समवर्ती सूची में है?",
+  "speech_question": "इनमें से कौन समवर्ती सूची में है?",
+  "speech_answer": "जनसंख्या नियंत्रण और परिवार नियोजन।",
+  "options": [
+   "पुलिस",
+   "रक्षा",
+   "विदेश मामले",
+   "जनसंख्या नियंत्रण और परिवार नियोजन"
+  ],
+  "correct_index": 3,
+  "explanation": "यह प्रविष्टि 20A है।",
+  "memory_key": "समवर्ती सूची: परिवार नियोजन",
+  "source_url": "https://www.constitutionofindia.net/schedules/list-iii-concurrent-list/",
+  "source_label": "स्रोत: Constitution of India | List III",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0075": {
+  "display_question": "राज्य लोक सेवा आयोग के सदस्य कौन नियुक्त करता है?",
+  "speech_question": "राज्य लोक सेवा आयोग के सदस्य कौन नियुक्त करता है?",
+  "speech_answer": "राज्यपाल।",
+  "options": [
+   "प्रधानमंत्री",
+   "मुख्यमंत्री",
+   "राष्ट्रपति",
+   "राज्यपाल"
+  ],
+  "correct_index": 3,
+  "explanation": "अनुच्छेद 316।",
+  "memory_key": "राज्य PSC: राज्यपाल",
+  "source_url": "https://www.upsc.gov.in/about-us/constitutional-provisions/article-316-appointment-and-term-office-members",
+  "source_label": "स्रोत: UPSC | Article 316",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0076": {
+  "display_question": "वित्त आयोग का गठन कौन करता है?",
+  "speech_question": "वित्त आयोग का गठन कौन करता है?",
+  "speech_answer": "राष्ट्रपति।",
+  "options": [
+   "प्रधानमंत्री",
+   "मुख्य न्यायाधीश",
+   "लोक सभा अध्यक्ष",
+   "राष्ट्रपति"
+  ],
+  "correct_index": 3,
+  "explanation": "अनुच्छेद 280।",
+  "memory_key": "वित्त आयोग: राष्ट्रपति",
+  "source_url": "https://fincomindia.nic.in/constitutional-provisions",
+  "source_label": "स्रोत: वित्त आयोग | संवैधानिक प्रावधान",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0078": {
+  "display_question": "मंत्रिपरिषद किसके प्रति सामूहिक रूप से उत्तरदायी है?",
+  "speech_question": "मंत्रिपरिषद किसके प्रति सामूहिक रूप से उत्तरदायी है?",
+  "speech_answer": "लोक सभा।",
+  "options": [
+   "लोक सभा",
+   "उच्चतम न्यायालय",
+   "राज्य सभा",
+   "राष्ट्रपति"
+  ],
+  "correct_index": 0,
+  "explanation": "अनुच्छेद 75(3)।",
+  "memory_key": "मंत्रिपरिषद: लोक सभा के प्रति",
+  "source_url": "https://www.constitutionofindia.net/articles/article-75-other-provisions-as-ministers/",
+  "source_label": "स्रोत: Constitution of India | Article 75",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0080": {
+  "display_question": "अप्रैल थीसिस किसने जारी की?",
+  "speech_question": "अप्रैल थीसिस किसने जारी की?",
+  "speech_answer": "लेनिन।",
+  "options": [
+   "स्टालिन",
+   "ट्रॉट्स्की",
+   "कार्ल मार्क्स",
+   "लेनिन"
+  ],
+  "correct_index": 3,
+  "explanation": "लेनिन ने अप्रैल 1917 में रूस लौटकर जारी की।",
+  "memory_key": "अप्रैल थीसिस: लेनिन",
+  "source_url": "https://en.wikipedia.org/wiki/April_Theses",
+  "source_label": "स्रोत: Wikipedia | April Theses",
+  "verified_topic": "इतिहास"
+ },
+ "q0081": {
+  "display_question": "NEP 1921 किसने शुरू की?",
+  "speech_question": "NEP 1921 किसने शुरू की?",
+  "speech_answer": "लेनिन।",
+  "options": [
+   "स्टालिन",
+   "लेनिन",
+   "कार्ल मार्क्स",
+   "ट्रॉट्स्की"
+  ],
+  "correct_index": 1,
+  "explanation": "NEP 1921 में आई।",
+  "memory_key": "NEP: लेनिन, 1921",
+  "source_url": "https://www.britannica.com/money/New-Economic-Policy-Soviet-history",
+  "source_label": "स्रोत: Britannica | New Economic Policy",
+  "verified_topic": "इतिहास"
+ },
+ "q0098": {
+  "display_question": "पारंपरिक रूप से पुराणों की संख्या कितनी है?",
+  "speech_question": "पारंपरिक रूप से पुराणों की संख्या कितनी है?",
+  "speech_answer": "अठारह।",
+  "options": [
+   "20",
+   "16",
+   "18",
+   "11"
+  ],
+  "correct_index": 2,
+  "explanation": "महापुराण परंपरा से अठारह माने जाते हैं।",
+  "memory_key": "पुराण: 18",
+  "source_url": "https://www.britannica.com/topic/Purana",
+  "source_label": "स्रोत: Britannica | Purana",
+  "verified_topic": "इतिहास"
+ },
+ "q0071": {
+  "display_question": "सबसे पुराना लागू लिखित संविधान किसका है?",
+  "speech_question": "सबसे पुराना लागू लिखित संविधान किसका है?",
+  "speech_answer": "अमेरिका।",
+  "options": [
+   "अमेरिका",
+   "रूस",
+   "फ़्रांस",
+   "चीन"
+  ],
+  "correct_index": 0,
+  "explanation": "यह 1787 में बना।",
+  "memory_key": "सबसे पुराना लिखित संविधान: अमेरिका",
+  "source_url": "https://www.britannica.com/topic/Constitution-of-the-United-States-of-America",
+  "source_label": "स्रोत: Britannica | US Constitution",
+  "verified_topic": "राजव्यवस्था"
  }
 }
