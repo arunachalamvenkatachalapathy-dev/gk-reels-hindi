@@ -1,5 +1,5 @@
 {
-  "next_index": 62,
+  "next_index": 63,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,7 +10,7 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
   "current_day": 31,
   "current_slot": 1,
@@ -222,5 +222,12 @@
     }
   ],
   "last_published_date": "2026-10-08",
-  "published_today_count": 1
+  "published_today_count": 1,
+  "pending_publication": {
+    "question_id": "q0062",
+    "date": "2026-10-08",
+    "day": 31,
+    "slot": 2,
+    "results": {}
+  }
 }
