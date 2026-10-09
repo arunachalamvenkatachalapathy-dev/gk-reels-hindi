@@ -1558,5 +1558,226 @@
   "source_url": "https://en.wikipedia.org/wiki/Life_Insurance_Corporation",
   "source_label": "स्रोत: Wikipedia | Life Insurance Corporation",
   "verified_topic": "अर्थव्यवस्था"
+ },
+ "q0451": {
+  "display_question": "एटलस पर्वत किस महाद्वीप में स्थित हैं?",
+  "speech_question": "एटलस पर्वत किस महाद्वीप में स्थित हैं?",
+  "speech_answer": "अफ्रीका।",
+  "options": [
+   "यूरोप",
+   "एशिया",
+   "अफ्रीका",
+   "दक्षिण अमेरिका"
+  ],
+  "correct_index": 2,
+  "explanation": "ये मोरक्को, अल्जीरिया और ट्यूनीशिया में फैले हैं।",
+  "memory_key": "एटलस पर्वत: अफ्रीका",
+  "source_url": "https://en.wikipedia.org/wiki/Atlas_Mountains",
+  "source_label": "स्रोत: Wikipedia | Atlas Mountains",
+  "verified_topic": "भूगोल"
+ },
+ "q0457": {
+  "display_question": "दस्त-ए-काबिर मरुस्थल किस देश में है?",
+  "speech_question": "दस्त-ए-काबिर मरुस्थल किस देश में है?",
+  "speech_answer": "ईरान।",
+  "options": [
+   "पाकिस्तान",
+   "इराक",
+   "अफगानिस्तान",
+   "ईरान"
+  ],
+  "correct_index": 3,
+  "explanation": "इसे महान नमक मरुस्थल भी कहते हैं।",
+  "memory_key": "दस्त-ए-काबिर: ईरान",
+  "source_url": "https://en.wikipedia.org/wiki/Dasht-e_Kavir",
+  "source_label": "स्रोत: Wikipedia | Dasht-e Kavir",
+  "verified_topic": "भूगोल"
+ },
+ "q0458": {
+  "display_question": "पोर्ट ब्लेयर किस द्वीप पर स्थित है?",
+  "speech_question": "पोर्ट ब्लेयर किस द्वीप पर स्थित है?",
+  "speech_answer": "दक्षिण अंडमान।",
+  "options": [
+   "उत्तर अंडमान",
+   "दक्षिण अंडमान",
+   "ग्रेट निकोबार",
+   "कार निकोबार"
+  ],
+  "correct_index": 1,
+  "explanation": "यह अंडमान और निकोबार की राजधानी है।",
+  "memory_key": "पोर्ट ब्लेयर: दक्षिण अंडमान",
+  "source_url": "https://en.wikipedia.org/wiki/Port_Blair",
+  "source_label": "स्रोत: Wikipedia | Port Blair",
+  "verified_topic": "भूगोल"
+ },
+ "q0467": {
+  "display_question": "संविधान का पहला संशोधन किस वर्ष हुआ था?",
+  "speech_question": "संविधान का पहला संशोधन किस वर्ष हुआ था?",
+  "speech_answer": "1951।",
+  "options": [
+   "1952",
+   "1951",
+   "1950",
+   "1956"
+  ],
+  "correct_index": 1,
+  "explanation": "यह संविधान लागू होने के कुछ ही समय बाद हुआ।",
+  "memory_key": "पहला संशोधन: 1951",
+  "source_url": "https://en.wikipedia.org/wiki/First_Amendment_of_the_Constitution_of_India",
+  "source_label": "स्रोत: Wikipedia | First Amendment of the Constitution of India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0469": {
+  "display_question": "42वें संशोधन ने संविधान में क्या नया जोड़ा?",
+  "speech_question": "42वें संशोधन ने संविधान में क्या नया जोड़ा?",
+  "speech_answer": "मूल कर्तव्य।",
+  "options": [
+   "मूल कर्तव्य",
+   "दल-बदल कानून",
+   "शिक्षा का अधिकार",
+   "पंचायती राज"
+  ],
+  "correct_index": 0,
+  "explanation": "इसने 1976 में अनुच्छेद 51A जोड़ा।",
+  "memory_key": "42वाँ संशोधन: मूल कर्तव्य",
+  "source_url": "https://en.wikipedia.org/wiki/Forty-second_Amendment_of_the_Constitution_of_India",
+  "source_label": "स्रोत: Wikipedia | Forty-second Amendment of the Constitution of India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0478": {
+  "display_question": "मुस्लिम लीग की स्थापना किस वर्ष हुई?",
+  "speech_question": "मुस्लिम लीग की स्थापना किस वर्ष हुई?",
+  "speech_answer": "1906।",
+  "options": [
+   "1920",
+   "1885",
+   "1916",
+   "1906"
+  ],
+  "correct_index": 3,
+  "explanation": "इसकी स्थापना ढाका में हुई।",
+  "memory_key": "मुस्लिम लीग: 1906",
+  "source_url": "https://en.wikipedia.org/wiki/All-India_Muslim_League",
+  "source_label": "स्रोत: Wikipedia | All-India Muslim League",
+  "verified_topic": "इतिहास"
+ },
+ "q0484": {
+  "display_question": "भूदान आंदोलन किसने शुरू किया?",
+  "speech_question": "भूदान आंदोलन किसने शुरू किया?",
+  "speech_answer": "विनोबा भावे।",
+  "options": [
+   "जयप्रकाश नारायण",
+   "महात्मा गांधी",
+   "विनोबा भावे",
+   "जवाहरलाल नेहरू"
+  ],
+  "correct_index": 2,
+  "explanation": "यह 1951 में पोचमपल्ली से शुरू हुआ।",
+  "memory_key": "भूदान: विनोबा भावे",
+  "source_url": "https://en.wikipedia.org/wiki/Bhoodan_movement",
+  "source_label": "स्रोत: Wikipedia | Bhoodan movement",
+  "verified_topic": "इतिहास"
+ },
+ "q0485": {
+  "display_question": "दिल्ली का कौन सा शासक लाखबख्श कहलाता था?",
+  "speech_question": "दिल्ली का कौन सा शासक लाखबख्श कहलाता था?",
+  "speech_answer": "कुतुबुद्दीन ऐबक।",
+  "options": [
+   "रजिया सुल्तान",
+   "बलबन",
+   "कुतुबुद्दीन ऐबक",
+   "इल्तुतमिश"
+  ],
+  "correct_index": 2,
+  "explanation": "वह लाखों का दान देने के लिए प्रसिद्ध था।",
+  "memory_key": "लाखबख्श: ऐबक",
+  "source_url": "https://en.wikipedia.org/wiki/Qutb_al-Din_Aibak",
+  "source_label": "स्रोत: Wikipedia | Qutb al-Din Aibak",
+  "verified_topic": "इतिहास"
+ },
+ "q0486": {
+  "display_question": "दिल्ली के गुलाम वंश की स्थापना किसने की?",
+  "speech_question": "दिल्ली के गुलाम वंश की स्थापना किसने की?",
+  "speech_answer": "कुतुबुद्दीन ऐबक।",
+  "options": [
+   "बलबन",
+   "इल्तुतमिश",
+   "अलाउद्दीन खिलजी",
+   "कुतुबुद्दीन ऐबक"
+  ],
+  "correct_index": 3,
+  "explanation": "उसने 1206 में वंश की शुरुआत की।",
+  "memory_key": "गुलाम वंश संस्थापक: ऐबक",
+  "source_url": "https://en.wikipedia.org/wiki/Mamluk_dynasty_(Delhi)",
+  "source_label": "स्रोत: Wikipedia | Mamluk dynasty (Delhi)",
+  "verified_topic": "इतिहास"
+ },
+ "q0487": {
+  "display_question": "तुगलक वंश का पहला सुल्तान कौन था?",
+  "speech_question": "तुगलक वंश का पहला सुल्तान कौन था?",
+  "speech_answer": "गयासुद्दीन तुगलक।",
+  "options": [
+   "फिरोजशाह तुगलक",
+   "मुहम्मद बिन तुगलक",
+   "अलाउद्दीन खिलजी",
+   "गयासुद्दीन तुगलक"
+  ],
+  "correct_index": 3,
+  "explanation": "उसने 1320 में वंश की स्थापना की।",
+  "memory_key": "पहला तुगलक: गयासुद्दीन",
+  "source_url": "https://en.wikipedia.org/wiki/Ghiyath_al-Din_Tughluq",
+  "source_label": "स्रोत: Wikipedia | Ghiyath al-Din Tughluq",
+  "verified_topic": "इतिहास"
+ },
+ "q0488": {
+  "display_question": "अलबरूनी किस शासक के साथ भारत आया?",
+  "speech_question": "अलबरूनी किस शासक के साथ भारत आया?",
+  "speech_answer": "महमूद गजनवी।",
+  "options": [
+   "महमूद गजनवी",
+   "मुहम्मद गोरी",
+   "बाबर",
+   "अकबर"
+  ],
+  "correct_index": 0,
+  "explanation": "उसने किताब-उल-हिंद लिखी।",
+  "memory_key": "अलबरूनी: महमूद गजनवी",
+  "source_url": "https://en.wikipedia.org/wiki/Al-Biruni",
+  "source_label": "स्रोत: Wikipedia | Al-Biruni",
+  "verified_topic": "इतिहास"
+ },
+ "q0489": {
+  "display_question": "दिल्ली के किस सुल्तान ने बाजार मूल्य नियंत्रण लागू किया?",
+  "speech_question": "दिल्ली के किस सुल्तान ने बाजार मूल्य नियंत्रण लागू किया?",
+  "speech_answer": "अलाउद्दीन खिलजी।",
+  "options": [
+   "फिरोजशाह तुगलक",
+   "इल्तुतमिश",
+   "अलाउद्दीन खिलजी",
+   "बलबन"
+  ],
+  "correct_index": 2,
+  "explanation": "उसने अनाज और कपड़े के दाम तय किए।",
+  "memory_key": "मूल्य नियंत्रण: अलाउद्दीन",
+  "source_url": "https://en.wikipedia.org/wiki/Alauddin_Khalji",
+  "source_label": "स्रोत: Wikipedia | Alauddin Khalji",
+  "verified_topic": "इतिहास"
+ },
+ "q0494": {
+  "display_question": "परंपरा के अनुसार कबीर के गुरु कौन थे?",
+  "speech_question": "परंपरा के अनुसार कबीर के गुरु कौन थे?",
+  "speech_answer": "रामानंद।",
+  "options": [
+   "वल्लभाचार्य",
+   "रामानंद",
+   "चैतन्य",
+   "रामानुज"
+  ],
+  "correct_index": 1,
+  "explanation": "कबीर को उनके शिष्यों में गिना जाता है।",
+  "memory_key": "कबीर के गुरु: रामानंद",
+  "source_url": "https://en.wikipedia.org/wiki/Ramananda",
+  "source_label": "स्रोत: Wikipedia | Ramananda",
+  "verified_topic": "इतिहास"
  }
 }
