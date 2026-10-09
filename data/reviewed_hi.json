@@ -1779,5 +1779,277 @@
   "source_url": "https://en.wikipedia.org/wiki/Ramananda",
   "source_label": "स्रोत: Wikipedia | Ramananda",
   "verified_topic": "इतिहास"
+ },
+ "q0125": {
+  "display_question": "ईरानी कप किस खेल से जुड़ा है?",
+  "speech_question": "ईरानी कप किस खेल से जुड़ा है?",
+  "speech_answer": "क्रिकेट।",
+  "options": [
+   "क्रिकेट",
+   "हॉकी",
+   "बैडमिंटन",
+   "फुटबॉल"
+  ],
+  "correct_index": 0,
+  "explanation": "इसमें रणजी विजेता और शेष भारत खेलते हैं।",
+  "memory_key": "ईरानी कप: क्रिकेट",
+  "source_url": "https://en.wikipedia.org/wiki/Irani_Cup",
+  "source_label": "स्रोत: Wikipedia | Irani Cup",
+  "verified_topic": "खेल"
+ },
+ "q0132": {
+  "display_question": "संविधान सभा की पहली बैठक किस शहर में हुई?",
+  "speech_question": "संविधान सभा की पहली बैठक किस शहर में हुई?",
+  "speech_answer": "दिल्ली।",
+  "options": [
+   "दिल्ली",
+   "मुंबई",
+   "कोलकाता",
+   "इलाहाबाद"
+  ],
+  "correct_index": 0,
+  "explanation": "पहली बैठक 9 दिसंबर 1946 को हुई।",
+  "memory_key": "पहली बैठक: दिल्ली",
+  "source_url": "https://en.wikipedia.org/wiki/Constituent_Assembly_of_India",
+  "source_label": "स्रोत: Wikipedia | Constituent Assembly of India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0133": {
+  "display_question": "भारत की आजादी के समय ब्रिटेन में किसकी सरकार थी?",
+  "speech_question": "भारत की आजादी के समय ब्रिटेन में किसकी सरकार थी?",
+  "speech_answer": "लेबर पार्टी।",
+  "options": [
+   "लेबर पार्टी",
+   "कंजरवेटिव पार्टी",
+   "ग्रीन पार्टी",
+   "लिबरल पार्टी"
+  ],
+  "correct_index": 0,
+  "explanation": "क्लेमेंट एटली प्रधानमंत्री थे।",
+  "memory_key": "1947 ब्रिटेन: लेबर",
+  "source_url": "https://en.wikipedia.org/wiki/Attlee_ministry",
+  "source_label": "स्रोत: Wikipedia | Attlee ministry",
+  "verified_topic": "इतिहास"
+ },
+ "q0137": {
+  "display_question": "सबसे लंबा लिखित संविधान किस देश का है?",
+  "speech_question": "सबसे लंबा लिखित संविधान किस देश का है?",
+  "speech_answer": "भारत।",
+  "options": [
+   "कनाडा",
+   "अमेरिका",
+   "भारत",
+   "जापान"
+  ],
+  "correct_index": 2,
+  "explanation": "भारत का संविधान सबसे लंबा है।",
+  "memory_key": "सबसे लंबा संविधान: भारत",
+  "source_url": "https://en.wikipedia.org/wiki/Constitution_of_India",
+  "source_label": "स्रोत: Wikipedia | Constitution of India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0143": {
+  "display_question": "राष्ट्रीय विकास परिषद का अध्यक्ष कौन होता है?",
+  "speech_question": "राष्ट्रीय विकास परिषद का अध्यक्ष कौन होता है?",
+  "speech_answer": "प्रधानमंत्री।",
+  "options": [
+   "उपराष्ट्रपति",
+   "प्रधानमंत्री",
+   "राष्ट्रपति",
+   "वित्त मंत्री"
+  ],
+  "correct_index": 1,
+  "explanation": "मुख्यमंत्री इसके सदस्य होते हैं।",
+  "memory_key": "NDC अध्यक्ष: प्रधानमंत्री",
+  "source_url": "https://en.wikipedia.org/wiki/National_Development_Council_(India)",
+  "source_label": "स्रोत: Wikipedia | National Development Council (India)",
+  "verified_topic": "अर्थव्यवस्था"
+ },
+ "q0145": {
+  "display_question": "भारत का वित्तीय वर्ष कब से कब तक चलता है?",
+  "speech_question": "भारत का वित्तीय वर्ष कब से कब तक चलता है?",
+  "speech_answer": "1 अप्रैल से 31 मार्च।",
+  "options": [
+   "1 अक्टूबर से 30 सितंबर",
+   "1 अप्रैल से 31 मार्च",
+   "1 जनवरी से 31 दिसंबर",
+   "1 जुलाई से 30 जून"
+  ],
+  "correct_index": 1,
+  "explanation": "केंद्रीय बजट इसी वर्ष का होता है।",
+  "memory_key": "वित्तीय वर्ष: अप्रैल-मार्च",
+  "source_url": "https://en.wikipedia.org/wiki/Fiscal_year",
+  "source_label": "स्रोत: Wikipedia | Fiscal year",
+  "verified_topic": "अर्थव्यवस्था"
+ },
+ "q0164": {
+  "display_question": "फ्रांस की क्रांति किस वर्ष शुरू हुई?",
+  "speech_question": "फ्रांस की क्रांति किस वर्ष शुरू हुई?",
+  "speech_answer": "1789।",
+  "options": [
+   "1848",
+   "1815",
+   "1776",
+   "1789"
+  ],
+  "correct_index": 3,
+  "explanation": "14 जुलाई 1789 को बास्तिल पर धावा बोला गया।",
+  "memory_key": "फ्रांसीसी क्रांति: 1789",
+  "source_url": "https://en.wikipedia.org/wiki/French_Revolution",
+  "source_label": "स्रोत: Wikipedia | French Revolution",
+  "verified_topic": "इतिहास"
+ },
+ "q0168": {
+  "display_question": "भारत में आर्थिक उदारीकरण कब शुरू हुआ?",
+  "speech_question": "भारत में आर्थिक उदारीकरण कब शुरू हुआ?",
+  "speech_answer": "1991।",
+  "options": [
+   "2000",
+   "1991",
+   "1947",
+   "1969"
+  ],
+  "correct_index": 1,
+  "explanation": "सुधार प्रधानमंत्री नरसिम्हा राव के समय आए।",
+  "memory_key": "उदारीकरण: 1991",
+  "source_url": "https://en.wikipedia.org/wiki/Economic_liberalisation_in_India",
+  "source_label": "स्रोत: Wikipedia | Economic liberalisation in India",
+  "verified_topic": "अर्थव्यवस्था"
+ },
+ "q0172": {
+  "display_question": "सूर्य से सबसे दूर कौन सा ग्रह है?",
+  "speech_question": "सूर्य से सबसे दूर कौन सा ग्रह है?",
+  "speech_answer": "वरुण।",
+  "options": [
+   "अरुण",
+   "शनि",
+   "वरुण",
+   "यम"
+  ],
+  "correct_index": 2,
+  "explanation": "यम अब बौना ग्रह माना जाता है।",
+  "memory_key": "सबसे दूर ग्रह: वरुण",
+  "source_url": "https://en.wikipedia.org/wiki/Neptune",
+  "source_label": "स्रोत: Wikipedia | Neptune",
+  "verified_topic": "विज्ञान"
+ },
+ "q0173": {
+  "display_question": "किस ग्रह को पृथ्वी की बहन कहा जाता है?",
+  "speech_question": "किस ग्रह को पृथ्वी की बहन कहा जाता है?",
+  "speech_answer": "शुक्र।",
+  "options": [
+   "मंगल",
+   "बृहस्पति",
+   "शुक्र",
+   "बुध"
+  ],
+  "correct_index": 2,
+  "explanation": "शुक्र आकार और द्रव्यमान में पृथ्वी के करीब है।",
+  "memory_key": "पृथ्वी की बहन: शुक्र",
+  "source_url": "https://en.wikipedia.org/wiki/Venus",
+  "source_label": "स्रोत: Wikipedia | Venus",
+  "verified_topic": "विज्ञान"
+ },
+ "q0181": {
+  "display_question": "वायुमंडल में लगभग 78 प्रतिशत कौन सी गैस है?",
+  "speech_question": "वायुमंडल में लगभग 78 प्रतिशत कौन सी गैस है?",
+  "speech_answer": "नाइट्रोजन।",
+  "options": [
+   "कार्बन डाइऑक्साइड",
+   "नाइट्रोजन",
+   "ऑक्सीजन",
+   "आर्गन"
+  ],
+  "correct_index": 1,
+  "explanation": "ऑक्सीजन लगभग 21 प्रतिशत है।",
+  "memory_key": "वायु 78%: नाइट्रोजन",
+  "source_url": "https://en.wikipedia.org/wiki/Atmosphere_of_Earth",
+  "source_label": "स्रोत: Wikipedia | Atmosphere of Earth",
+  "verified_topic": "विज्ञान"
+ },
+ "q0182": {
+  "display_question": "कोटोपैक्सी ज्वालामुखी किस देश में है?",
+  "speech_question": "कोटोपैक्सी ज्वालामुखी किस देश में है?",
+  "speech_answer": "इक्वाडोर।",
+  "options": [
+   "इक्वाडोर",
+   "पेरू",
+   "चिली",
+   "मैक्सिको"
+  ],
+  "correct_index": 0,
+  "explanation": "यह सबसे ऊँचे सक्रिय ज्वालामुखियों में है।",
+  "memory_key": "कोटोपैक्सी: इक्वाडोर",
+  "source_url": "https://en.wikipedia.org/wiki/Cotopaxi",
+  "source_label": "स्रोत: Wikipedia | Cotopaxi",
+  "verified_topic": "भूगोल"
+ },
+ "q0184": {
+  "display_question": "लक्षद्वीप की राजधानी कौन सी है?",
+  "speech_question": "लक्षद्वीप की राजधानी कौन सी है?",
+  "speech_answer": "कवरत्ती।",
+  "options": [
+   "पुडुचेरी",
+   "पोर्ट ब्लेयर",
+   "कवरत्ती",
+   "दमन"
+  ],
+  "correct_index": 2,
+  "explanation": "यह अरब सागर में स्थित है।",
+  "memory_key": "लक्षद्वीप राजधानी: कवरत्ती",
+  "source_url": "https://en.wikipedia.org/wiki/Kavaratti",
+  "source_label": "स्रोत: Wikipedia | Kavaratti",
+  "verified_topic": "भूगोल"
+ },
+ "q0185": {
+  "display_question": "राष्ट्रीय खेल दिवस किसके जन्मदिन पर मनाया जाता है?",
+  "speech_question": "राष्ट्रीय खेल दिवस किसके जन्मदिन पर मनाया जाता है?",
+  "speech_answer": "मेजर ध्यानचंद।",
+  "options": [
+   "मिल्खा सिंह",
+   "पी. टी. उषा",
+   "मेजर ध्यानचंद",
+   "सचिन तेंदुलकर"
+  ],
+  "correct_index": 2,
+  "explanation": "यह 29 अगस्त को मनाया जाता है।",
+  "memory_key": "खेल दिवस: ध्यानचंद",
+  "source_url": "https://en.wikipedia.org/wiki/National_Sports_Day",
+  "source_label": "स्रोत: Wikipedia | National Sports Day",
+  "verified_topic": "खेल"
+ },
+ "q0188": {
+  "display_question": "भारतीय सेना की उत्तरी कमान का मुख्यालय कहाँ है?",
+  "speech_question": "भारतीय सेना की उत्तरी कमान का मुख्यालय कहाँ है?",
+  "speech_answer": "उधमपुर।",
+  "options": [
+   "श्रीनगर",
+   "उधमपुर",
+   "लेह",
+   "शिमला"
+  ],
+  "correct_index": 1,
+  "explanation": "यह जम्मू-कश्मीर में है।",
+  "memory_key": "उत्तरी कमान: उधमपुर",
+  "source_url": "https://en.wikipedia.org/wiki/Northern_Command_(India)",
+  "source_label": "स्रोत: Wikipedia | Northern Command (India)",
+  "verified_topic": "भूगोल"
+ },
+ "q0193": {
+  "display_question": "भारत ने संघीय ढाँचा किस देश से लिया?",
+  "speech_question": "भारत ने संघीय ढाँचा किस देश से लिया?",
+  "speech_answer": "कनाडा।",
+  "options": [
+   "कनाडा",
+   "आयरलैंड",
+   "ऑस्ट्रेलिया",
+   "फ्रांस"
+  ],
+  "correct_index": 0,
+  "explanation": "मजबूत केंद्र कनाडा के मॉडल जैसा है।",
+  "memory_key": "संघवाद: कनाडा",
+  "source_url": "https://en.wikipedia.org/wiki/Constitution_of_India",
+  "source_label": "स्रोत: Wikipedia | Constitution of India",
+  "verified_topic": "राजव्यवस्था"
  }
 }
