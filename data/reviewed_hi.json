@@ -827,5 +827,141 @@
   "source_url": "https://en.wikipedia.org/wiki/Alexander_the_Great",
   "source_label": "स्रोत: Wikipedia | Alexander the Great",
   "verified_topic": "इतिहास"
+ },
+ "q0198": {
+  "display_question": "मौलिक अधिकार संविधान के किस भाग में हैं?",
+  "speech_question": "मौलिक अधिकार संविधान के किस भाग में हैं?",
+  "speech_answer": "भाग 3।",
+  "options": [
+   "भाग 2",
+   "भाग 3",
+   "भाग 5",
+   "भाग 4"
+  ],
+  "correct_index": 1,
+  "explanation": "अनुच्छेद 12 से 35 इसी भाग में हैं।",
+  "memory_key": "मौलिक अधिकार: भाग 3",
+  "source_url": "https://en.wikipedia.org/wiki/Fundamental_rights_in_India",
+  "source_label": "स्रोत: Wikipedia | Fundamental rights in India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0228": {
+  "display_question": "महात्मा बुद्ध को महापरिनिर्वाण कहाँ मिला?",
+  "speech_question": "महात्मा बुद्ध को महापरिनिर्वाण कहाँ मिला?",
+  "speech_answer": "कुशीनगर।",
+  "options": [
+   "कुशीनगर",
+   "लुंबिनी",
+   "सारनाथ",
+   "बोधगया"
+  ],
+  "correct_index": 0,
+  "explanation": "उनका अंतिम संस्कार भी वहीं हुआ।",
+  "memory_key": "महापरिनिर्वाण: कुशीनगर",
+  "source_url": "https://en.wikipedia.org/wiki/Kushinagar",
+  "source_label": "स्रोत: Wikipedia | Kushinagar",
+  "verified_topic": "इतिहास"
+ },
+ "q0229": {
+  "display_question": "नीति आयोग का गठन किस वर्ष हुआ?",
+  "speech_question": "नीति आयोग का गठन किस वर्ष हुआ?",
+  "speech_answer": "2015।",
+  "options": [
+   "2019",
+   "2005",
+   "2010",
+   "2015"
+  ],
+  "correct_index": 3,
+  "explanation": "यह 1 जनवरी 2015 को बना।",
+  "memory_key": "नीति आयोग: 2015",
+  "source_url": "https://en.wikipedia.org/wiki/NITI_Aayog",
+  "source_label": "स्रोत: Wikipedia | NITI Aayog",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0247": {
+  "display_question": "मौर्य साम्राज्य की स्थापना किसने की?",
+  "speech_question": "मौर्य साम्राज्य की स्थापना किसने की?",
+  "speech_answer": "चंद्रगुप्त मौर्य।",
+  "options": [
+   "बिंदुसार",
+   "चाणक्य",
+   "चंद्रगुप्त मौर्य",
+   "अशोक"
+  ],
+  "correct_index": 2,
+  "explanation": "वे इसके पहले सम्राट थे।",
+  "memory_key": "मौर्य संस्थापक: चंद्रगुप्त",
+  "source_url": "https://en.wikipedia.org/wiki/Chandragupta_Maurya",
+  "source_label": "स्रोत: Wikipedia | Chandragupta Maurya",
+  "verified_topic": "इतिहास"
+ },
+ "q0249": {
+  "display_question": "सांची का महान स्तूप किसने बनवाया?",
+  "speech_question": "सांची का महान स्तूप किसने बनवाया?",
+  "speech_answer": "अशोक।",
+  "options": [
+   "अशोक",
+   "हर्षवर्धन",
+   "समुद्रगुप्त",
+   "कनिष्क"
+  ],
+  "correct_index": 0,
+  "explanation": "यह तीसरी सदी ई.पू. में बना।",
+  "memory_key": "सांची स्तूप: अशोक",
+  "source_url": "https://en.wikipedia.org/wiki/Sanchi",
+  "source_label": "स्रोत: Wikipedia | Sanchi",
+  "verified_topic": "इतिहास"
+ },
+ "q0224": {
+  "display_question": "वॉलीबॉल की हर टीम में कोर्ट पर कितने खिलाड़ी होते हैं?",
+  "speech_question": "वॉलीबॉल की हर टीम में कोर्ट पर कितने खिलाड़ी होते हैं?",
+  "speech_answer": "छह।",
+  "options": [
+   "6",
+   "8",
+   "7",
+   "5"
+  ],
+  "correct_index": 0,
+  "explanation": "दो टीमें जाल के आर-पार खेलती हैं।",
+  "memory_key": "वॉलीबॉल: छह खिलाड़ी",
+  "source_url": "https://en.wikipedia.org/wiki/Volleyball",
+  "source_label": "स्रोत: Wikipedia | Volleyball",
+  "verified_topic": "खेल"
+ },
+ "q0217": {
+  "display_question": "असम की राजधानी कौन सी है?",
+  "speech_question": "असम की राजधानी कौन सी है?",
+  "speech_answer": "दिसपुर।",
+  "options": [
+   "ईटानगर",
+   "शिलांग",
+   "गुवाहाटी",
+   "दिसपुर"
+  ],
+  "correct_index": 3,
+  "explanation": "यह 1973 में राजधानी बनी।",
+  "memory_key": "असम की राजधानी: दिसपुर",
+  "source_url": "https://en.wikipedia.org/wiki/Dispur",
+  "source_label": "स्रोत: Wikipedia | Dispur",
+  "verified_topic": "भूगोल"
+ },
+ "q0178": {
+  "display_question": "ग्रीनविच किस देश में है?",
+  "speech_question": "ग्रीनविच किस देश में है?",
+  "speech_answer": "यूनाइटेड किंगडम।",
+  "options": [
+   "यूनाइटेड किंगडम",
+   "कनाडा",
+   "फ्रांस",
+   "अमेरिका"
+  ],
+  "correct_index": 0,
+  "explanation": "यह लंदन का एक इलाका है।",
+  "memory_key": "ग्रीनविच: यूके",
+  "source_url": "https://en.wikipedia.org/wiki/Greenwich",
+  "source_label": "स्रोत: Wikipedia | Greenwich",
+  "verified_topic": "भूगोल"
  }
 }
