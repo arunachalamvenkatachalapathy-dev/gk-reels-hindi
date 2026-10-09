@@ -963,5 +963,277 @@
   "source_url": "https://en.wikipedia.org/wiki/Greenwich",
   "source_label": "स्रोत: Wikipedia | Greenwich",
   "verified_topic": "भूगोल"
+ },
+ "q0314": {
+  "display_question": "पृथ्वी का सबसे शुष्क गैर-ध्रुवीय स्थान कौन सा है?",
+  "speech_question": "पृथ्वी का सबसे शुष्क गैर-ध्रुवीय स्थान कौन सा है?",
+  "speech_answer": "अटाकामा।",
+  "options": [
+   "थार",
+   "अटाकामा",
+   "गोबी",
+   "सहारा"
+  ],
+  "correct_index": 1,
+  "explanation": "यह उत्तरी चिली में है।",
+  "memory_key": "सबसे शुष्क: अटाकामा",
+  "source_url": "https://en.wikipedia.org/wiki/Atacama_Desert",
+  "source_label": "स्रोत: Wikipedia | Atacama Desert",
+  "verified_topic": "भूगोल"
+ },
+ "q0317": {
+  "display_question": "दुनिया का सबसे ऊँचा झरना कौन सा है?",
+  "speech_question": "दुनिया का सबसे ऊँचा झरना कौन सा है?",
+  "speech_answer": "एंजेल फॉल्स।",
+  "options": [
+   "नियाग्रा",
+   "एंजेल फॉल्स",
+   "जोग",
+   "विक्टोरिया"
+  ],
+  "correct_index": 1,
+  "explanation": "यह वेनेज़ुएला में है।",
+  "memory_key": "सबसे ऊँचा झरना: एंजेल",
+  "source_url": "https://en.wikipedia.org/wiki/Angel_Falls",
+  "source_label": "स्रोत: Wikipedia | Angel Falls",
+  "verified_topic": "भूगोल"
+ },
+ "q0326": {
+  "display_question": "ईडन गार्डन्स स्टेडियम किस शहर में है?",
+  "speech_question": "ईडन गार्डन्स स्टेडियम किस शहर में है?",
+  "speech_answer": "कोलकाता।",
+  "options": [
+   "कोलकाता",
+   "मुंबई",
+   "दिल्ली",
+   "चेन्नई"
+  ],
+  "correct_index": 0,
+  "explanation": "यह भारत के सबसे पुराने क्रिकेट मैदानों में है।",
+  "memory_key": "ईडन गार्डन्स: कोलकाता",
+  "source_url": "https://en.wikipedia.org/wiki/Eden_Gardens",
+  "source_label": "स्रोत: Wikipedia | Eden Gardens",
+  "verified_topic": "खेल"
+ },
+ "q0328": {
+  "display_question": "सुदीरमन कप किस खेल से जुड़ा है?",
+  "speech_question": "सुदीरमन कप किस खेल से जुड़ा है?",
+  "speech_answer": "बैडमिंटन।",
+  "options": [
+   "बैडमिंटन",
+   "टेनिस",
+   "स्क्वैश",
+   "टेबल टेनिस"
+  ],
+  "correct_index": 0,
+  "explanation": "यह मिश्रित टीमों की बैडमिंटन प्रतियोगिता है।",
+  "memory_key": "सुदीरमन कप: बैडमिंटन",
+  "source_url": "https://en.wikipedia.org/wiki/Sudirman_Cup",
+  "source_label": "स्रोत: Wikipedia | Sudirman Cup",
+  "verified_topic": "खेल"
+ },
+ "q0329": {
+  "display_question": "भारत का सबसे पुराना फ़ुटबॉल टूर्नामेंट कौन सा है?",
+  "speech_question": "भारत का सबसे पुराना फ़ुटबॉल टूर्नामेंट कौन सा है?",
+  "speech_answer": "डूरंड कप।",
+  "options": [
+   "आईएफए शील्ड",
+   "संतोष ट्रॉफ़ी",
+   "डूरंड कप",
+   "फ़ेडरेशन कप"
+  ],
+  "correct_index": 2,
+  "explanation": "यह 1888 में शुरू हुआ।",
+  "memory_key": "सबसे पुराना टूर्नामेंट: डूरंड कप",
+  "source_url": "https://en.wikipedia.org/wiki/Durand_Cup",
+  "source_label": "स्रोत: Wikipedia | Durand Cup",
+  "verified_topic": "खेल"
+ },
+ "q0295": {
+  "display_question": "\"क्रिकेट का मक्का\" किस मैदान को कहा जाता है?",
+  "speech_question": "\"क्रिकेट का मक्का\" किस मैदान को कहा जाता है?",
+  "speech_answer": "लॉर्ड्स।",
+  "options": [
+   "ईडन गार्डन्स",
+   "द ओवल",
+   "लॉर्ड्स",
+   "मेलबर्न"
+  ],
+  "correct_index": 2,
+  "explanation": "यह लंदन में है और MCC का है।",
+  "memory_key": "क्रिकेट का मक्का: लॉर्ड्स",
+  "source_url": "https://en.wikipedia.org/wiki/Lord%27s",
+  "source_label": "स्रोत: Wikipedia | Lord's",
+  "verified_topic": "खेल"
+ },
+ "q0296": {
+  "display_question": "बाराबती स्टेडियम किस शहर में है?",
+  "speech_question": "बाराबती स्टेडियम किस शहर में है?",
+  "speech_answer": "कटक।",
+  "options": [
+   "कटक",
+   "कोलकाता",
+   "पुरी",
+   "भुवनेश्वर"
+  ],
+  "correct_index": 0,
+  "explanation": "यह ओडिशा का क्रिकेट स्टेडियम है।",
+  "memory_key": "बाराबती: कटक",
+  "source_url": "https://en.wikipedia.org/wiki/Barabati_Stadium",
+  "source_label": "स्रोत: Wikipedia | Barabati Stadium",
+  "verified_topic": "खेल"
+ },
+ "q0304": {
+  "display_question": "दिलवाड़ा के जैन मंदिर कहाँ हैं?",
+  "speech_question": "दिलवाड़ा के जैन मंदिर कहाँ हैं?",
+  "speech_answer": "माउंट आबू।",
+  "options": [
+   "पालिताना",
+   "खजुराहो",
+   "उदयपुर",
+   "माउंट आबू"
+  ],
+  "correct_index": 3,
+  "explanation": "ये राजस्थान में हैं।",
+  "memory_key": "दिलवाड़ा: माउंट आबू",
+  "source_url": "https://en.wikipedia.org/wiki/Dilwara_Temples",
+  "source_label": "स्रोत: Wikipedia | Dilwara Temples",
+  "verified_topic": "संस्कृति"
+ },
+ "q0305": {
+  "display_question": "खजुराहो के मंदिर किस वंश ने बनवाए?",
+  "speech_question": "खजुराहो के मंदिर किस वंश ने बनवाए?",
+  "speech_answer": "चंदेल।",
+  "options": [
+   "गुप्त",
+   "पाल",
+   "चंदेल",
+   "चोल"
+  ],
+  "correct_index": 2,
+  "explanation": "ये मुख्यतः 950 से 1050 ई. के बीच बने।",
+  "memory_key": "खजुराहो: चंदेल",
+  "source_url": "https://en.wikipedia.org/wiki/Khajuraho_Group_of_Monuments",
+  "source_label": "स्रोत: Wikipedia | Khajuraho Group of Monuments",
+  "verified_topic": "संस्कृति"
+ },
+ "q0307": {
+  "display_question": "चित्तौड़गढ़ का विजय स्तंभ किस शासक ने बनवाया?",
+  "speech_question": "चित्तौड़गढ़ का विजय स्तंभ किस शासक ने बनवाया?",
+  "speech_answer": "राणा कुंभा।",
+  "options": [
+   "पृथ्वीराज चौहान",
+   "राणा सांगा",
+   "राणा कुंभा",
+   "महाराणा प्रताप"
+  ],
+  "correct_index": 2,
+  "explanation": "उन्होंने इसे चित्तौड़गढ़ में जीत की याद में बनवाया।",
+  "memory_key": "विजय स्तंभ: राणा कुंभा",
+  "source_url": "https://en.wikipedia.org/wiki/Vijay_Stambh",
+  "source_label": "स्रोत: Wikipedia | Vijay Stambh",
+  "verified_topic": "संस्कृति"
+ },
+ "q0308": {
+  "display_question": "पाल वंश की स्थापना किसने की?",
+  "speech_question": "पाल वंश की स्थापना किसने की?",
+  "speech_answer": "गोपाल।",
+  "options": [
+   "गोपाल",
+   "महिपाल",
+   "धर्मपाल",
+   "देवपाल"
+  ],
+  "correct_index": 0,
+  "explanation": "वे लगभग 750 ई. में बंगाल के राजा बने।",
+  "memory_key": "पाल वंश: गोपाल",
+  "source_url": "https://en.wikipedia.org/wiki/Pala_Empire",
+  "source_label": "स्रोत: Wikipedia | Pala Empire",
+  "verified_topic": "इतिहास"
+ },
+ "q0309": {
+  "display_question": "विक्रमशिला विश्वविद्यालय की स्थापना किसने की?",
+  "speech_question": "विक्रमशिला विश्वविद्यालय की स्थापना किसने की?",
+  "speech_answer": "धर्मपाल।",
+  "options": [
+   "अशोक",
+   "धर्मपाल",
+   "देवपाल",
+   "गोपाल"
+  ],
+  "correct_index": 1,
+  "explanation": "यह बिहार में बौद्ध शिक्षा का केंद्र था।",
+  "memory_key": "विक्रमशिला: धर्मपाल",
+  "source_url": "https://en.wikipedia.org/wiki/Vikramashila",
+  "source_label": "स्रोत: Wikipedia | Vikramashila",
+  "verified_topic": "इतिहास"
+ },
+ "q0311": {
+  "display_question": "यादव वंश की राजधानी कौन सी थी?",
+  "speech_question": "यादव वंश की राजधानी कौन सी थी?",
+  "speech_answer": "देवगिरि।",
+  "options": [
+   "देवगिरि",
+   "वारंगल",
+   "हलेबीडु",
+   "कांचीपुरम"
+  ],
+  "correct_index": 0,
+  "explanation": "इसे अब दौलताबाद कहते हैं।",
+  "memory_key": "यादव राजधानी: देवगिरि",
+  "source_url": "https://en.wikipedia.org/wiki/Seuna_dynasty",
+  "source_label": "स्रोत: Wikipedia | Seuna dynasty",
+  "verified_topic": "इतिहास"
+ },
+ "q0285": {
+  "display_question": "विसुवियस ज्वालामुखी किस देश में है?",
+  "speech_question": "विसुवियस ज्वालामुखी किस देश में है?",
+  "speech_answer": "इटली।",
+  "options": [
+   "इटली",
+   "स्पेन",
+   "यूनान",
+   "आइसलैंड"
+  ],
+  "correct_index": 0,
+  "explanation": "इसने 79 ई. में पोम्पेई को दबा दिया था।",
+  "memory_key": "विसुवियस: इटली",
+  "source_url": "https://en.wikipedia.org/wiki/Mount_Vesuvius",
+  "source_label": "स्रोत: Wikipedia | Mount Vesuvius",
+  "verified_topic": "भूगोल"
+ },
+ "q0337": {
+  "display_question": "भारतीय सशस्त्र सेनाओं का सर्वोच्च सेनापति कौन है?",
+  "speech_question": "भारतीय सशस्त्र सेनाओं का सर्वोच्च सेनापति कौन है?",
+  "speech_answer": "राष्ट्रपति।",
+  "options": [
+   "प्रधानमंत्री",
+   "सेना प्रमुख",
+   "रक्षा मंत्री",
+   "राष्ट्रपति"
+  ],
+  "correct_index": 3,
+  "explanation": "संविधान यह पद राष्ट्रपति को देता है।",
+  "memory_key": "सर्वोच्च सेनापति: राष्ट्रपति",
+  "source_url": "https://en.wikipedia.org/wiki/President_of_India",
+  "source_label": "स्रोत: Wikipedia | President of India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0284": {
+  "display_question": "हिमालय किस प्राचीन सागर से उठा?",
+  "speech_question": "हिमालय किस प्राचीन सागर से उठा?",
+  "speech_answer": "टेथिस सागर।",
+  "options": [
+   "पैंथालासा",
+   "लाल सागर",
+   "टेथिस सागर",
+   "अरब सागर"
+  ],
+  "correct_index": 2,
+  "explanation": "भारत के एशिया से टकराने से टेथिस बंद हुआ।",
+  "memory_key": "हिमालय: टेथिस",
+  "source_url": "https://en.wikipedia.org/wiki/Tethys_Ocean",
+  "source_label": "स्रोत: Wikipedia | Tethys Ocean",
+  "verified_topic": "भूगोल"
  }
 }
