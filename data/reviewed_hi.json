@@ -2051,5 +2051,277 @@
   "source_url": "https://en.wikipedia.org/wiki/Constitution_of_India",
   "source_label": "स्रोत: Wikipedia | Constitution of India",
   "verified_topic": "राजव्यवस्था"
+ },
+ "q0195": {
+  "display_question": "नीति-निर्देशक तत्व किस देश से लिए गए?",
+  "speech_question": "नीति-निर्देशक तत्व किस देश से लिए गए?",
+  "speech_answer": "आयरलैंड।",
+  "options": [
+   "फ्रांस",
+   "ऑस्ट्रेलिया",
+   "कनाडा",
+   "आयरलैंड"
+  ],
+  "correct_index": 3,
+  "explanation": "यह विचार आयरलैंड के संविधान से आया।",
+  "memory_key": "निर्देशक तत्व: आयरलैंड",
+  "source_url": "https://en.wikipedia.org/wiki/Directive_Principles",
+  "source_label": "स्रोत: Wikipedia | Directive Principles",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0194": {
+  "display_question": "भारत की संसदीय प्रणाली किस देश से प्रभावित है?",
+  "speech_question": "भारत की संसदीय प्रणाली किस देश से प्रभावित है?",
+  "speech_answer": "ब्रिटेन।",
+  "options": [
+   "अमेरिका",
+   "ब्रिटेन",
+   "कनाडा",
+   "फ्रांस"
+  ],
+  "correct_index": 1,
+  "explanation": "यह वेस्टमिंस्टर मॉडल पर आधारित है।",
+  "memory_key": "संसदीय प्रणाली: ब्रिटेन",
+  "source_url": "https://en.wikipedia.org/wiki/Constitution_of_India",
+  "source_label": "स्रोत: Wikipedia | Constitution of India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0203": {
+  "display_question": "नंद वंश का अंतिम शासक कौन था?",
+  "speech_question": "नंद वंश का अंतिम शासक कौन था?",
+  "speech_answer": "घनानंद।",
+  "options": [
+   "अजातशत्रु",
+   "महापद्मनंद",
+   "घनानंद",
+   "बिंबिसार"
+  ],
+  "correct_index": 2,
+  "explanation": "चंद्रगुप्त मौर्य ने उसे हराया।",
+  "memory_key": "अंतिम नंद: घनानंद",
+  "source_url": "https://en.wikipedia.org/wiki/Dhana_Nanda",
+  "source_label": "स्रोत: Wikipedia | Dhana Nanda",
+  "verified_topic": "इतिहास"
+ },
+ "q0207": {
+  "display_question": "आजीवक संप्रदाय के संस्थापक कौन थे?",
+  "speech_question": "आजीवक संप्रदाय के संस्थापक कौन थे?",
+  "speech_answer": "मक्खलि गोसाल।",
+  "options": [
+   "अजित केशकंबली",
+   "मक्खलि गोसाल",
+   "गौतम बुद्ध",
+   "महावीर"
+  ],
+  "correct_index": 1,
+  "explanation": "वे महावीर के समकालीन थे।",
+  "memory_key": "आजीवक: गोसाल",
+  "source_url": "https://en.wikipedia.org/wiki/Ajivika",
+  "source_label": "स्रोत: Wikipedia | Ajivika",
+  "verified_topic": "इतिहास"
+ },
+ "q0208": {
+  "display_question": "लोदी वंश का संस्थापक कौन था?",
+  "speech_question": "लोदी वंश का संस्थापक कौन था?",
+  "speech_answer": "बहलोल लोदी।",
+  "options": [
+   "खिज्र खां",
+   "इब्राहिम लोदी",
+   "बहलोल लोदी",
+   "सिकंदर लोदी"
+  ],
+  "correct_index": 2,
+  "explanation": "उसने 1451 में दिल्ली का सिंहासन लिया।",
+  "memory_key": "लोदी संस्थापक: बहलोल",
+  "source_url": "https://en.wikipedia.org/wiki/Bahlul_Lodi",
+  "source_label": "स्रोत: Wikipedia | Bahlul Lodi",
+  "verified_topic": "इतिहास"
+ },
+ "q0209": {
+  "display_question": "महमूद गजनवी किस वंश का था?",
+  "speech_question": "महमूद गजनवी किस वंश का था?",
+  "speech_answer": "गजनवी (यामिनी) वंश।",
+  "options": [
+   "गोरी वंश",
+   "मुगल वंश",
+   "सल्जूक वंश",
+   "गजनवी (यामिनी) वंश"
+  ],
+  "correct_index": 3,
+  "explanation": "यह यामिनी वंश भी कहलाता है।",
+  "memory_key": "महमूद: गजनवी वंश",
+  "source_url": "https://en.wikipedia.org/wiki/Ghaznavids",
+  "source_label": "स्रोत: Wikipedia | Ghaznavids",
+  "verified_topic": "इतिहास"
+ },
+ "q0211": {
+  "display_question": "मिहिरकुल किस समूह का था?",
+  "speech_question": "मिहिरकुल किस समूह का था?",
+  "speech_answer": "हूण।",
+  "options": [
+   "यूनानी",
+   "कुषाण",
+   "हूण",
+   "शक"
+  ],
+  "correct_index": 2,
+  "explanation": "उसने छठी सदी में उत्तर भारत पर शासन किया।",
+  "memory_key": "मिहिरकुल: हूण",
+  "source_url": "https://en.wikipedia.org/wiki/Mihirakula",
+  "source_label": "स्रोत: Wikipedia | Mihirakula",
+  "verified_topic": "इतिहास"
+ },
+ "q0216": {
+  "display_question": "बुद्ध ने पहला उपदेश कहाँ दिया?",
+  "speech_question": "बुद्ध ने पहला उपदेश कहाँ दिया?",
+  "speech_answer": "सारनाथ।",
+  "options": [
+   "कुशीनगर",
+   "लुंबिनी",
+   "सारनाथ",
+   "बोधगया"
+  ],
+  "correct_index": 2,
+  "explanation": "इसे धर्मचक्रप्रवर्तन कहते हैं।",
+  "memory_key": "पहला उपदेश: सारनाथ",
+  "source_url": "https://en.wikipedia.org/wiki/Dhammacakkappavattana_Sutta",
+  "source_label": "स्रोत: Wikipedia | Dhammacakkappavattana Sutta",
+  "verified_topic": "इतिहास"
+ },
+ "q0218": {
+  "display_question": "काली मिर्च का सबसे बड़ा उत्पादक राज्य कौन सा है?",
+  "speech_question": "काली मिर्च का सबसे बड़ा उत्पादक राज्य कौन सा है?",
+  "speech_answer": "केरल।",
+  "options": [
+   "असम",
+   "कर्नाटक",
+   "केरल",
+   "तमिलनाडु"
+  ],
+  "correct_index": 2,
+  "explanation": "मालाबार काली मिर्च विश्व प्रसिद्ध है।",
+  "memory_key": "काली मिर्च: केरल",
+  "source_url": "https://en.wikipedia.org/wiki/Black_pepper",
+  "source_label": "स्रोत: Wikipedia | Black pepper",
+  "verified_topic": "अर्थव्यवस्था"
+ },
+ "q0179": {
+  "display_question": "कोयला किस प्रकार की चट्टान में मिलता है?",
+  "speech_question": "कोयला किस प्रकार की चट्टान में मिलता है?",
+  "speech_answer": "परतदार चट्टान।",
+  "options": [
+   "रूपांतरित चट्टान",
+   "परतदार चट्टान",
+   "आग्नेय चट्टान",
+   "ज्वालामुखी चट्टान"
+  ],
+  "correct_index": 1,
+  "explanation": "यह दबे पौधों से बनता है।",
+  "memory_key": "कोयला: परतदार",
+  "source_url": "https://en.wikipedia.org/wiki/Coal",
+  "source_label": "स्रोत: Wikipedia | Coal",
+  "verified_topic": "भूगोल"
+ },
+ "q0147": {
+  "display_question": "ऋग्वेद में पुरंदर शब्द किस देवता के लिए है?",
+  "speech_question": "ऋग्वेद में पुरंदर शब्द किस देवता के लिए है?",
+  "speech_answer": "इंद्र।",
+  "options": [
+   "इंद्र",
+   "अग्नि",
+   "वरुण",
+   "सोम"
+  ],
+  "correct_index": 0,
+  "explanation": "इसका अर्थ है किलों को तोड़ने वाला।",
+  "memory_key": "पुरंदर: इंद्र",
+  "source_url": "https://en.wikipedia.org/wiki/Indra",
+  "source_label": "स्रोत: Wikipedia | Indra",
+  "verified_topic": "इतिहास"
+ },
+ "q0223": {
+  "display_question": "शतरंज का जन्मदाता देश किसे माना जाता है?",
+  "speech_question": "शतरंज का जन्मदाता देश किसे माना जाता है?",
+  "speech_answer": "भारत।",
+  "options": [
+   "चीन",
+   "यूनान",
+   "भारत",
+   "फारस"
+  ],
+  "correct_index": 2,
+  "explanation": "इसका शुरुआती रूप चतुरंग था।",
+  "memory_key": "शतरंज: भारत",
+  "source_url": "https://en.wikipedia.org/wiki/Chess",
+  "source_label": "स्रोत: Wikipedia | Chess",
+  "verified_topic": "खेल"
+ },
+ "q0226": {
+  "display_question": "यूरो कप किस खेल से जुड़ा है?",
+  "speech_question": "यूरो कप किस खेल से जुड़ा है?",
+  "speech_answer": "फुटबॉल।",
+  "options": [
+   "टेनिस",
+   "फुटबॉल",
+   "क्रिकेट",
+   "हॉकी"
+  ],
+  "correct_index": 1,
+  "explanation": "UEFA इसे हर चार साल में कराता है।",
+  "memory_key": "यूरो कप: फुटबॉल",
+  "source_url": "https://en.wikipedia.org/wiki/UEFA_European_Championship",
+  "source_label": "स्रोत: Wikipedia | UEFA European Championship",
+  "verified_topic": "खेल"
+ },
+ "q0233": {
+  "display_question": "किस अनुच्छेद में ग्राम पंचायतों के गठन का निर्देश है?",
+  "speech_question": "किस अनुच्छेद में ग्राम पंचायतों के गठन का निर्देश है?",
+  "speech_answer": "अनुच्छेद 40।",
+  "options": [
+   "अनुच्छेद 21",
+   "अनुच्छेद 40",
+   "अनुच्छेद 51",
+   "अनुच्छेद 44"
+  ],
+  "correct_index": 1,
+  "explanation": "यह एक नीति-निर्देशक तत्व है।",
+  "memory_key": "पंचायत: अनुच्छेद 40",
+  "source_url": "https://en.wikipedia.org/wiki/Directive_Principles",
+  "source_label": "स्रोत: Wikipedia | Directive Principles",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0245": {
+  "display_question": "गौतम बुद्ध किस कुल के थे?",
+  "speech_question": "गौतम बुद्ध किस कुल के थे?",
+  "speech_answer": "शाक्य।",
+  "options": [
+   "शाक्य",
+   "मल्ल",
+   "कोलिय",
+   "लिच्छवि"
+  ],
+  "correct_index": 0,
+  "explanation": "उनका जन्म लुंबिनी में हुआ था।",
+  "memory_key": "बुद्ध का कुल: शाक्य",
+  "source_url": "https://en.wikipedia.org/wiki/Gautama_Buddha",
+  "source_label": "स्रोत: Wikipedia | Gautama Buddha",
+  "verified_topic": "इतिहास"
+ },
+ "q0251": {
+  "display_question": "प्राचीन पुरुषपुर आज का कौन सा शहर है?",
+  "speech_question": "प्राचीन पुरुषपुर आज का कौन सा शहर है?",
+  "speech_answer": "पेशावर।",
+  "options": [
+   "तक्षशिला",
+   "लाहौर",
+   "पेशावर",
+   "मुल्तान"
+  ],
+  "correct_index": 2,
+  "explanation": "कनिष्क के समय यह कुषाणों की राजधानी था।",
+  "memory_key": "पुरुषपुर: पेशावर",
+  "source_url": "https://en.wikipedia.org/wiki/Peshawar",
+  "source_label": "स्रोत: Wikipedia | Peshawar",
+  "verified_topic": "इतिहास"
  }
 }
