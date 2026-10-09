@@ -504,5 +504,158 @@
   "source_url": "https://en.wikipedia.org/wiki/Ibadat_Khana",
   "source_label": "स्रोत: Wikipedia | Ibadat Khana",
   "verified_topic": "इतिहास"
+ },
+ "q0105": {
+  "display_question": "राज्य पुनर्गठन आयोग के अध्यक्ष कौन थे?",
+  "speech_question": "राज्य पुनर्गठन आयोग के अध्यक्ष कौन थे?",
+  "speech_answer": "फ़ज़ल अली।",
+  "options": [
+   "फ़ज़ल अली",
+   "एच. एन. कुंज़रू",
+   "के. एम. पणिक्कर",
+   "गोविंद वल्लभ पंत"
+  ],
+  "correct_index": 0,
+  "explanation": "फ़ज़ल अली ने इस आयोग की अध्यक्षता की।",
+  "memory_key": "SRC अध्यक्ष: फ़ज़ल अली",
+  "source_url": "https://en.wikipedia.org/wiki/Fazal_Ali",
+  "source_label": "स्रोत: Wikipedia | Fazal Ali",
+  "verified_topic": "इतिहास"
+ },
+ "q0108": {
+  "display_question": "मौलिक कर्तव्य संविधान में किस वर्ष जोड़े गए?",
+  "speech_question": "मौलिक कर्तव्य संविधान में किस वर्ष जोड़े गए?",
+  "speech_answer": "1976।",
+  "options": [
+   "1950",
+   "1951",
+   "1992",
+   "1976"
+  ],
+  "correct_index": 3,
+  "explanation": "42वें संशोधन ने इन्हें जोड़ा।",
+  "memory_key": "मौलिक कर्तव्य: 1976",
+  "source_url": "https://en.wikipedia.org/wiki/Fundamental_Duties_of_India",
+  "source_label": "स्रोत: Wikipedia | Fundamental Duties of India",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0113": {
+  "display_question": "राष्ट्रपति अपना त्यागपत्र किसे देते हैं?",
+  "speech_question": "राष्ट्रपति अपना त्यागपत्र किसे देते हैं?",
+  "speech_answer": "उपराष्ट्रपति को।",
+  "options": [
+   "उपराष्ट्रपति को",
+   "मुख्य न्यायाधीश को",
+   "लोक सभा अध्यक्ष को",
+   "प्रधानमंत्री को"
+  ],
+  "correct_index": 0,
+  "explanation": "अनुच्छेद 56 में यही लिखा है।",
+  "memory_key": "त्यागपत्र: उपराष्ट्रपति को",
+  "source_url": "https://www.constitutionofindia.net/articles/article-56-term-of-office-of-president/",
+  "source_label": "स्रोत: Constitution of India | Article 56",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0114": {
+  "display_question": "संविधान की किस अनुसूची में भाषाओं की सूची है?",
+  "speech_question": "संविधान की किस अनुसूची में भाषाओं की सूची है?",
+  "speech_answer": "आठवीं अनुसूची।",
+  "options": [
+   "दसवीं अनुसूची",
+   "आठवीं अनुसूची",
+   "छठी अनुसूची",
+   "नौवीं अनुसूची"
+  ],
+  "correct_index": 1,
+  "explanation": "इसमें अब 22 भाषाएँ दर्ज हैं।",
+  "memory_key": "आठवीं अनुसूची: भाषाएँ",
+  "source_url": "https://en.wikipedia.org/wiki/Eighth_Schedule_to_the_Constitution_of_India",
+  "source_label": "स्रोत: Wikipedia | Eighth Schedule",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0120": {
+  "display_question": "अंतर्राष्ट्रीय मुद्रा कोष का मुख्यालय कहाँ है?",
+  "speech_question": "अंतर्राष्ट्रीय मुद्रा कोष का मुख्यालय कहाँ है?",
+  "speech_answer": "वॉशिंगटन डी.सी.।",
+  "options": [
+   "लंदन",
+   "न्यूयॉर्क",
+   "जिनेवा",
+   "वॉशिंगटन डी.सी."
+  ],
+  "correct_index": 3,
+  "explanation": "IMF का मुख्यालय अमेरिका की राजधानी में है।",
+  "memory_key": "IMF: वॉशिंगटन",
+  "source_url": "https://en.wikipedia.org/wiki/International_Monetary_Fund",
+  "source_label": "स्रोत: Wikipedia | IMF",
+  "verified_topic": "अर्थव्यवस्था"
+ },
+ "q0124": {
+  "display_question": "अर्जुन पुरस्कार पहली बार किस वर्ष दिया गया?",
+  "speech_question": "अर्जुन पुरस्कार पहली बार किस वर्ष दिया गया?",
+  "speech_answer": "1961।",
+  "options": [
+   "1947",
+   "1985",
+   "1961",
+   "1971"
+  ],
+  "correct_index": 2,
+  "explanation": "यह भारत का खेल सम्मान है।",
+  "memory_key": "अर्जुन पुरस्कार: 1961",
+  "source_url": "https://en.wikipedia.org/wiki/Arjuna_Award",
+  "source_label": "स्रोत: Wikipedia | Arjuna Award",
+  "verified_topic": "खेल"
+ },
+ "q0136": {
+  "display_question": "रेगुलेटिंग एक्ट किस वर्ष पारित हुआ?",
+  "speech_question": "रेगुलेटिंग एक्ट किस वर्ष पारित हुआ?",
+  "speech_answer": "1773।",
+  "options": [
+   "1813",
+   "1857",
+   "1773",
+   "1784"
+  ],
+  "correct_index": 2,
+  "explanation": "ब्रिटिश संसद ने इसे ईस्ट इंडिया कंपनी के लिए बनाया।",
+  "memory_key": "रेगुलेटिंग एक्ट: 1773",
+  "source_url": "https://en.wikipedia.org/wiki/Regulating_Act_of_1773",
+  "source_label": "स्रोत: Wikipedia | Regulating Act of 1773",
+  "verified_topic": "इतिहास"
+ },
+ "q0159": {
+  "display_question": "एवरेस्ट पर चढ़ने वाली पहली भारतीय महिला कौन हैं?",
+  "speech_question": "एवरेस्ट पर चढ़ने वाली पहली भारतीय महिला कौन हैं?",
+  "speech_answer": "बछेंद्री पाल।",
+  "options": [
+   "प्रेमलता अग्रवाल",
+   "तेनज़िंग नोर्गे",
+   "बछेंद्री पाल",
+   "संतोष यादव"
+  ],
+  "correct_index": 2,
+  "explanation": "उन्होंने 1984 में एवरेस्ट फ़तह किया।",
+  "memory_key": "एवरेस्ट पर पहली भारतीय महिला: बछेंद्री",
+  "source_url": "https://en.wikipedia.org/wiki/Bachendri_Pal",
+  "source_label": "स्रोत: Wikipedia | Bachendri Pal",
+  "verified_topic": "खेल"
+ },
+ "q0161": {
+  "display_question": "नोबेल पुरस्कार पाने वाले पहले भारतीय कौन थे?",
+  "speech_question": "नोबेल पुरस्कार पाने वाले पहले भारतीय कौन थे?",
+  "speech_answer": "रवींद्रनाथ टैगोर।",
+  "options": [
+   "सी. वी. रमन",
+   "रवींद्रनाथ टैगोर",
+   "अमर्त्य सेन",
+   "मदर टेरेसा"
+  ],
+  "correct_index": 1,
+  "explanation": "उन्हें 1913 में साहित्य का नोबेल मिला।",
+  "memory_key": "पहला भारतीय नोबेल: टैगोर",
+  "source_url": "https://en.wikipedia.org/wiki/Rabindranath_Tagore",
+  "source_label": "स्रोत: Wikipedia | Rabindranath Tagore",
+  "verified_topic": "इतिहास"
  }
 }
