@@ -657,5 +657,175 @@
   "source_url": "https://en.wikipedia.org/wiki/Rabindranath_Tagore",
   "source_label": "स्रोत: Wikipedia | Rabindranath Tagore",
   "verified_topic": "इतिहास"
+ },
+ "q0122": {
+  "display_question": "विश्व का सबसे बड़ा द्वीपसमूह देश कौन सा है?",
+  "speech_question": "विश्व का सबसे बड़ा द्वीपसमूह देश कौन सा है?",
+  "speech_answer": "इंडोनेशिया।",
+  "options": [
+   "फ़िलीपींस",
+   "इंडोनेशिया",
+   "मालदीव",
+   "जापान"
+  ],
+  "correct_index": 1,
+  "explanation": "यह विश्व का सबसे बड़ा द्वीपीय राज्य है।",
+  "memory_key": "सबसे बड़ा द्वीपसमूह: इंडोनेशिया",
+  "source_url": "https://en.wikipedia.org/wiki/Archipelago",
+  "source_label": "स्रोत: Wikipedia | Archipelago",
+  "verified_topic": "भूगोल"
+ },
+ "q0123": {
+  "display_question": "सुंदरबन किस नदी-डेल्टा में बना है?",
+  "speech_question": "सुंदरबन किस नदी-डेल्टा में बना है?",
+  "speech_answer": "गंगा डेल्टा।",
+  "options": [
+   "गंगा डेल्टा",
+   "नील डेल्टा",
+   "सिंधु डेल्टा",
+   "मिसिसिपी डेल्टा"
+  ],
+  "correct_index": 0,
+  "explanation": "यह गंगा, ब्रह्मपुत्र और मेघना के संगम पर है।",
+  "memory_key": "सुंदरबन: गंगा डेल्टा",
+  "source_url": "https://en.wikipedia.org/wiki/Sundarbans",
+  "source_label": "स्रोत: Wikipedia | Sundarbans",
+  "verified_topic": "भूगोल"
+ },
+ "q0142": {
+  "display_question": "भारत का केंद्रीय बैंक कौन सा है?",
+  "speech_question": "भारत का केंद्रीय बैंक कौन सा है?",
+  "speech_answer": "भारतीय रिज़र्व बैंक।",
+  "options": [
+   "नाबार्ड",
+   "सेबी",
+   "स्टेट बैंक ऑफ़ इंडिया",
+   "भारतीय रिज़र्व बैंक"
+  ],
+  "correct_index": 3,
+  "explanation": "RBI भारत का केंद्रीय बैंक है।",
+  "memory_key": "केंद्रीय बैंक: RBI",
+  "source_url": "https://en.wikipedia.org/wiki/Reserve_Bank_of_India",
+  "source_label": "स्रोत: Wikipedia | Reserve Bank of India",
+  "verified_topic": "अर्थव्यवस्था"
+ },
+ "q0152": {
+  "display_question": "वैशाली में पहला गणराज्य किस वंश से जुड़ा है?",
+  "speech_question": "वैशाली में पहला गणराज्य किस वंश से जुड़ा है?",
+  "speech_answer": "लिच्छवी।",
+  "options": [
+   "कोलिय",
+   "लिच्छवी",
+   "मल्ल",
+   "शाक्य"
+  ],
+  "correct_index": 1,
+  "explanation": "वैशाली लिच्छवी गणसंघ का केंद्र था।",
+  "memory_key": "वैशाली गणराज्य: लिच्छवी",
+  "source_url": "https://en.wikipedia.org/wiki/Licchavis_of_Vaishali",
+  "source_label": "स्रोत: Wikipedia | Licchavis of Vaishali",
+  "verified_topic": "इतिहास"
+ },
+ "q0154": {
+  "display_question": "महावीर की माता का नाम क्या था?",
+  "speech_question": "महावीर की माता का नाम क्या था?",
+  "speech_answer": "त्रिशला।",
+  "options": [
+   "माया",
+   "त्रिशला",
+   "प्रभावती",
+   "यशोदा"
+  ],
+  "correct_index": 1,
+  "explanation": "उनके पिता राजा सिद्धार्थ थे।",
+  "memory_key": "महावीर की माता: त्रिशला",
+  "source_url": "https://en.wikipedia.org/wiki/Mahavira",
+  "source_label": "स्रोत: Wikipedia | Mahavira",
+  "verified_topic": "इतिहास"
+ },
+ "q0157": {
+  "display_question": "बाणभट्ट किस सम्राट के दरबारी कवि थे?",
+  "speech_question": "बाणभट्ट किस सम्राट के दरबारी कवि थे?",
+  "speech_answer": "हर्षवर्धन।",
+  "options": [
+   "समुद्रगुप्त",
+   "अकबर",
+   "अशोक",
+   "हर्षवर्धन"
+  ],
+  "correct_index": 3,
+  "explanation": "उन्होंने हर्षचरित लिखा।",
+  "memory_key": "बाणभट्ट: हर्ष के दरबार में",
+  "source_url": "https://en.wikipedia.org/wiki/Banabhatta",
+  "source_label": "स्रोत: Wikipedia | Banabhatta",
+  "verified_topic": "इतिहास"
+ },
+ "q0160": {
+  "display_question": "भारत की पहली महिला राज्यपाल कौन थीं?",
+  "speech_question": "भारत की पहली महिला राज्यपाल कौन थीं?",
+  "speech_answer": "सरोजिनी नायडू।",
+  "options": [
+   "इंदिरा गांधी",
+   "सरोजिनी नायडू",
+   "सुचेता कृपलानी",
+   "विजयलक्ष्मी पंडित"
+  ],
+  "correct_index": 1,
+  "explanation": "वे 1947 में संयुक्त प्रांत की राज्यपाल बनीं।",
+  "memory_key": "पहली महिला राज्यपाल: सरोजिनी",
+  "source_url": "https://en.wikipedia.org/wiki/Sarojini_Naidu",
+  "source_label": "स्रोत: Wikipedia | Sarojini Naidu",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0135": {
+  "display_question": "मार्ले-मिंटो सुधार किस वर्ष लागू हुए?",
+  "speech_question": "मार्ले-मिंटो सुधार किस वर्ष लागू हुए?",
+  "speech_answer": "1909।",
+  "options": [
+   "1909",
+   "1919",
+   "1892",
+   "1935"
+  ],
+  "correct_index": 0,
+  "explanation": "यह इंडियन काउंसिल्स एक्ट 1909 है।",
+  "memory_key": "मार्ले-मिंटो: 1909",
+  "source_url": "https://en.wikipedia.org/wiki/Indian_Councils_Act_1909",
+  "source_label": "स्रोत: Wikipedia | Indian Councils Act 1909",
+  "verified_topic": "इतिहास"
+ },
+ "q0115": {
+  "display_question": "\"गरीबी हटाओ\" नारा किससे जुड़ा है?",
+  "speech_question": "\"गरीबी हटाओ\" नारा किससे जुड़ा है?",
+  "speech_answer": "इंदिरा गांधी।",
+  "options": [
+   "मोरारजी देसाई",
+   "राजीव गांधी",
+   "जवाहरलाल नेहरू",
+   "इंदिरा गांधी"
+  ],
+  "correct_index": 3,
+  "explanation": "यह 1971 के उनके चुनाव अभियान का नारा था।",
+  "memory_key": "गरीबी हटाओ: इंदिरा गांधी",
+  "source_url": "https://en.wikipedia.org/wiki/Garibi_Hatao",
+  "source_label": "स्रोत: Wikipedia | Garibi Hatao",
+  "verified_topic": "राजव्यवस्था"
+ },
+ "q0151": {
+  "display_question": "सिकंदर ने भारत पर कब आक्रमण किया?",
+  "speech_question": "सिकंदर ने भारत पर कब आक्रमण किया?",
+  "speech_answer": "326 ई.पू.।",
+  "options": [
+   "356 ई.पू.",
+   "180 ई.पू.",
+   "326 ई.पू.",
+   "262 ई.पू."
+  ],
+  "correct_index": 2,
+  "explanation": "झेलम के युद्ध में उसने पोरस को हराया।",
+  "memory_key": "सिकंदर: 326 ई.पू.",
+  "source_url": "https://en.wikipedia.org/wiki/Alexander_the_Great",
+  "source_label": "स्रोत: Wikipedia | Alexander the Great",
+  "verified_topic": "इतिहास"
  }
 }
