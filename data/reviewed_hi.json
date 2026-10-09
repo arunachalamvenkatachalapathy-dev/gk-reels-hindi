@@ -385,5 +385,124 @@
   "source_url": "https://www.britannica.com/topic/Constitution-of-the-United-States-of-America",
   "source_label": "स्रोत: Britannica | US Constitution",
   "verified_topic": "राजव्यवस्था"
+ },
+ "q0006": {
+  "display_question": "\"ग्रैंड ओल्ड मैन ऑफ़ इंडिया\" किसे कहा जाता है?",
+  "speech_question": "\"ग्रैंड ओल्ड मैन ऑफ़ इंडिया\" किसे कहा जाता है?",
+  "speech_answer": "दादाभाई नौरोजी।",
+  "options": [
+   "लाला लाजपत राय",
+   "दादाभाई नौरोजी",
+   "महात्मा गांधी",
+   "बाल गंगाधर तिलक"
+  ],
+  "correct_index": 1,
+  "explanation": "नौरोजी को यह उपनाम मिला।",
+  "memory_key": "ग्रैंड ओल्ड मैन: नौरोजी",
+  "source_url": "https://en.wikipedia.org/wiki/Dadabhai_Naoroji",
+  "source_label": "स्रोत: Wikipedia | Dadabhai Naoroji",
+  "verified_topic": "इतिहास"
+ },
+ "q0009": {
+  "display_question": "रौलेट एक्ट किस वर्ष पारित हुआ?",
+  "speech_question": "रौलेट एक्ट किस वर्ष पारित हुआ?",
+  "speech_answer": "1919।",
+  "options": [
+   "1930",
+   "1922",
+   "1919",
+   "1915"
+  ],
+  "correct_index": 2,
+  "explanation": "यह कानून 18 मार्च 1919 को पारित हुआ।",
+  "memory_key": "रौलेट एक्ट: 1919",
+  "source_url": "https://en.wikipedia.org/wiki/Rowlatt_Act",
+  "source_label": "स्रोत: Wikipedia | Rowlatt Act",
+  "verified_topic": "इतिहास"
+ },
+ "q0012": {
+  "display_question": "गांधीजी ने भारत में पहला सत्याग्रह कहाँ किया?",
+  "speech_question": "गांधीजी ने भारत में पहला सत्याग्रह कहाँ किया?",
+  "speech_answer": "चंपारण में।",
+  "options": [
+   "खेड़ा",
+   "बारदोली",
+   "अहमदाबाद",
+   "चंपारण"
+  ],
+  "correct_index": 3,
+  "explanation": "चंपारण सत्याग्रह 1917 में हुआ था।",
+  "memory_key": "पहला सत्याग्रह: चंपारण",
+  "source_url": "https://en.wikipedia.org/wiki/Champaran_Satyagraha",
+  "source_label": "स्रोत: Wikipedia | Champaran Satyagraha",
+  "verified_topic": "इतिहास"
+ },
+ "q0019": {
+  "display_question": "कांग्रेस छोड़ने के बाद सुभाषचंद्र बोस ने कौन सा दल बनाया?",
+  "speech_question": "कांग्रेस छोड़ने के बाद सुभाषचंद्र बोस ने कौन सा दल बनाया?",
+  "speech_answer": "फ़ॉरवर्ड ब्लॉक।",
+  "options": [
+   "स्वराज पार्टी",
+   "फ़ॉरवर्ड ब्लॉक",
+   "आज़ाद हिंद दल",
+   "सोशलिस्ट पार्टी"
+  ],
+  "correct_index": 1,
+  "explanation": "यह दल 1939 में बना।",
+  "memory_key": "बोस: फ़ॉरवर्ड ब्लॉक",
+  "source_url": "https://en.wikipedia.org/wiki/All_India_Forward_Bloc",
+  "source_label": "स्रोत: Wikipedia | All India Forward Bloc",
+  "verified_topic": "इतिहास"
+ },
+ "q0025": {
+  "display_question": "हड़प्पा की खुदाई से कौन जुड़े हैं?",
+  "speech_question": "हड़प्पा की खुदाई से कौन जुड़े हैं?",
+  "speech_answer": "दयाराम साहनी।",
+  "options": [
+   "जॉन मार्शल",
+   "मॉर्टिमर व्हीलर",
+   "दयाराम साहनी",
+   "अलेक्ज़ेंडर कनिंघम"
+  ],
+  "correct_index": 2,
+  "explanation": "साहनी को हड़प्पा की खुदाई के लिए जाना जाता है।",
+  "memory_key": "हड़प्पा: दयाराम साहनी",
+  "source_url": "https://en.wikipedia.org/wiki/Daya_Ram_Sahni",
+  "source_label": "स्रोत: Wikipedia | Daya Ram Sahni",
+  "verified_topic": "इतिहास"
+ },
+ "q0038": {
+  "display_question": "सिखों के अंतिम गुरु कौन थे?",
+  "speech_question": "सिखों के अंतिम गुरु कौन थे?",
+  "speech_answer": "गुरु गोबिंद सिंह।",
+  "options": [
+   "गुरु अर्जन",
+   "गुरु नानक",
+   "गुरु गोबिंद सिंह",
+   "गुरु तेग़ बहादुर"
+  ],
+  "correct_index": 2,
+  "explanation": "वे दसवें और अंतिम गुरु थे।",
+  "memory_key": "अंतिम गुरु: गोबिंद सिंह",
+  "source_url": "https://en.wikipedia.org/wiki/Guru_Gobind_Singh",
+  "source_label": "स्रोत: Wikipedia | Guru Gobind Singh",
+  "verified_topic": "इतिहास"
+ },
+ "q0044": {
+  "display_question": "फ़तेहपुर सीकरी में इबादतखाना किसने बनवाया?",
+  "speech_question": "फ़तेहपुर सीकरी में इबादतखाना किसने बनवाया?",
+  "speech_answer": "अकबर।",
+  "options": [
+   "शाहजहाँ",
+   "हुमायूँ",
+   "जहाँगीर",
+   "अकबर"
+  ],
+  "correct_index": 3,
+  "explanation": "अकबर ने इसे धार्मिक चर्चा के लिए बनवाया।",
+  "memory_key": "इबादतखाना: अकबर",
+  "source_url": "https://en.wikipedia.org/wiki/Ibadat_Khana",
+  "source_label": "स्रोत: Wikipedia | Ibadat Khana",
+  "verified_topic": "इतिहास"
  }
 }
