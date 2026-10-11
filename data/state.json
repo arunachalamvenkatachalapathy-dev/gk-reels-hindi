@@ -1,5 +1,5 @@
 {
-  "next_index": 64,
+  "next_index": 65,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 0,
+  "palette_cursor": 1,
   "audio_cursor": 0,
   "current_day": 32,
-  "current_slot": 1,
-  "total_published": 64,
+  "current_slot": 2,
+  "total_published": 65,
   "published_ids": [
     "q0000",
     "q0001",
@@ -79,16 +79,10 @@
     "q0060",
     "q0061",
     "q0062",
-    "q0063"
+    "q0063",
+    "q0064"
   ],
   "published_history": [
-    {
-      "id": "q0012",
-      "yt_id": "DUoW6Qb4rws",
-      "title": "भारत में गांधीजी का पहला सत्याग्रह कहाँ हुआ? #shorts",
-      "day": 7,
-      "slot": 1
-    },
     {
       "id": "q0013",
       "yt_id": "qswBBVLDKnc",
@@ -221,8 +215,15 @@
       "title": "किस घटना ने असहयोग आंदोलन रोका? 🎯 Modern History GK #shorts",
       "day": 32,
       "slot": 1
+    },
+    {
+      "id": "q0064",
+      "yt_id": "CTXpdjvN7a8",
+      "title": "सीमान्त गांधी कौन थे? 🎯 GK Quiz for SSC, Railway #shorts",
+      "day": 32,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-11",
-  "published_today_count": 1
+  "published_today_count": 2
 }
