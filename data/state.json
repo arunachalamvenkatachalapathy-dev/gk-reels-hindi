@@ -1,5 +1,5 @@
 {
-  "next_index": 63,
+  "next_index": 64,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 5,
+  "palette_cursor": 0,
   "audio_cursor": 0,
-  "current_day": 31,
-  "current_slot": 2,
-  "total_published": 63,
+  "current_day": 32,
+  "current_slot": 1,
+  "total_published": 64,
   "published_ids": [
     "q0000",
     "q0001",
@@ -78,16 +78,10 @@
     "q0059",
     "q0060",
     "q0061",
-    "q0062"
+    "q0062",
+    "q0063"
   ],
   "published_history": [
-    {
-      "id": "q0011",
-      "yt_id": "eUjdyHgjtHs",
-      "title": "सुभाषचन्द्र बोस ने अंग्रेजों प्रश्नोत्तरी | Samanya Gyan #shorts",
-      "day": 6,
-      "slot": 2
-    },
     {
       "id": "q0012",
       "yt_id": "DUoW6Qb4rws",
@@ -220,8 +214,15 @@
       "title": "दिल्ली चलो का नारा किसने दिया? 🎯 GK Quiz for SSC, Railway #shorts",
       "day": 31,
       "slot": 2
+    },
+    {
+      "id": "q0063",
+      "yt_id": "TmmXIn8Rcqw",
+      "title": "किस घटना ने असहयोग आंदोलन रोका? 🎯 Modern History GK #shorts",
+      "day": 32,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-08",
-  "published_today_count": 2
+  "last_published_date": "2026-10-11",
+  "published_today_count": 1
 }
