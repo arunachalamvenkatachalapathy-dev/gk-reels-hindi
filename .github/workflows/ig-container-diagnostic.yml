@@ -1,0 +1,24 @@
+name: IG media container diagnostic (no publish)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  create-container:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create IG media container only
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: |
+          set +x
+          curl --silent --show-error --fail-with-body -X POST \
+            -F "video_url=https://test-videos.co.uk/vids/bigbuckbunny/mp4/h264/360/Big_Buck_Bunny_360_10s_1MB.mp4" \
+            -F "media_type=REELS" \
+            -F "caption=API publishing capability diagnostic; no public post" \
+            -F "access_token=$IG_ACCESS_TOKEN" \
+            "https://graph.facebook.com/v24.0/${IG_USER_ID}/media"
