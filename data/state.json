@@ -1,5 +1,5 @@
 {
-  "next_index": 65,
+  "next_index": 66,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 1,
+  "palette_cursor": 2,
   "audio_cursor": 0,
-  "current_day": 32,
-  "current_slot": 2,
-  "total_published": 65,
+  "current_day": 33,
+  "current_slot": 1,
+  "total_published": 66,
   "published_ids": [
     "q0000",
     "q0001",
@@ -80,16 +80,10 @@
     "q0061",
     "q0062",
     "q0063",
-    "q0064"
+    "q0064",
+    "q0065"
   ],
   "published_history": [
-    {
-      "id": "q0013",
-      "yt_id": "qswBBVLDKnc",
-      "title": "भारत छोड़ो आंदोलन कब शुरू हुआ? 🔥 GK Questions #shorts",
-      "day": 8,
-      "slot": 1
-    },
     {
       "id": "q0014",
       "yt_id": "fEnU4xksPnk",
@@ -222,8 +216,15 @@
       "title": "सीमान्त गांधी कौन थे? 🎯 GK Quiz for SSC, Railway #shorts",
       "day": 32,
       "slot": 2
+    },
+    {
+      "id": "q0065",
+      "yt_id": "jKkOzgg_cSE",
+      "title": "कांग्रेस की पहली महिला अध्यक्ष कौन? 🎯 GK Quiz for SSC, Railway #shorts",
+      "day": 33,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-11",
-  "published_today_count": 2
+  "last_published_date": "2026-10-12",
+  "published_today_count": 1
 }
