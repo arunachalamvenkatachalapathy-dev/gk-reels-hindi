@@ -1,0 +1,93 @@
+name: Publish reviewed GK Hindi video to Meta
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: "Successful publish.yml run ID whose video artifact you reviewed"
+        required: true
+        type: string
+      approved_caption:
+        description: "Exact Instagram and Facebook caption you reviewed"
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  publish-meta:
+    runs-on: ubuntu-24.04
+    environment: meta-publish
+    steps:
+      - name: Verify source run
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPOSITORY: ${{ github.repository }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+        run: |
+          python - <<'PY'
+          import json, os, re, urllib.request
+          repo = os.environ["GH_REPOSITORY"]
+          run_id = os.environ["SOURCE_RUN_ID"]
+          if not re.fullmatch(r"[0-9]+", run_id):
+              raise SystemExit("source_run_id must be a numeric GitHub Actions run ID")
+          req = urllib.request.Request(
+              f"https://api.github.com/repos/{repo}/actions/runs/{run_id}",
+              headers={"Authorization": f"Bearer {os.environ['GH_TOKEN']}", "Accept": "application/vnd.github+json"},
+          )
+          with urllib.request.urlopen(req) as response:
+              run = json.load(response)
+          if run.get("path") != ".github/workflows/publish.yml" or run.get("head_branch") != "main" or run.get("conclusion") != "success":
+              raise SystemExit("Source must be a successful publish.yml run from main")
+          print("Verified reviewed-video source run:", run_id)
+          PY
+
+      - name: Download video artifact from reviewed run
+        uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          run-id: ${{ inputs.source_run_id }}
+          name: gk-reels-hindi-video
+          path: output
+
+      - name: Verify exactly one nonempty video
+        run: |
+          set -euo pipefail
+          files=(output/*.mp4)
+          test "${#files[@]}" -eq 1
+          test -s "${files[0]}"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install upload dependency
+        run: pip install requests
+
+      - name: Publish approved candidate to Instagram and Facebook
+        env:
+          IG_ACCESS_TOKEN: ${{ secrets.IG_ACCESS_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
+          APPROVED_CAPTION: ${{ inputs.approved_caption }}
+        run: |
+          python - <<'PY'
+          import glob, os
+          from scripts.upload_instagram import upload_to_github_release, publish_reel
+          from scripts.upload_facebook import publish_facebook_reel
+
+          video = glob.glob("output/*.mp4")[0]
+          caption = os.environ["APPROVED_CAPTION"]
+          tag = "reviewed-" + os.path.basename(video).replace(".mp4", "")
+          video_url = upload_to_github_release(video, tag, os.path.basename(video))
+          _, instagram_permalink = publish_reel(video_url, caption)
+          facebook_id = publish_facebook_reel(video, os.path.basename(video), caption, public_url=video_url)
+          if not instagram_permalink or not facebook_id:
+              raise RuntimeError("One or both Meta destinations did not confirm publishing.")
+          print("Meta publishing confirmed; Instagram permalink:", instagram_permalink)
+          print("Facebook Reel ID:", facebook_id)
+          PY
