@@ -1,3 +1,8 @@
+# Safety: this workflow is manually dispatched only after Arun explicitly approves
+# the exact candidate video and caption in his WhatsApp conversation. The
+# required-reviewer environment is a final mechanical fail-safe, not a substitute
+# for that owner-channel approval. Scheduled publish.yml never references this
+# environment and keeps PAUSED_DESTINATIONS=instagram,facebook in place.
 name: Publish reviewed GK Hindi video to Meta
 
 on:
