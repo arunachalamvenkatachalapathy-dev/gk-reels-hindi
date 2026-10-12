@@ -13,6 +13,9 @@ DATA_PATH = os.path.join(BASE, "data", "questions_hi.json")
 STATE_PATH = os.path.join(BASE, "data", "state.json")
 OUT_DIR = os.path.join(BASE, "output")
 AUDIO_DIR = os.path.join(BASE, "assets", "audio")
+IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
+SLOT_OPENS = {1: datetime.time(6, 0), 2: datetime.time(15, 0)}
+MAX_DATE_SLOT_HISTORY = 60
 
 SLOT_TRACKS = {
     1: "slot1_one_answer_left.mp3",
@@ -63,6 +66,25 @@ def next_accent(state):
     return palette[c]
 
 
+def published_slots_for_date(state, today_ist, videos_per_day=2):
+    """Return completed slots for this IST date, migrating legacy sequential counts."""
+    by_date = state.get("published_slots_by_date") or {}
+    if today_ist in by_date:
+        return sorted({int(slot) for slot in by_date[today_ist] if 1 <= int(slot) <= videos_per_day})
+    if state.get("last_published_date") == today_ist:
+        count = max(0, min(videos_per_day, int(state.get("published_today_count", 0))))
+        return list(range(1, count + 1))
+    return []
+
+
+def next_due_slot(now_ist, published_slots, videos_per_day=2):
+    """Choose the earliest unpublished slot whose IST publishing window has opened."""
+    for slot in range(1, videos_per_day + 1):
+        if slot not in published_slots and now_ist.time().replace(tzinfo=None) >= SLOT_OPENS.get(slot, datetime.time(0, 0)):
+            return slot
+    return None
+
+
 def get_slot_track(slot):
     filename = SLOT_TRACKS.get(slot, "slot1_one_answer_left.mp3")
     path = os.path.join(AUDIO_DIR, filename)
@@ -93,65 +115,38 @@ def main():
     videos_per_day = state.get("videos_per_day", 2)
     now_ist = get_ist_now()
     today_ist = now_ist.date().isoformat()
-    hour_ist = now_ist.hour
     last_date = state.get("last_published_date")
     current_day = state.get("current_day", 1)
-    published_today = state.get("published_today_count", 0)
-
-    # Support manual override via CLI --force or env FORCE_PUBLISH=true
-    force = ("--force" in sys.argv) or (os.environ.get("FORCE_PUBLISH", "").lower() in ("true", "1"))
-
-    # ── CALENDAR-DATE & SLOT TIME-LOCKED PROGRESSION ─────────────────────────
-    # A new Day number only unlocks when the calendar date changes in IST.
     if last_date != today_ist:
-        # Brand new calendar day in India -> Advance day (if previously published), reset published count
         day = (current_day + 1) if (last_date is not None and state.get("total_published", 0) > 0) else current_day
-        published_today = 0
     else:
-        # Same calendar day in India
         day = current_day
 
-    if not force:
-        # Slot 1 is Morning (scheduled for 06:00 AM IST)
-        # Slot 2 is Afternoon (scheduled for 03:00 PM IST)
-        if hour_ist < 15:
-            # Morning window (before 3:00 PM IST): Only publish Slot 1
-            if published_today >= 1:
-                print(f"[Slot Lock] Morning Slot (Part 1/{videos_per_day}) for Day {day} already published today ({published_today} published).")
-                print(f"[Slot Lock] Afternoon Slot (Part 2) will publish after 03:00 PM IST. Exiting gracefully without error.")
-                return
-            slot = 1
-        else:
-            # Afternoon/Evening window (3:00 PM IST or later)
-            if published_today >= videos_per_day:
-                print(f"[Slot Lock] Daily quota of {videos_per_day} videos already reached for today ({today_ist}, Day {day}).")
-                print(f"[Slot Lock] Holding Day {day + 1} until tomorrow morning. Exiting gracefully without error.")
-                return
-            slot = published_today + 1
+    published_slots = published_slots_for_date(state, today_ist, videos_per_day)
+    published_today = len(published_slots)
+    pending = state.get("pending_publication")
+    if pending:
+        if pending.get("date") != today_ist:
+            raise RuntimeError("Unfinished publication from an earlier date; reconcile destinations before continuing.")
+        slot = int(pending["slot"])
+        if now_ist.time().replace(tzinfo=None) < SLOT_OPENS.get(slot, datetime.time(0, 0)):
+            print(f"Slot {slot} is not due yet; waiting for its IST window. Exiting gracefully without error.")
+            return
+        q = next((item for item in questions if item["id"] == pending["question_id"]), None)
+        if q is None:
+            raise RuntimeError("Pending question is missing from the bank; manual reconciliation required.")
+        day = pending["day"]
     else:
-        # Forced publish: calculate slot sequentially
-        if published_today >= videos_per_day:
-            day = current_day + 1
-            slot = 1
-            published_today = 0
-        else:
-            slot = published_today + 1
+        slot = next_due_slot(now_ist, published_slots, videos_per_day)
+        if slot is None:
+            print(f"No unpublished slot is due at {now_ist.strftime('%H:%M')} IST ({today_ist}). Exiting gracefully without error.")
+            return
+        q = pick_next_question(questions, state)
 
     if {"youtube", "instagram", "facebook"}.issubset(set(os.environ.get("PAUSED_DESTINATIONS", "").lower().split(","))):
         print("PAUSED: No active publishing destinations; question state unchanged.")
         return
 
-    # Non-repetition question pick
-    pending = state.get("pending_publication")
-    if pending:
-        if pending.get("date") != today_ist:
-            raise RuntimeError("Unfinished publication from an earlier date; reconcile destinations before continuing.")
-        q = next((item for item in questions if item["id"] == pending["question_id"]), None)
-        if q is None:
-            raise RuntimeError("Pending question is missing from the bank; manual reconciliation required.")
-        day, slot = pending["day"], pending["slot"]
-    else:
-        q = pick_next_question(questions, state)
     accent = next_accent(state)
     bg_music = get_slot_track(slot)
 
@@ -324,7 +319,12 @@ def main():
     state["videos_per_day"] = videos_per_day
     state["total_published"] = state.get("total_published", 0) + 1
     state["last_published_date"] = today_ist
-    state["published_today_count"] = published_today + 1
+    date_slots = set(published_slots_for_date(state, today_ist, videos_per_day))
+    date_slots.add(slot)
+    by_date = state.get("published_slots_by_date") or {}
+    by_date[today_ist] = sorted(date_slots)
+    state["published_slots_by_date"] = dict(sorted(by_date.items())[-MAX_DATE_SLOT_HISTORY:])
+    state["published_today_count"] = len(date_slots)
     state["current_day"] = day
     state["current_slot"] = slot
 
