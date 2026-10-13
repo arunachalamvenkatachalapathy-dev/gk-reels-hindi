@@ -6,14 +6,11 @@ on:
     # GH Actions schedule is best-effort. Offset retries every 5 minutes reduce gaps;
     # state gate still allows only the earliest due, unpublished slot per run.
     # Measurements are run-start observations; missed cron occurrences have no runner to measure.
-    # Morning IST window: 06:00-14:59. First check at 06:04 IST (00:34 UTC).
-    - cron: '34-59/5 0 * * *'
-    - cron: '4-59/5 1-8 * * *'
-    - cron: '4-29/5 9 * * *'
-    # Afternoon IST window: 15:00-18:59. First check at 15:04 IST (09:34 UTC).
-    - cron: '34-59/5 9 * * *'
-    - cron: '4-59/5 10-12 * * *'
-    - cron: '4-29/5 13 * * *'
+    # Morning IST window: 07:30-19:29. First retry at 07:34 IST (02:04 UTC).
+    - cron: '4-58/5 2-13 * * *'
+    # Evening IST window: 19:30-23:59. First retry at 19:34 IST (14:04 UTC).
+    - cron: '4-58/5 14-17 * * *'
+    - cron: '4-28/5 18 * * *'
 permissions:
   contents: write   # needed to commit data/state.json and create releases
 
@@ -45,7 +42,7 @@ jobs:
           from pathlib import Path
 
           IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
-          SLOT_OPENS = {1: dt.time(6, 0), 2: dt.time(15, 0)}
+          SLOT_OPENS = {1: dt.time(7, 30), 2: dt.time(19, 30)}
           now = dt.datetime.now(IST)
           today = now.date().isoformat()
           try:
@@ -140,7 +137,6 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           FISH_AUDIO_API_KEY: ${{ secrets.FISH_AUDIO_API_KEY }}
-          PAUSED_DESTINATIONS: instagram,facebook
           FORCE_PUBLISH: 'false'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
