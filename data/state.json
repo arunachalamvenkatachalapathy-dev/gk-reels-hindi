@@ -1,5 +1,5 @@
 {
-  "next_index": 66,
+  "next_index": 68,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 2,
+  "palette_cursor": 3,
   "audio_cursor": 0,
-  "current_day": 33,
+  "current_day": 34,
   "current_slot": 1,
-  "total_published": 66,
+  "total_published": 67,
   "published_ids": [
     "q0000",
     "q0001",
@@ -81,16 +81,10 @@
     "q0062",
     "q0063",
     "q0064",
-    "q0065"
+    "q0065",
+    "q0067"
   ],
   "published_history": [
-    {
-      "id": "q0014",
-      "yt_id": "fEnU4xksPnk",
-      "title": "स्वराज मेरा जन्मसिद्ध अधिकार है! SSC, UP Police GK #shorts",
-      "day": 8,
-      "slot": 2
-    },
     {
       "id": "q0015",
       "yt_id": "UW8aBGeuovE",
@@ -223,8 +217,20 @@
       "title": "कांग्रेस की पहली महिला अध्यक्ष कौन? 🎯 GK Quiz for SSC, Railway #shorts",
       "day": 33,
       "slot": 1
+    },
+    {
+      "id": "q0067",
+      "yt_id": "gFcKsEVFtF4",
+      "title": "संविधान में क्या है समवर्ती सूची? 🎯 GK Quiz in Hindi #shorts",
+      "day": 34,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-12",
-  "published_today_count": 1
+  "last_published_date": "2026-10-13",
+  "published_today_count": 1,
+  "published_slots_by_date": {
+    "2026-10-13": [
+      1
+    ]
+  }
 }
