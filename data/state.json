@@ -1,5 +1,5 @@
 {
-  "next_index": 68,
+  "next_index": 69,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
   "current_day": 34,
-  "current_slot": 1,
-  "total_published": 67,
+  "current_slot": 2,
+  "total_published": 68,
   "published_ids": [
     "q0000",
     "q0001",
@@ -82,16 +82,10 @@
     "q0063",
     "q0064",
     "q0065",
-    "q0067"
+    "q0067",
+    "q0068"
   ],
   "published_history": [
-    {
-      "id": "q0015",
-      "yt_id": "UW8aBGeuovE",
-      "title": "महात्मा गांधीजी के आंदोलन में किसने छोड़ी वकालत? 🧐 #shorts",
-      "day": 9,
-      "slot": 1
-    },
     {
       "id": "q0016",
       "yt_id": "uEVL-ESY73w",
@@ -224,13 +218,21 @@
       "title": "संविधान में क्या है समवर्ती सूची? 🎯 GK Quiz in Hindi #shorts",
       "day": 34,
       "slot": 1
+    },
+    {
+      "id": "q0068",
+      "yt_id": "W1k_o7eAd0g",
+      "title": "2 बार राष्ट्रपति बनने वाले एकमात्र भारतीय? 🔥 GK Quiz #shorts",
+      "day": 34,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-13",
-  "published_today_count": 1,
+  "published_today_count": 2,
   "published_slots_by_date": {
     "2026-10-13": [
-      1
+      1,
+      2
     ]
   }
 }
