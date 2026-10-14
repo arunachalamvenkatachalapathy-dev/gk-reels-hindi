@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
-  "current_day": 34,
-  "current_slot": 2,
-  "total_published": 68,
+  "current_day": 35,
+  "current_slot": 1,
+  "total_published": 69,
   "published_ids": [
     "q0000",
     "q0001",
@@ -83,7 +83,8 @@
     "q0064",
     "q0065",
     "q0067",
-    "q0068"
+    "q0068",
+    "q0070"
   ],
   "published_history": [
     {
@@ -227,22 +228,16 @@
       "slot": 1
     }
   ],
-  "last_published_date": "2026-10-13",
+  "last_published_date": "2026-10-14",
   "published_today_count": 2,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
       2
+    ],
+    "2026-10-14": [
+      1,
+      2
     ]
-  },
-  "pending_publication": {
-    "question_id": "q0070",
-    "date": "2026-10-14",
-    "day": 35,
-    "slot": 1,
-    "results": {
-      "youtube": "https://youtube.com/shorts/T7_ne0zPD_M",
-      "instagram": "https://www.instagram.com/reel/Ded9go1EXdN/"
-    }
   }
 }
