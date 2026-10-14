@@ -251,7 +251,7 @@ def main():
     yt_url = results.get("youtube")
     ig_url = results.get("instagram")
     fb_url = results.get("facebook")
-    have_facebook = all(os.environ.get(k) for k in ("IG_ACCESS_TOKEN", "FB_PAGE_ID")) and "facebook" not in paused_destinations
+    have_facebook = os.environ.get("ENABLE_FACEBOOK", "false").strip().lower() == "true" and all(os.environ.get(k) for k in ("IG_ACCESS_TOKEN", "FB_PAGE_ID")) and "facebook" not in paused_destinations
     expected = [name for name, enabled in (("youtube", have_youtube), ("instagram", have_instagram), ("facebook", have_facebook)) if enabled]
     if not expected:
         raise RuntimeError("No publishing destination has complete credentials; question remains unpublished.")
@@ -294,7 +294,7 @@ def main():
             if fb_id:
                 fb_url = f"https://www.facebook.com/reel/{fb_id}"
         except Exception as fe:
-            print(f"  Facebook Reels upload FAILED for {q['id']}: {fe}")
+            print(f"  Facebook Reels upload FAILED for {q['id']}: {type(fe).__name__} (details redacted)")
 
     results.update({name: url for name, url in (("youtube", yt_url), ("instagram", ig_url), ("facebook", fb_url)) if url})
     missing = [name for name in expected if not results.get(name)]
