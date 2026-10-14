@@ -1,5 +1,5 @@
 {
-  "next_index": 69,
+  "next_index": 71,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,7 +10,7 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 4,
+  "palette_cursor": 5,
   "audio_cursor": 0,
   "current_day": 34,
   "current_slot": 2,
@@ -86,13 +86,6 @@
     "q0068"
   ],
   "published_history": [
-    {
-      "id": "q0016",
-      "yt_id": "uEVL-ESY73w",
-      "title": "नमक सत्याग्रह का सच! क्या आप जानते हैं? 🧂 #shorts #gkquiz",
-      "day": 9,
-      "slot": 2
-    },
     {
       "id": "q0017",
       "yt_id": "Q-muUX6SiYw",
@@ -225,6 +218,13 @@
       "title": "2 बार राष्ट्रपति बनने वाले एकमात्र भारतीय? 🔥 GK Quiz #shorts",
       "day": 34,
       "slot": 2
+    },
+    {
+      "id": "q0070",
+      "yt_id": "T7_ne0zPD_M",
+      "title": "संविधान की प्रस्तावना किसने लिखी? 🎯 Polity GK Quiz #shorts",
+      "day": 35,
+      "slot": 1
     }
   ],
   "last_published_date": "2026-10-13",
@@ -234,5 +234,15 @@
       1,
       2
     ]
+  },
+  "pending_publication": {
+    "question_id": "q0070",
+    "date": "2026-10-14",
+    "day": 35,
+    "slot": 1,
+    "results": {
+      "youtube": "https://youtube.com/shorts/T7_ne0zPD_M",
+      "instagram": "https://www.instagram.com/reel/Ded9go1EXdN/"
+    }
   }
 }
