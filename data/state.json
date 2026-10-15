@@ -1,5 +1,5 @@
 {
-  "next_index": 71,
+  "next_index": 72,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,7 +10,7 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 4,
+  "palette_cursor": 5,
   "audio_cursor": 0,
   "current_day": 35,
   "current_slot": 1,
@@ -87,13 +87,6 @@
     "q0070"
   ],
   "published_history": [
-    {
-      "id": "q0017",
-      "yt_id": "Q-muUX6SiYw",
-      "title": "लंदन में भारत की आवाज़ किसने उठाई? 🤔 | GK Quiz | #shorts",
-      "day": 10,
-      "slot": 1
-    },
     {
       "id": "q0018",
       "yt_id": "y0PFIvTVU7I",
@@ -226,6 +219,13 @@
       "title": "संविधान की प्रस्तावना किसने लिखी? 🎯 Polity GK Quiz #shorts",
       "day": 35,
       "slot": 1
+    },
+    {
+      "id": "q0071",
+      "yt_id": "1xtUnY2-WdA",
+      "title": "दुनिया का पहला संविधान किसका है? 🎯 GK Quiz for SSC, Railway #shorts",
+      "day": 36,
+      "slot": 1
     }
   ],
   "last_published_date": "2026-10-14",
@@ -239,5 +239,15 @@
       1,
       2
     ]
+  },
+  "pending_publication": {
+    "question_id": "q0071",
+    "date": "2026-10-15",
+    "day": 36,
+    "slot": 1,
+    "results": {
+      "youtube": "https://youtube.com/shorts/1xtUnY2-WdA",
+      "instagram": "https://www.instagram.com/reel/DegugK1D_yH/"
+    }
   }
 }
