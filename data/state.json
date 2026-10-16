@@ -1,5 +1,5 @@
 {
-  "next_index": 72,
+  "next_index": 76,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 1,
+  "palette_cursor": 2,
   "audio_cursor": 0,
-  "current_day": 36,
+  "current_day": 37,
   "current_slot": 1,
-  "total_published": 70,
+  "total_published": 71,
   "published_ids": [
     "q0000",
     "q0001",
@@ -85,16 +85,10 @@
     "q0067",
     "q0068",
     "q0070",
-    "q0071"
+    "q0071",
+    "q0075"
   ],
   "published_history": [
-    {
-      "id": "q0018",
-      "yt_id": "y0PFIvTVU7I",
-      "title": "इलबर्ट बिल का सच! क्या आप जानते हैं? 🤔 #shorts",
-      "day": 10,
-      "slot": 2
-    },
     {
       "id": "q0019",
       "yt_id": "SC-b-9TBRJw",
@@ -227,9 +221,16 @@
       "title": "दुनिया का पहला संविधान किसका है? 🎯 GK Quiz for SSC, Railway #shorts",
       "day": 36,
       "slot": 1
+    },
+    {
+      "id": "q0075",
+      "yt_id": "Vi1DwwdGvmo",
+      "title": "राज्य लोक सेवा आयोग के सदस्य कौन नियुक्त करता है? 🚨 UP Police GK #shorts",
+      "day": 37,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-15",
+  "last_published_date": "2026-10-16",
   "published_today_count": 1,
   "published_slots_by_date": {
     "2026-10-13": [
@@ -241,6 +242,9 @@
       2
     ],
     "2026-10-15": [
+      1
+    ],
+    "2026-10-16": [
       1
     ]
   }
