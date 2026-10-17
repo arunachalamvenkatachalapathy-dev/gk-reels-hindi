@@ -1,5 +1,5 @@
 {
-  "next_index": 77,
+  "next_index": 78,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
-  "current_day": 37,
-  "current_slot": 2,
-  "total_published": 72,
+  "current_day": 38,
+  "current_slot": 1,
+  "total_published": 73,
   "published_ids": [
     "q0000",
     "q0001",
@@ -87,16 +87,10 @@
     "q0070",
     "q0071",
     "q0075",
-    "q0076"
+    "q0076",
+    "q0077"
   ],
   "published_history": [
-    {
-      "id": "q0020",
-      "yt_id": "mHCKzq5vRxw",
-      "title": "गांधी जी का अंग्रेजी अखबार? 99% लोग गलत जवाब देते हैं! #shorts",
-      "day": 10,
-      "slot": 4
-    },
     {
       "id": "q0021",
       "yt_id": "xAGMzhfqLkg",
@@ -229,10 +223,17 @@
       "title": "वित्त आयोग की नियुक्ति कौन करता है? 🎯 GK Quiz #shorts",
       "day": 37,
       "slot": 2
+    },
+    {
+      "id": "q0077",
+      "yt_id": "i0sIhjFXMgM",
+      "title": "राज्य सभा कब भंग होती है? 🚨 Polity GK Shorts #shorts",
+      "day": 38,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-16",
-  "published_today_count": 2,
+  "last_published_date": "2026-10-17",
+  "published_today_count": 1,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -248,6 +249,9 @@
     "2026-10-16": [
       1,
       2
+    ],
+    "2026-10-17": [
+      1
     ]
   }
 }
