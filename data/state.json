@@ -1,5 +1,5 @@
 {
-  "next_index": 78,
+  "next_index": 79,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 4,
+  "palette_cursor": 5,
   "audio_cursor": 0,
   "current_day": 38,
-  "current_slot": 1,
-  "total_published": 73,
+  "current_slot": 2,
+  "total_published": 74,
   "published_ids": [
     "q0000",
     "q0001",
@@ -88,16 +88,10 @@
     "q0071",
     "q0075",
     "q0076",
-    "q0077"
+    "q0077",
+    "q0078"
   ],
   "published_history": [
-    {
-      "id": "q0021",
-      "yt_id": "xAGMzhfqLkg",
-      "title": "फूट डालो राज करो! किस अंग्रेज ने अपनाई थी ये नीति? #shorts",
-      "day": 11,
-      "slot": 1
-    },
     {
       "id": "q0022",
       "yt_id": "ak2OZgPz5CQ",
@@ -230,10 +224,17 @@
       "title": "राज्य सभा कब भंग होती है? 🚨 Polity GK Shorts #shorts",
       "day": 38,
       "slot": 1
+    },
+    {
+      "id": "q0078",
+      "yt_id": "CSTrSbxs2K0",
+      "title": "मंत्रिपरिषद का जवाबदेह कौन? 🎯 Polity GK for SSC, Railway #shorts",
+      "day": 38,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-17",
-  "published_today_count": 1,
+  "published_today_count": 2,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -251,7 +252,8 @@
       2
     ],
     "2026-10-17": [
-      1
+      1,
+      2
     ]
   }
 }
