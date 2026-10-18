@@ -1,5 +1,5 @@
 {
-  "next_index": 80,
+  "next_index": 81,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 0,
+  "palette_cursor": 1,
   "audio_cursor": 0,
   "current_day": 39,
-  "current_slot": 1,
-  "total_published": 75,
+  "current_slot": 2,
+  "total_published": 76,
   "published_ids": [
     "q0000",
     "q0001",
@@ -90,16 +90,10 @@
     "q0076",
     "q0077",
     "q0078",
-    "q0079"
+    "q0079",
+    "q0080"
   ],
   "published_history": [
-    {
-      "id": "q0023",
-      "yt_id": "5ewiU6a66Hs",
-      "title": "सुभाषचन्द्र बोस ने कब छोड़ी कांग्रेस? #shorts #gkquiz",
-      "day": 12,
-      "slot": 1
-    },
     {
       "id": "q0024",
       "yt_id": "GzUoxUpf0F8",
@@ -232,10 +226,17 @@
       "title": "जर्मनी का एकीकरण कब हुआ? 🎯 World History GK #shorts",
       "day": 39,
       "slot": 1
+    },
+    {
+      "id": "q0080",
+      "yt_id": "h6tog5RgM7w",
+      "title": "अप्रैल थीसिस किसने लिखी? 🎯 Modern History GK #shorts",
+      "day": 39,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-18",
-  "published_today_count": 1,
+  "published_today_count": 2,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -257,7 +258,8 @@
       2
     ],
     "2026-10-18": [
-      1
+      1,
+      2
     ]
   }
 }
