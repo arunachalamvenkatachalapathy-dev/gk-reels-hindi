@@ -1,5 +1,5 @@
 {
-  "next_index": 79,
+  "next_index": 80,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 5,
+  "palette_cursor": 0,
   "audio_cursor": 0,
-  "current_day": 38,
-  "current_slot": 2,
-  "total_published": 74,
+  "current_day": 39,
+  "current_slot": 1,
+  "total_published": 75,
   "published_ids": [
     "q0000",
     "q0001",
@@ -89,16 +89,10 @@
     "q0075",
     "q0076",
     "q0077",
-    "q0078"
+    "q0078",
+    "q0079"
   ],
   "published_history": [
-    {
-      "id": "q0022",
-      "yt_id": "ak2OZgPz5CQ",
-      "title": "गदर पार्टी का मुख्यालय? 99% लोग गलत जवाब देते हैं! #shorts",
-      "day": 11,
-      "slot": 2
-    },
     {
       "id": "q0023",
       "yt_id": "5ewiU6a66Hs",
@@ -231,10 +225,17 @@
       "title": "मंत्रिपरिषद का जवाबदेह कौन? 🎯 Polity GK for SSC, Railway #shorts",
       "day": 38,
       "slot": 2
+    },
+    {
+      "id": "q0079",
+      "yt_id": "_TwYThJqNTY",
+      "title": "जर्मनी का एकीकरण कब हुआ? 🎯 World History GK #shorts",
+      "day": 39,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-17",
-  "published_today_count": 2,
+  "last_published_date": "2026-10-18",
+  "published_today_count": 1,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -254,6 +255,9 @@
     "2026-10-17": [
       1,
       2
+    ],
+    "2026-10-18": [
+      1
     ]
   }
 }
