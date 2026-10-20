@@ -1,5 +1,5 @@
 {
-  "next_index": 86,
+  "next_index": 87,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 4,
+  "palette_cursor": 5,
   "audio_cursor": 0,
   "current_day": 41,
-  "current_slot": 1,
-  "total_published": 79,
+  "current_slot": 2,
+  "total_published": 80,
   "published_ids": [
     "q0000",
     "q0001",
@@ -94,16 +94,10 @@
     "q0080",
     "q0081",
     "q0084",
-    "q0085"
+    "q0085",
+    "q0086"
   ],
   "published_history": [
-    {
-      "id": "q0027",
-      "yt_id": "i0PVTBsgmu0",
-      "title": "तराइन का पहला युद्ध किसने जीता? #shorts #gkquiz",
-      "day": 14,
-      "slot": 1
-    },
     {
       "id": "q0028",
       "yt_id": "LXJqAKepB1E",
@@ -236,10 +230,17 @@
       "title": "प्रथम मैसूर युद्ध किसके बीच हुआ? 🎯 GK Quiz for SSC, Railway #shorts",
       "day": 41,
       "slot": 1
+    },
+    {
+      "id": "q0086",
+      "yt_id": "YT5AiAIGLk0",
+      "title": "सती प्रथा बंद किसने की? 🎯 GK Quiz for SSC, Railway #shorts",
+      "day": 41,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-20",
-  "published_today_count": 1,
+  "published_today_count": 2,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -269,7 +270,8 @@
       2
     ],
     "2026-10-20": [
-      1
+      1,
+      2
     ]
   }
 }
