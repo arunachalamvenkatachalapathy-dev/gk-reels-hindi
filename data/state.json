@@ -1,5 +1,5 @@
 {
-  "next_index": 85,
+  "next_index": 86,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
-  "current_day": 40,
-  "current_slot": 2,
-  "total_published": 78,
+  "current_day": 41,
+  "current_slot": 1,
+  "total_published": 79,
   "published_ids": [
     "q0000",
     "q0001",
@@ -93,16 +93,10 @@
     "q0079",
     "q0080",
     "q0081",
-    "q0084"
+    "q0084",
+    "q0085"
   ],
   "published_history": [
-    {
-      "id": "q0026",
-      "yt_id": "vQWI3auRtrY",
-      "title": "इस शासक ने जैन मुनि की तरह त्याग दिया शरीर! 😱 #shorts",
-      "day": 13,
-      "slot": 2
-    },
     {
       "id": "q0027",
       "yt_id": "i0PVTBsgmu0",
@@ -235,10 +229,17 @@
       "title": "जलियाँवाला बाग हत्याकांड का जिम्मेदार कौन? 🎯 Modern History GK #shorts",
       "day": 40,
       "slot": 2
+    },
+    {
+      "id": "q0085",
+      "yt_id": "exR4yxDodJ8",
+      "title": "प्रथम मैसूर युद्ध किसके बीच हुआ? 🎯 GK Quiz for SSC, Railway #shorts",
+      "day": 41,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-19",
-  "published_today_count": 2,
+  "last_published_date": "2026-10-20",
+  "published_today_count": 1,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -266,6 +267,9 @@
     "2026-10-19": [
       1,
       2
+    ],
+    "2026-10-20": [
+      1
     ]
   }
 }
