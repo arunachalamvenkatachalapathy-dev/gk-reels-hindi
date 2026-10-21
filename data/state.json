@@ -1,5 +1,5 @@
 {
-  "next_index": 87,
+  "next_index": 88,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 5,
+  "palette_cursor": 0,
   "audio_cursor": 0,
-  "current_day": 41,
-  "current_slot": 2,
-  "total_published": 80,
+  "current_day": 42,
+  "current_slot": 1,
+  "total_published": 81,
   "published_ids": [
     "q0000",
     "q0001",
@@ -95,16 +95,10 @@
     "q0081",
     "q0084",
     "q0085",
-    "q0086"
+    "q0086",
+    "q0087"
   ],
   "published_history": [
-    {
-      "id": "q0028",
-      "yt_id": "LXJqAKepB1E",
-      "title": "बंगाल को मुगलों से किसने अलग किया? 🤔 #shorts #gkquiz",
-      "day": 14,
-      "slot": 2
-    },
     {
       "id": "q0061",
       "yt_id": "zxcwCMn7_t8",
@@ -237,10 +231,17 @@
       "title": "सती प्रथा बंद किसने की? 🎯 GK Quiz for SSC, Railway #shorts",
       "day": 41,
       "slot": 2
+    },
+    {
+      "id": "q0087",
+      "yt_id": "j27uy0s8D-U",
+      "title": "म्यांमार भारत से कब अलग हुआ? 🎯 British India GK #shorts",
+      "day": 42,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-20",
-  "published_today_count": 2,
+  "last_published_date": "2026-10-21",
+  "published_today_count": 1,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -272,6 +273,9 @@
     "2026-10-20": [
       1,
       2
+    ],
+    "2026-10-21": [
+      1
     ]
   }
 }
