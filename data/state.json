@@ -1,5 +1,5 @@
 {
-  "next_index": 88,
+  "next_index": 89,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 0,
+  "palette_cursor": 1,
   "audio_cursor": 0,
   "current_day": 42,
-  "current_slot": 1,
-  "total_published": 81,
+  "current_slot": 2,
+  "total_published": 82,
   "published_ids": [
     "q0000",
     "q0001",
@@ -96,16 +96,10 @@
     "q0084",
     "q0085",
     "q0086",
-    "q0087"
+    "q0087",
+    "q0088"
   ],
   "published_history": [
-    {
-      "id": "q0061",
-      "yt_id": "zxcwCMn7_t8",
-      "title": "1905 में ये सोसाइटी किसने शुरू की? 🚨 GK for SSC/Railway #shorts",
-      "day": 31,
-      "slot": 1
-    },
     {
       "id": "q0062",
       "yt_id": "cN-cd1zqqsU",
@@ -238,10 +232,17 @@
       "title": "म्यांमार भारत से कब अलग हुआ? 🎯 British India GK #shorts",
       "day": 42,
       "slot": 1
+    },
+    {
+      "id": "q0088",
+      "yt_id": "b3VkWPk8ZTQ",
+      "title": "अलीगढ़ मुस्लिम यूनिवर्सिटी के संस्थापक कौन? 🎯 GK Quiz #shorts",
+      "day": 42,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-21",
-  "published_today_count": 1,
+  "published_today_count": 2,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -275,7 +276,8 @@
       2
     ],
     "2026-10-21": [
-      1
+      1,
+      2
     ]
   }
 }
