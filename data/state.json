@@ -1,5 +1,5 @@
 {
-  "next_index": 90,
+  "next_index": 93,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 2,
+  "palette_cursor": 3,
   "audio_cursor": 0,
   "current_day": 43,
-  "current_slot": 1,
-  "total_published": 83,
+  "current_slot": 2,
+  "total_published": 84,
   "published_ids": [
     "q0000",
     "q0001",
@@ -98,16 +98,10 @@
     "q0086",
     "q0087",
     "q0088",
-    "q0089"
+    "q0089",
+    "q0092"
   ],
   "published_history": [
-    {
-      "id": "q0063",
-      "yt_id": "TmmXIn8Rcqw",
-      "title": "किस घटना ने असहयोग आंदोलन रोका? 🎯 Modern History GK #shorts",
-      "day": 32,
-      "slot": 1
-    },
     {
       "id": "q0064",
       "yt_id": "CTXpdjvN7a8",
@@ -240,10 +234,17 @@
       "title": "प्रथम विश्व युद्ध में भारत का मशहूर आंदोलन? 🎯 GK Quiz #shorts",
       "day": 43,
       "slot": 1
+    },
+    {
+      "id": "q0092",
+      "yt_id": "TW9jUOay4So",
+      "title": "वैदिक गणित का सबसे महत्वपूर्ण अंग? 🔥 Vedic Math GK #shorts",
+      "day": 43,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-22",
-  "published_today_count": 1,
+  "published_today_count": 2,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -281,7 +282,8 @@
       2
     ],
     "2026-10-22": [
-      1
+      1,
+      2
     ]
   }
 }
