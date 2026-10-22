@@ -1,5 +1,5 @@
 {
-  "next_index": 89,
+  "next_index": 90,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 1,
+  "palette_cursor": 2,
   "audio_cursor": 0,
-  "current_day": 42,
-  "current_slot": 2,
-  "total_published": 82,
+  "current_day": 43,
+  "current_slot": 1,
+  "total_published": 83,
   "published_ids": [
     "q0000",
     "q0001",
@@ -97,16 +97,10 @@
     "q0085",
     "q0086",
     "q0087",
-    "q0088"
+    "q0088",
+    "q0089"
   ],
   "published_history": [
-    {
-      "id": "q0062",
-      "yt_id": "cN-cd1zqqsU",
-      "title": "दिल्ली चलो का नारा किसने दिया? 🎯 GK Quiz for SSC, Railway #shorts",
-      "day": 31,
-      "slot": 2
-    },
     {
       "id": "q0063",
       "yt_id": "TmmXIn8Rcqw",
@@ -239,10 +233,17 @@
       "title": "अलीगढ़ मुस्लिम यूनिवर्सिटी के संस्थापक कौन? 🎯 GK Quiz #shorts",
       "day": 42,
       "slot": 2
+    },
+    {
+      "id": "q0089",
+      "yt_id": "cwIw8b6IED0",
+      "title": "प्रथम विश्व युद्ध में भारत का मशहूर आंदोलन? 🎯 GK Quiz #shorts",
+      "day": 43,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-21",
-  "published_today_count": 2,
+  "last_published_date": "2026-10-22",
+  "published_today_count": 1,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -278,6 +279,9 @@
     "2026-10-21": [
       1,
       2
+    ],
+    "2026-10-22": [
+      1
     ]
   }
 }
