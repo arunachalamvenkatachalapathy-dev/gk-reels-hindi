@@ -1,5 +1,5 @@
 {
-  "next_index": 93,
+  "next_index": 94,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 3,
+  "palette_cursor": 4,
   "audio_cursor": 0,
-  "current_day": 43,
-  "current_slot": 2,
-  "total_published": 84,
+  "current_day": 44,
+  "current_slot": 1,
+  "total_published": 85,
   "published_ids": [
     "q0000",
     "q0001",
@@ -99,16 +99,10 @@
     "q0087",
     "q0088",
     "q0089",
-    "q0092"
+    "q0092",
+    "q0093"
   ],
   "published_history": [
-    {
-      "id": "q0064",
-      "yt_id": "CTXpdjvN7a8",
-      "title": "सीमान्त गांधी कौन थे? 🎯 GK Quiz for SSC, Railway #shorts",
-      "day": 32,
-      "slot": 2
-    },
     {
       "id": "q0065",
       "yt_id": "jKkOzgg_cSE",
@@ -241,10 +235,17 @@
       "title": "वैदिक गणित का सबसे महत्वपूर्ण अंग? 🔥 Vedic Math GK #shorts",
       "day": 43,
       "slot": 2
+    },
+    {
+      "id": "q0093",
+      "yt_id": "uVuqcAEko-A",
+      "title": "प्राचीन संस्कृति का राज़ किस वेद में? 🎯 Vedic GK Quiz #shorts",
+      "day": 44,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-22",
-  "published_today_count": 2,
+  "last_published_date": "2026-10-23",
+  "published_today_count": 1,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -284,6 +285,9 @@
     "2026-10-22": [
       1,
       2
+    ],
+    "2026-10-23": [
+      1
     ]
   }
 }
