@@ -67,7 +67,6 @@ class PublicationTests(unittest.TestCase):
         seo = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
         yt = types.SimpleNamespace(upload_short=lambda *a, **k: "video-id", get_youtube_client=lambda: None)
         ig = types.SimpleNamespace(upload_to_github_release=lambda *a: "https://example.invalid/video", publish_reel=lambda *a: (None, None))
-        seo = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
         fb = types.SimpleNamespace(publish_facebook_reel=lambda *a, **k: None)
         env = {k:"test" for k in ["YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN", "IG_ACCESS_TOKEN", "IG_USER_ID", "GITHUB_TOKEN", "GITHUB_REPOSITORY", "FB_PAGE_ID"]}
         with self.assertRaises(RuntimeError):
@@ -78,7 +77,6 @@ class PublicationTests(unittest.TestCase):
     def test_facebook_is_disabled_without_explicit_enable_flag(self):
         seo = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
         yt = types.SimpleNamespace(upload_short=lambda *a, **k: "video-id", get_youtube_client=lambda: None)
-        seo = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
         fb = types.SimpleNamespace(publish_facebook_reel=lambda *a, **k: self.fail("Facebook must stay disabled by default"))
         env = {k: "test" for k in ["YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN", "IG_ACCESS_TOKEN", "FB_PAGE_ID"]}
         self.run_main({"seo_agent": seo, "upload_youtube": yt, "upload_facebook": fb}, env)
