@@ -274,89 +274,10 @@ def detect_topic_hi(question_text):
     )
 
 
-def query_gemini_ai_agent_hi(question_text, options, topic_name, day, slot):
-    """
-    Calls Google Gemini 3.6 Flash foundation model to act as the Senior Hindi Creative & SEO Agent.
-    Generates high-CTR mobile title in Hindi/Hinglish, platform-specific hooks, and targeted search tags.
-    """
-    api_key = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or "").strip()
-    if not api_key:
-        return None
-
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={api_key}"
-
-    prompt = f"""You are an elite YouTube Shorts & Reels SEO Agent specializing in Hindi Indian competitive exams (SSC GD, UP Police Constable, RRB NTPC, BPSC, UPSC Hindi).
-Analyze this Hindi question and produce high-reach, viral, search-optimized metadata in valid JSON.
-
-Question: "{question_text}"
-Options: {json.dumps(options, ensure_ascii=False)}
-Topic: "{topic_name}"
-Language: Hindi
-Day: {day}, Slot: {slot}
-
-Rules:
-1. "title": MUST be strictly <= 68 characters including "#shorts". Use a BILINGUAL HYBRID format: combine an intriguing Hindi/Hinglish curiosity hook with high-volume English search keywords (e.g. "नमक सत्याग्रह का सच! 😱 Modern History GK #shorts" or "नेताजी ने कांग्रेस कब छोड़ी? 🎯 Modern History GK #shorts"). Never output pure Devanagari titles without English search keywords.
-2. "tags": 15-20 highly relevant Hindi & Hinglish search tags for competitive exams.
-3. "yt_hook": An intriguing, curiosity-driven 1-sentence hook in Hindi for YouTube Shorts description.
-4. "yt_fact": A 1-2 sentence high-yield exam concept explanation in Hindi.
-5. "ig_hook": High-retention Hindi 1-2 sentence hook for Instagram Reels.
-6. "fb_hook": Engaging conversational discussion prompt in Hindi for Facebook Page Reels.
-
-Respond ONLY with a valid JSON object:
-{{
-  "entity": "...",
-  "title": "...",
-  "tags": ["..."],
-  "yt_hook": "...",
-  "yt_fact": "...",
-  "ig_hook": "...",
-  "fb_hook": "..."
-}}"""
-
-    try:
-        resp = requests.post(
-            url,
-            json={
-                "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": {
-                    "response_mime_type": "application/json",
-                    "temperature": 0.3
-                }
-            },
-            timeout=25
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            raw_text = data["candidates"][0]["content"]["parts"][0]["text"]
-            parsed = json.loads(raw_text)
-
-            title = parsed.get("title", "").strip()
-            title = re.sub(r'[\*\"\_]', '', title).strip()
-            if "#Shorts" not in title and "#shorts" not in title:
-                if len(title) + 8 <= 68:
-                    title = f"{title} #shorts"
-                else:
-                    title = f"{title[:59].rsplit(' ', 1)[0]} #shorts"
-            if len(title) > 68:
-                tag = "#shorts" if "#shorts" in title else "#Shorts"
-                base = title.replace(tag, "").strip()
-                title = f"{base[:68 - len(tag) - 1].rsplit(' ', 1)[0]} {tag}"
-
-            parsed["title"] = title
-            print(f"[SEO Super Agent Hindi] 🤖 Gemini AI Agent generated title ({len(title)} chars): {title}")
-            return parsed
-        else:
-            print(f"[SEO Super Agent Hindi] Gemini API returned status {resp.status_code}: {resp.text[:120]}")
-    except Exception as ge:
-        print(f"[SEO Super Agent Hindi] Notice: Gemini AI Agent query encountered: {ge}. Using rule-based fallback.")
-
-    return None
-
-
 def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_history=None):
     """
     Overhauled Hindi SEO Generator:
-    First leverages Google Gemini Foundation Model AI Agent; falls back to rule-based engine if offline.
+    Uses the configured OpenRouter viral package; any generation failure stops the pipeline.
     """
     audit = {}
     if yt_client and published_history:
