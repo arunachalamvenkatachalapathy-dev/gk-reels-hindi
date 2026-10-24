@@ -7,12 +7,7 @@ import re
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "").strip().strip('"\'')
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "").strip().strip('"\'')
 
-OPENROUTER_MODELS = [
-    "deepseek/deepseek-chat",
-    "meta-llama/llama-3.3-70b-instruct",
-    "google/gemini-2.5-flash",
-    "openai/gpt-4o-mini",
-]
+OPENROUTER_MODEL = "deepseek/deepseek-chat"  # single approved route; no automatic model/provider fallback
 
 
 def clean_hindi_text(text):
@@ -42,7 +37,7 @@ def clean_hindi_text(text):
 
 def call_openrouter(prompt, system_prompt="You are a viral YouTube Shorts and Instagram Reels algorithm expert."):
     if not OPENROUTER_API_KEY:
-        return None
+        raise RuntimeError("OpenRouter API key is missing; stopping without fallback.")
 
     headers = {
         "Authorization": f"Bearer {OPENROUTER_API_KEY}",
@@ -50,59 +45,31 @@ def call_openrouter(prompt, system_prompt="You are a viral YouTube Shorts and In
         "HTTP-Referer": "https://github.com/arunachalamvenkatachalapathy-dev/gk-reels-hindi",
         "X-Title": "GK Reels Hindi Viral Engine"
     }
-
-    for model in OPENROUTER_MODELS:
-        payload = {
-            "model": model,
-            "messages": [
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt}
-            ],
-            "temperature": 0.4,
-            "max_tokens": 800,
-            "response_format": {"type": "json_object"}
-        }
-        try:
-            resp = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload, timeout=20)
-            if resp.status_code == 200:
-                res = resp.json()
-                content = res["choices"][0]["message"]["content"]
-                return json.loads(content)
-            else:
-                print(f"[AI Engine] Model {model} returned HTTP {resp.status_code}: {resp.text[:100]}")
-        except Exception as e:
-            print(f"[AI Engine] Error with model {model}: {e}")
-            continue
-
-    return None
-
-
-def call_gemini_fallback(prompt):
-    key = GEMINI_API_KEY or os.environ.get("GOOGLE_API_KEY", "").strip().strip('"\'')
-    if not key:
-        return None
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={key}"
+    payload = {
+        "model": OPENROUTER_MODEL,
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.4,
+        "max_tokens": 800,
+        "response_format": {"type": "json_object"}
+    }
     try:
-        resp = requests.post(
-            url,
-            json={
-                "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": {
-                    "response_mime_type": "application/json",
-                    "temperature": 0.3
-                }
-            },
-            timeout=20
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            raw_text = data["candidates"][0]["content"]["parts"][0]["text"]
-            return json.loads(raw_text)
-        else:
-            print(f"[AI Engine] Gemini returned HTTP {resp.status_code}: {resp.text[:100]}")
-    except Exception as ge:
-        print(f"[AI Engine] Gemini fallback error: {ge}")
-    return None
+        resp = requests.post("https://openrouter.ai/api/v1/chat/completions", headers=headers, json=payload, timeout=20)
+    except Exception as exc:
+        raise RuntimeError(f"OpenRouter request failed for {OPENROUTER_MODEL}; stopping without fallback.") from exc
+    if resp.status_code != 200:
+        # Do not print response bodies; API errors can contain account/billing details.
+        raise RuntimeError(f"OpenRouter model {OPENROUTER_MODEL} returned HTTP {resp.status_code}; stopping without fallback.")
+    try:
+        content = resp.json()["choices"][0]["message"]["content"]
+        result = json.loads(content)
+    except Exception as exc:
+        raise RuntimeError(f"OpenRouter model {OPENROUTER_MODEL} returned invalid JSON; stopping without fallback.") from exc
+    if not isinstance(result, dict) or not result.get("title") or not result.get("viral_hook"):
+        raise RuntimeError(f"OpenRouter model {OPENROUTER_MODEL} returned an incomplete package; stopping without fallback.")
+    return result
 
 
 def generate_viral_package(q, day, slot, language="English"):
@@ -149,43 +116,7 @@ Output ONLY a JSON object with these exact keys:
   "short_fact": "A punchy 1-sentence fascinating fact explaining the correct answer"
 }}"""
 
-    # 1. Try OpenRouter first
+    # Single approved route. Any failure stops generation and publication.
     res = call_openrouter(prompt)
-    if res and res.get("title") and res.get("viral_hook"):
-        print(f"[AI Engine] Generated viral package via OpenRouter for {q.get('id')}")
-        return res
-
-    # 2. Try Gemini fallback
-    res = call_gemini_fallback(prompt)
-    if res and res.get("title") and res.get("viral_hook"):
-        print(f"[AI Engine] Generated viral package via Gemini for {q.get('id')}")
-        return res
-
-    # 3. Rule-based fallback
-    print(f"[AI Engine] Using rule-based viral fallback for {q.get('id')}")
-    if language.lower() == "hindi":
-        clean_q = re.sub(r'[\?।!:,]+$', '', q_text).strip()
-        if len(clean_q) <= 35:
-            fall_title = f"{clean_q}? 🎯 Exam GK Quiz #shorts"
-        else:
-            fall_title = f"{clean_q[:32].rsplit(' ', 1)[0]}... 🎯 Exam GK #shorts"
-        return {
-            "viral_hook": "क्या आप सही उत्तर जानते हैं?",
-            "title": fall_title,
-            "badge_text": "आज का GK सवाल",
-            "tags": [
-                "GK in Hindi", "सामान्य ज्ञान", "Hindi GK Questions", "GK Quiz Hindi",
-                "SSC GD GK 2026", "UP Police GK", "RRB NTPC GK", "Lucent GK in Hindi", "Shorts"
-            ],
-            "pinned_comment": "Comment your answer below.",
-            "short_fact": f"सही उत्तर '{correct_opt}' है।"
-        }
-    else:
-        return {
-            "viral_hook": "Can you answer this quick quiz?",
-            "title": f"{q_text[:45]} 🎯 Daily GK Quiz #Shorts",
-            "badge_text": "DAILY GK QUIZ",
-            "tags": ["gk quiz", "general knowledge", "trivia", "shorts", "upsc gk"],
-            "pinned_comment": f"Did you get it right before the timer? Drop your answer below! 👇",
-            "short_fact": f"The correct answer is {correct_opt}."
-        }
+    print(f"[AI Engine] Generated viral package via {OPENROUTER_MODEL} for {q.get('id')}")
+    return res
