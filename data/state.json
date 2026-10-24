@@ -1,5 +1,5 @@
 {
-  "next_index": 95,
+  "next_index": 96,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 5,
+  "palette_cursor": 0,
   "audio_cursor": 0,
-  "current_day": 44,
-  "current_slot": 2,
-  "total_published": 86,
+  "current_day": 45,
+  "current_slot": 1,
+  "total_published": 87,
   "published_ids": [
     "q0000",
     "q0001",
@@ -101,16 +101,10 @@
     "q0089",
     "q0092",
     "q0093",
-    "q0094"
+    "q0094",
+    "q0095"
   ],
   "published_history": [
-    {
-      "id": "q0067",
-      "yt_id": "gFcKsEVFtF4",
-      "title": "संविधान में क्या है समवर्ती सूची? 🎯 GK Quiz in Hindi #shorts",
-      "day": 34,
-      "slot": 1
-    },
     {
       "id": "q0068",
       "yt_id": "W1k_o7eAd0g",
@@ -243,10 +237,17 @@
       "title": "ऋग्वैदिक आर्यों का व्यवसाय? 🎯 SSC GK #shorts",
       "day": 44,
       "slot": 2
+    },
+    {
+      "id": "q0095",
+      "yt_id": "UO3zYILBZEQ",
+      "title": "भारतीय संगीत का आदिग्रंथ? 🎵 SSC GK #shorts",
+      "day": 45,
+      "slot": 1
     }
   ],
-  "last_published_date": "2026-10-23",
-  "published_today_count": 2,
+  "last_published_date": "2026-10-24",
+  "published_today_count": 1,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -290,6 +291,9 @@
     "2026-10-23": [
       1,
       2
+    ],
+    "2026-10-24": [
+      1
     ]
   }
 }
