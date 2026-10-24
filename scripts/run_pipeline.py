@@ -202,7 +202,7 @@ def main():
         print(f"  [SEO Agent Hindi] Optimized Title: {seo_data['title']}")
         print(f"  [SEO Agent Hindi] Tags: {len(seo_data['tags'])} tags generated")
     except Exception as se:
-        print(f"  [SEO Agent Hindi] Fallback to standard metadata due to: {se}")
+        raise RuntimeError("Hindi metadata generation failed; refusing to render or publish with fallback metadata.") from se
 
     viral_badge = None
     pinned_comment = None
