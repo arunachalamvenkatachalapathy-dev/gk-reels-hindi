@@ -1,5 +1,5 @@
 {
-  "next_index": 96,
+  "next_index": 97,
   "videos_per_run": 1,
   "videos_per_day": 2,
   "palette": [
@@ -10,11 +10,11 @@
     "#A66DD4",
     "#FF9F45"
   ],
-  "palette_cursor": 0,
+  "palette_cursor": 1,
   "audio_cursor": 0,
   "current_day": 45,
-  "current_slot": 1,
-  "total_published": 87,
+  "current_slot": 2,
+  "total_published": 88,
   "published_ids": [
     "q0000",
     "q0001",
@@ -102,16 +102,10 @@
     "q0092",
     "q0093",
     "q0094",
-    "q0095"
+    "q0095",
+    "q0096"
   ],
   "published_history": [
-    {
-      "id": "q0068",
-      "yt_id": "W1k_o7eAd0g",
-      "title": "2 बार राष्ट्रपति बनने वाले एकमात्र भारतीय? 🔥 GK Quiz #shorts",
-      "day": 34,
-      "slot": 2
-    },
     {
       "id": "q0070",
       "yt_id": "T7_ne0zPD_M",
@@ -244,10 +238,17 @@
       "title": "भारतीय संगीत का आदिग्रंथ? 🎵 SSC GK #shorts",
       "day": 45,
       "slot": 1
+    },
+    {
+      "id": "q0096",
+      "yt_id": "1Me1v9nLRNo",
+      "title": "प्रथम विधि निर्माता कौन? 🎯 SSC GK #shorts",
+      "day": 45,
+      "slot": 2
     }
   ],
   "last_published_date": "2026-10-24",
-  "published_today_count": 1,
+  "published_today_count": 2,
   "published_slots_by_date": {
     "2026-10-13": [
       1,
@@ -293,7 +294,8 @@
       2
     ],
     "2026-10-24": [
-      1
+      1,
+      2
     ]
   }
 }
