@@ -391,31 +391,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         else:
             tags = None
     else:
-        # No silent secondary provider or rule-based fallback.
         raise RuntimeError("Hindi viral package unavailable; stopping without fallback.")
-        if ai_result and ai_result.get("title"):
-            title = ai_result["title"]
-            entity = ai_result.get("entity", topic_name)
-            yt_hook = ai_result.get("yt_hook")
-            yt_fact = ai_result.get("yt_fact")
-            viral_badge = ai_result.get("badge_text", "आज का GK सवाल")
-            pinned_comment = ai_result.get("pinned_comment")
-            ig_hook = ai_result.get("ig_hook")
-            fb_hook = ai_result.get("fb_hook")
-            ai_tags = ai_result.get("tags")
-            if ai_tags and isinstance(ai_tags, list):
-                tags = list(dict.fromkeys(ai_tags + UNIVERSAL_TAGS_HI))[:20]
-            else:
-                tags = None
-        else:
-            title, entity = format_smart_title_hi(q, day, slot, topic_name=topic_name)
-            viral_badge = "आज का GK सवाल"
-            pinned_comment = "Comment your answer below."
-            yt_hook = None
-            yt_fact = None
-            ig_hook = None
-            fb_hook = None
-            tags = None
 
     # Always ensure pinned comment includes the high-converting Outro CTA
     if not pinned_comment or "GUIDE" not in pinned_comment:
