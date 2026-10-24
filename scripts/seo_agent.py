@@ -274,89 +274,10 @@ def detect_topic_hi(question_text):
     )
 
 
-def query_gemini_ai_agent_hi(question_text, options, topic_name, day, slot):
-    """
-    Calls Google Gemini 3.6 Flash foundation model to act as the Senior Hindi Creative & SEO Agent.
-    Generates high-CTR mobile title in Hindi/Hinglish, platform-specific hooks, and targeted search tags.
-    """
-    api_key = (os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY") or "").strip()
-    if not api_key:
-        return None
-
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key={api_key}"
-
-    prompt = f"""You are an elite YouTube Shorts & Reels SEO Agent specializing in Hindi Indian competitive exams (SSC GD, UP Police Constable, RRB NTPC, BPSC, UPSC Hindi).
-Analyze this Hindi question and produce high-reach, viral, search-optimized metadata in valid JSON.
-
-Question: "{question_text}"
-Options: {json.dumps(options, ensure_ascii=False)}
-Topic: "{topic_name}"
-Language: Hindi
-Day: {day}, Slot: {slot}
-
-Rules:
-1. "title": MUST be strictly <= 68 characters including "#shorts". Use a BILINGUAL HYBRID format: combine an intriguing Hindi/Hinglish curiosity hook with high-volume English search keywords (e.g. "नमक सत्याग्रह का सच! 😱 Modern History GK #shorts" or "नेताजी ने कांग्रेस कब छोड़ी? 🎯 Modern History GK #shorts"). Never output pure Devanagari titles without English search keywords.
-2. "tags": 15-20 highly relevant Hindi & Hinglish search tags for competitive exams.
-3. "yt_hook": An intriguing, curiosity-driven 1-sentence hook in Hindi for YouTube Shorts description.
-4. "yt_fact": A 1-2 sentence high-yield exam concept explanation in Hindi.
-5. "ig_hook": High-retention Hindi 1-2 sentence hook for Instagram Reels.
-6. "fb_hook": Engaging conversational discussion prompt in Hindi for Facebook Page Reels.
-
-Respond ONLY with a valid JSON object:
-{{
-  "entity": "...",
-  "title": "...",
-  "tags": ["..."],
-  "yt_hook": "...",
-  "yt_fact": "...",
-  "ig_hook": "...",
-  "fb_hook": "..."
-}}"""
-
-    try:
-        resp = requests.post(
-            url,
-            json={
-                "contents": [{"parts": [{"text": prompt}]}],
-                "generationConfig": {
-                    "response_mime_type": "application/json",
-                    "temperature": 0.3
-                }
-            },
-            timeout=25
-        )
-        if resp.status_code == 200:
-            data = resp.json()
-            raw_text = data["candidates"][0]["content"]["parts"][0]["text"]
-            parsed = json.loads(raw_text)
-
-            title = parsed.get("title", "").strip()
-            title = re.sub(r'[\*\"\_]', '', title).strip()
-            if "#Shorts" not in title and "#shorts" not in title:
-                if len(title) + 8 <= 68:
-                    title = f"{title} #shorts"
-                else:
-                    title = f"{title[:59].rsplit(' ', 1)[0]} #shorts"
-            if len(title) > 68:
-                tag = "#shorts" if "#shorts" in title else "#Shorts"
-                base = title.replace(tag, "").strip()
-                title = f"{base[:68 - len(tag) - 1].rsplit(' ', 1)[0]} {tag}"
-
-            parsed["title"] = title
-            print(f"[SEO Super Agent Hindi] 🤖 Gemini AI Agent generated title ({len(title)} chars): {title}")
-            return parsed
-        else:
-            print(f"[SEO Super Agent Hindi] Gemini API returned status {resp.status_code}: {resp.text[:120]}")
-    except Exception as ge:
-        print(f"[SEO Super Agent Hindi] Notice: Gemini AI Agent query encountered: {ge}. Using rule-based fallback.")
-
-    return None
-
-
 def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_history=None):
     """
     Overhauled Hindi SEO Generator:
-    First leverages Google Gemini Foundation Model AI Agent; falls back to rule-based engine if offline.
+    Uses the configured OpenRouter viral package; any generation failure stops the pipeline.
     """
     audit = {}
     if yt_client and published_history:
@@ -371,8 +292,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         from ai_engine import generate_viral_package
         viral_pkg = generate_viral_package(q, day, slot, language="Hindi")
     except Exception as e:
-        print(f"[SEO Agent Hindi] OpenRouter viral package generation failed: {e}")
-        viral_pkg = None
+        raise RuntimeError("Hindi viral-package generation failed; stopping without fallback.") from e
 
     viral_badge = None
     pinned_comment = None
@@ -392,31 +312,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         else:
             tags = None
     else:
-        # Try Gemini AI Agent next
-        ai_result = query_gemini_ai_agent_hi(question_text, options, topic_name, day, slot)
-        if ai_result and ai_result.get("title"):
-            title = ai_result["title"]
-            entity = ai_result.get("entity", topic_name)
-            yt_hook = ai_result.get("yt_hook")
-            yt_fact = ai_result.get("yt_fact")
-            viral_badge = ai_result.get("badge_text", "आज का GK सवाल")
-            pinned_comment = ai_result.get("pinned_comment")
-            ig_hook = ai_result.get("ig_hook")
-            fb_hook = ai_result.get("fb_hook")
-            ai_tags = ai_result.get("tags")
-            if ai_tags and isinstance(ai_tags, list):
-                tags = list(dict.fromkeys(ai_tags + UNIVERSAL_TAGS_HI))[:20]
-            else:
-                tags = None
-        else:
-            title, entity = format_smart_title_hi(q, day, slot, topic_name=topic_name)
-            viral_badge = "आज का GK सवाल"
-            pinned_comment = "Comment your answer below."
-            yt_hook = None
-            yt_fact = None
-            ig_hook = None
-            fb_hook = None
-            tags = None
+        raise RuntimeError("Hindi viral package unavailable; stopping without fallback.")
 
     # Always ensure pinned comment includes the high-converting Outro CTA
     if not pinned_comment or "GUIDE" not in pinned_comment:

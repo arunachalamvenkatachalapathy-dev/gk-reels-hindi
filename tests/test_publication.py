@@ -6,7 +6,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 # Isolate orchestration tests from rendering, API clients and live credentials.
-sys.modules["seo_agent"] = types.SimpleNamespace()
+sys.modules["seo_agent"] = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
 sys.modules["upload_telegram"] = types.SimpleNamespace(send_telegram_update=lambda *a, **k: False)
 sys.modules["render"] = types.SimpleNamespace(render_video=lambda *a, **k: None, REVIEWED={"q1": {}})
 spec = importlib.util.spec_from_file_location("pipeline", Path(__file__).resolve().parents[1] / "scripts" / "run_pipeline.py")
@@ -19,7 +19,7 @@ class PublicationTests(unittest.TestCase):
         self.state = {"published_ids": [], "current_day": 1, "total_published": 0}
 
     def run_main(self, modules, env):
-        with patch.object(p, "load_json", side_effect=[[self.q], self.state]), patch.object(p, "save_json") as save, patch.dict(sys.modules, modules), patch.dict(p.os.environ, env, clear=True), patch.object(p.sys, "argv", ["run_pipeline.py"]):
+        with patch.object(p, "load_json", side_effect=[[self.q], self.state]), patch.object(p, "save_json") as save, patch.object(p, "get_slot_track", return_value="dummy.mp3"), patch.dict(sys.modules, modules), patch.dict(p.os.environ, env, clear=True), patch.object(p.sys, "argv", ["run_pipeline.py"]):
             try:
                 p.main()
             finally:
@@ -54,34 +54,38 @@ class PublicationTests(unittest.TestCase):
         self.assertEqual(self.state["total_published"], 0)
 
     def test_upload_failure_is_failure_and_not_consumed(self):
+        seo = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
         mod = types.SimpleNamespace(upload_short=lambda *a, **k: None, get_youtube_client=lambda: None)
         with self.assertRaises(RuntimeError):
-            self.run_main({"upload_youtube": mod}, {"YT_CLIENT_ID": "test", "YT_CLIENT_SECRET": "test", "YT_REFRESH_TOKEN": "test"})
+            self.run_main({"seo_agent": seo, "upload_youtube": mod}, {"YT_CLIENT_ID": "test", "YT_CLIENT_SECRET": "test", "YT_REFRESH_TOKEN": "test"})
         self.assertEqual(self.state["published_ids"], [])
         self.assertEqual(self.state["total_published"], 0)
         self.assertEqual(self.state["pending_publication"]["question_id"], "q1")
         self.assertTrue(self.saved)
 
     def test_partial_success_retained(self):
+        seo = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
         yt = types.SimpleNamespace(upload_short=lambda *a, **k: "video-id", get_youtube_client=lambda: None)
         ig = types.SimpleNamespace(upload_to_github_release=lambda *a: "https://example.invalid/video", publish_reel=lambda *a: (None, None))
         fb = types.SimpleNamespace(publish_facebook_reel=lambda *a, **k: None)
         env = {k:"test" for k in ["YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN", "IG_ACCESS_TOKEN", "IG_USER_ID", "GITHUB_TOKEN", "GITHUB_REPOSITORY", "FB_PAGE_ID"]}
         with self.assertRaises(RuntimeError):
-            self.run_main({"upload_youtube": yt, "upload_instagram": ig, "upload_facebook": fb}, env)
+            self.run_main({"seo_agent": seo, "upload_youtube": yt, "upload_instagram": ig, "upload_facebook": fb}, env)
         self.assertIn("youtube", self.state["pending_publication"]["results"])
         self.assertEqual(self.state["published_ids"], [])
 
     def test_facebook_is_disabled_without_explicit_enable_flag(self):
+        seo = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
         yt = types.SimpleNamespace(upload_short=lambda *a, **k: "video-id", get_youtube_client=lambda: None)
         fb = types.SimpleNamespace(publish_facebook_reel=lambda *a, **k: self.fail("Facebook must stay disabled by default"))
         env = {k: "test" for k in ["YT_CLIENT_ID", "YT_CLIENT_SECRET", "YT_REFRESH_TOKEN", "IG_ACCESS_TOKEN", "FB_PAGE_ID"]}
-        self.run_main({"upload_youtube": yt, "upload_facebook": fb}, env)
+        self.run_main({"seo_agent": seo, "upload_youtube": yt, "upload_facebook": fb}, env)
         self.assertEqual(self.state["published_ids"], ["q1"])
 
     def test_success_advances_once(self):
+        seo = types.SimpleNamespace(detect_topic_hi=lambda *a, **k: ("topic", [], []), generate_seo_hi=lambda *a, **k: {"topic":"topic", "title":"title", "description":"caption", "tags":[], "ig_caption":"caption", "fb_caption":"caption"})
         yt = types.SimpleNamespace(upload_short=lambda *a, **k: "video-id", get_youtube_client=lambda: None)
-        self.run_main({"upload_youtube": yt}, {"YT_CLIENT_ID": "test", "YT_CLIENT_SECRET": "test", "YT_REFRESH_TOKEN": "test"})
+        self.run_main({"seo_agent": seo, "upload_youtube": yt}, {"YT_CLIENT_ID": "test", "YT_CLIENT_SECRET": "test", "YT_REFRESH_TOKEN": "test"})
         self.assertEqual(self.state["published_ids"], ["q1"])
         self.assertEqual(self.state["total_published"], 1)
 
