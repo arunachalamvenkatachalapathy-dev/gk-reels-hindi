@@ -371,8 +371,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         from ai_engine import generate_viral_package
         viral_pkg = generate_viral_package(q, day, slot, language="Hindi")
     except Exception as e:
-        print(f"[SEO Agent Hindi] OpenRouter viral package generation failed: {e}")
-        viral_pkg = None
+        raise RuntimeError("Hindi viral-package generation failed; stopping without fallback.") from e
 
     viral_badge = None
     pinned_comment = None
@@ -392,8 +391,8 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         else:
             tags = None
     else:
-        # Try Gemini AI Agent next
-        ai_result = query_gemini_ai_agent_hi(question_text, options, topic_name, day, slot)
+        # No silent secondary provider or rule-based fallback.
+        raise RuntimeError("Hindi viral package unavailable; stopping without fallback.")
         if ai_result and ai_result.get("title"):
             title = ai_result["title"]
             entity = ai_result.get("entity", topic_name)
