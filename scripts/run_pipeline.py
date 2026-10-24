@@ -206,34 +206,15 @@ def main():
 
     viral_badge = None
     pinned_comment = None
-    if seo_data:
-        title = seo_data["title"]
-        caption = seo_data["description"]
-        tags = seo_data["tags"]
-        ig_caption = seo_data["ig_caption"]
-        fb_caption = seo_data["fb_caption"]
-        viral_badge = seo_data.get("viral_badge")
-        pinned_comment = seo_data.get("pinned_comment")
-    else:
-        # High quality Hindi fallback
-        q_clean = q.get("question", "").rstrip("?।! ").strip()
-        if len(q_clean) > 24:
-            q_clean = q_clean[:24].rsplit(' ', 1)[0]
-        title = f"{q_clean} | GK In Hindi | Samanya Gyan #shorts"
-        options_str = " | ".join([f"({chr(65+i)}) {opt}" for i, opt in enumerate(q.get("options", []))])
-        caption = (
-            f"❓ {q.get('question', '')}\n"
-            f"👉 उत्तर कमेंट करें: {options_str}\n\n"
-            f"🎯 100 दिन 100 GK सवाल • Day {day:02d} (Part {slot}/{videos_per_day})\n"
-            f"⏱️ 10 सेकंड में उत्तर कमेंट बॉक्स में बताएं!\n\n"
-            f"🏆 उपयोगी एग्जाम्स: SSC GD 2026 | UP Police Constable | RRB NTPC | BPSC | State PSCs\n\n"
-            f"#Shorts #ShortsFeed #YouTubeShorts #GKInHindi #SamanyaGyan #HindiGK #GKQuiz #LucentGK #SSCGD #UPPolice #RRBNTPC"
-        )
-        tags = ["GK in Hindi", "सामान्य ज्ञान", "Hindi GK Questions", "GK Short Video", "Daily GK Quiz", "Lucent GK", "SSC GD GK 2026", "UP Police GK", "RRB NTPC GK", "Shorts"]
-        ig_caption = caption
-        fb_caption = caption
-        viral_badge = "आज का GK सवाल"
-        pinned_comment = "क्या आपको इसका जवाब पहले से पता था? अपना स्कोर नीचे कमेंट करें! 👇"
+    if not seo_data:
+        raise RuntimeError("Hindi metadata unavailable; refusing to render or publish with fallback metadata.")
+    title = seo_data["title"]
+    caption = seo_data["description"]
+    tags = seo_data["tags"]
+    ig_caption = seo_data["ig_caption"]
+    fb_caption = seo_data["fb_caption"]
+    viral_badge = seo_data.get("viral_badge")
+    pinned_comment = seo_data.get("pinned_comment")
 
     import re
     def safe_copy(text):
