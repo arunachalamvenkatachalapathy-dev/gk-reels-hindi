@@ -15,6 +15,7 @@ OUT_DIR = os.path.join(BASE, "output")
 AUDIO_DIR = os.path.join(BASE, "assets", "audio")
 IST = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
 SLOT_OPENS = {1: datetime.time(7, 30), 2: datetime.time(19, 30)}
+PUBLISH_WINDOW_END_IST = datetime.datetime(2026, 11, 3, 19, 45, tzinfo=IST)
 MAX_DATE_SLOT_HISTORY = 60
 
 SLOT_TRACKS = {
@@ -111,6 +112,10 @@ def get_ist_now():
     ist = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
     return datetime.datetime.now(ist)
 
+def publication_window_open(now_ist):
+    """Only publish through the final approved evening slot on Nov 3, 2026."""
+    return now_ist <= PUBLISH_WINDOW_END_IST
+
 
 def get_ist_date():
     """Return current date in Indian Standard Time (UTC+05:30)."""
@@ -125,6 +130,9 @@ def main():
 
     videos_per_day = state.get("videos_per_day", 2)
     now_ist = get_ist_now()
+    if not publication_window_open(now_ist):
+        print(f"Publication window ended at {PUBLISH_WINDOW_END_IST.isoformat()}; no publishing work.")
+        return
     today_ist = now_ist.date().isoformat()
     last_date = state.get("last_published_date")
     current_day = state.get("current_day", 1)
@@ -296,12 +304,7 @@ def main():
         raise RuntimeError("Publication incomplete on: " + ", ".join(missing) + ". Successful destinations retained; retry will skip them.")
     state.pop("pending_publication", None)
 
-    # Send instant update to Telegram channel
-    try:
-        from upload_telegram import send_telegram_update
-        send_telegram_update(day, slot, q, yt_url=yt_url, ig_url=ig_url, fb_url=fb_url)
-    except Exception as te:
-        print(f"  Telegram notification FAILED: {te}")
+    # Keep the scheduled workflow limited to the owner-approved YouTube + Instagram destinations.
 
     # Advance state with strict non-repetition and calendar-date locking
     published_ids = state.get("published_ids", [])

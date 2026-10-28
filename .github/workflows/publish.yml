@@ -5,8 +5,8 @@ on:
   schedule:
     # Backup only: two slot-start crons. Instinct's external trigger is primary.
     # The state gate still allows only the earliest due, unpublished slot per run.
-    - cron: '4 2 * * *'   # 07:34 IST morning slot backup
-    - cron: '4 14 * * *'  # 19:34 IST evening slot backup
+    - cron: '0 2 * * *'   # 07:30 IST morning slot
+    - cron: '0 14 * * *'  # 19:30 IST evening slot
 permissions:
   contents: write   # needed to commit data/state.json and create releases
 
@@ -40,6 +40,7 @@ jobs:
           IST = dt.timezone(dt.timedelta(hours=5, minutes=30))
           SLOT_OPENS = {1: dt.time(7, 30), 2: dt.time(19, 30)}
           now = dt.datetime.now(IST)
+          publish_end = dt.datetime(2026, 11, 3, 19, 45, tzinfo=IST)
           today = now.date().isoformat()
           try:
               with open('data/state.json', encoding='utf-8') as f:
@@ -72,6 +73,7 @@ jobs:
               print(f'Preflight failed: {exc}', file=sys.stderr)
               sys.exit(1)
 
+          due = due and now <= publish_end
           eligible = 'true' if due else 'false'
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as f:
               f.write(f'eligible={eligible}\n')
@@ -129,9 +131,6 @@ jobs:
           IG_USER_ID: ${{ secrets.IG_USER_ID }}
           FB_PAGE_ID: ${{ secrets.FB_PAGE_ID }}
           ENABLE_FACEBOOK: 'false'
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          FISH_AUDIO_API_KEY: ${{ secrets.FISH_AUDIO_API_KEY }}
           FORCE_PUBLISH: 'false'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
