@@ -276,8 +276,7 @@ def detect_topic_hi(question_text):
 
 def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_history=None):
     """
-    Overhauled Hindi SEO Generator:
-    Uses the configured OpenRouter viral package; any generation failure stops the pipeline.
+    Generate Hindi metadata with deterministic local templates; uses no paid AI provider.
     """
     audit = {}
     if yt_client and published_history:
@@ -287,32 +286,15 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
     options = [clean_hindi_text(opt) for opt in q.get("options", [])]
     topic_name, topic_tags, topic_hashtags = detect_topic_hi(question_text)
 
-    # Try OpenRouter AI engine for viral package first
-    try:
-        from ai_engine import generate_viral_package
-        viral_pkg = generate_viral_package(q, day, slot, language="Hindi")
-    except Exception as e:
-        raise RuntimeError("Hindi viral-package generation failed; stopping without fallback.") from e
-
-    viral_badge = None
-    pinned_comment = None
-
-    if viral_pkg and viral_pkg.get("title"):
-        title = viral_pkg["title"]
-        entity = viral_pkg.get("entity", topic_name)
-        yt_hook = viral_pkg.get("viral_hook")
-        yt_fact = viral_pkg.get("short_fact")
-        viral_badge = viral_pkg.get("badge_text", "आज का GK सवाल")
-        pinned_comment = viral_pkg.get("pinned_comment")
-        ig_hook = None
-        fb_hook = None
-        ai_tags = viral_pkg.get("tags")
-        if ai_tags and isinstance(ai_tags, list):
-            tags = list(dict.fromkeys(ai_tags + UNIVERSAL_TAGS_HI))[:20]
-        else:
-            tags = None
-    else:
-        raise RuntimeError("Hindi viral package unavailable; stopping without fallback.")
+    # Deterministic free metadata template. No external model/provider calls.
+    title, entity = format_smart_title_hi(q, day, slot, topic_name)
+    yt_hook = None
+    yt_fact = None
+    viral_badge = "आज का GK सवाल"
+    pinned_comment = "अपना उत्तर कमेंट करें।"
+    ig_hook = None
+    fb_hook = None
+    tags = list(dict.fromkeys(topic_tags + UNIVERSAL_TAGS_HI))[:20]
 
     # Always ensure pinned comment includes the high-converting Outro CTA
     if not pinned_comment or "GUIDE" not in pinned_comment:
@@ -343,7 +325,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         f"00:04 ⏳ 3-सेकंड टाइमर\n"
         f"00:07 🎉 सही उत्तर और महत्वपूर्ण फैक्ट\n\n"
         f"💾 परीक्षा रिवीजन के लिए इस Short को SAVE करें!\n"
-        f"🔔 रोजाना 2 महत्वपूर्ण क्विज के लिए सब्सक्राइब करें (सुबह 9:00 और शाम 7:00 बजे)\n\n"
+        f"🔔 रोजाना 2 महत्वपूर्ण क्विज के लिए सब्सक्राइब करें (सुबह 7:30 और शाम 7:30 बजे)\n\n"
         f"🏆 टारगेट एग्जाम्स:\n"
         f"SSC GD 2026 | UP Police Constable | RRB NTPC | Railway Group D | BPSC | MPPSC | All State Exams\n\n"
         f"🔍 महत्वपूर्ण सर्च कीवर्ड्स:\n"
@@ -372,7 +354,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         f"⏱️ क्या आप 3 सेकंड में बता सकते हैं?\n\n"
         f"💾 परीक्षा से पहले रिवीजन के लिए इस Reel को SAVE करें!\n"
         f"👥 अपने स्टडी ग्रुप और दोस्तों के साथ SHARE करें!\n"
-        f"🎯 रोज 2 महत्वपूर्ण GK क्विज के लिए फॉलो करें @GKSnippetsHindi (सुबह 9:00 और शाम 7:00)\n\n"
+        f"🎯 रोज 2 महत्वपूर्ण GK क्विज के लिए फॉलो करें @GKSnippetsHindi (सुबह 7:30 और शाम 7:30)\n\n"
         f"{' '.join(all_hashtags[:15])}"
     )
 
@@ -383,7 +365,7 @@ def generate_seo_hi(q, day, slot, videos_per_day=2, yt_client=None, published_hi
         f"👉 विकल्प: {options_str}\n\n"
         f"💾 परीक्षा के समय रिवीजन के लिए इस Reel को SAVE करें!\n"
         f"👥 दोस्तों के साथ शेयर करें और उनका टेस्ट लें!\n"
-        f"🔔 रोज 2 क्विज के लिए पेज को FOLLOW करें (सुबह 9:00 और शाम 7:00)\n\n"
+        f"🔔 रोज 2 क्विज के लिए पेज को FOLLOW करें (सुबह 7:30 और शाम 7:30)\n\n"
         f"{' '.join(all_hashtags[:10])}"
     )
 
