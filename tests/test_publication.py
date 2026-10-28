@@ -3,6 +3,7 @@ import sys
 import types
 import unittest
 from pathlib import Path
+from datetime import datetime, timezone, timedelta
 from unittest.mock import patch
 
 # Isolate orchestration tests from rendering, API clients and live credentials.
@@ -19,7 +20,7 @@ class PublicationTests(unittest.TestCase):
         self.state = {"published_ids": [], "current_day": 1, "total_published": 0}
 
     def run_main(self, modules, env):
-        with patch.object(p, "load_json", side_effect=[[self.q], self.state]), patch.object(p, "save_json") as save, patch.object(p, "get_slot_track", return_value="dummy.mp3"), patch.dict(sys.modules, modules), patch.dict(p.os.environ, env, clear=True), patch.object(p.sys, "argv", ["run_pipeline.py"]):
+        with patch.object(p, "load_json", side_effect=[[self.q], self.state]), patch.object(p, "save_json") as save, patch.object(p, "get_slot_track", return_value="dummy.mp3"), patch.object(p, "get_ist_now", return_value=datetime(2026, 10, 28, 20, 0, tzinfo=timezone(timedelta(hours=5, minutes=30)))), patch.dict(sys.modules, modules), patch.dict(p.os.environ, env, clear=True), patch.object(p.sys, "argv", ["run_pipeline.py"]):
             try:
                 p.main()
             finally:
@@ -88,6 +89,12 @@ class PublicationTests(unittest.TestCase):
         self.run_main({"seo_agent": seo, "upload_youtube": yt}, {"YT_CLIENT_ID": "test", "YT_CLIENT_SECRET": "test", "YT_REFRESH_TOKEN": "test"})
         self.assertEqual(self.state["published_ids"], ["q1"])
         self.assertEqual(self.state["total_published"], 1)
+
+    def test_window_closed_does_not_publish(self):
+        with patch.object(p, "load_json", side_effect=[[self.q], self.state]), patch.object(p, "save_json") as save, patch.object(p, "get_ist_now", return_value=datetime(2026, 11, 4, 7, 30, tzinfo=timezone(timedelta(hours=5, minutes=30)))), patch.dict(p.os.environ, {}, clear=True):
+            p.main()
+        self.assertEqual(self.state["published_ids"], [])
+        self.assertEqual(save.call_count, 0)
 
     def test_stale_partial_publication_is_blocked(self):
         self.state["pending_publication"] = {"date": "2000-01-01", "question_id": "q1"}

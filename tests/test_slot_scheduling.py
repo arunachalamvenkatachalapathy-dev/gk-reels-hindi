@@ -62,5 +62,12 @@ class SlotSchedulingTests(unittest.TestCase):
     def test_new_ist_date_starts_empty(self):
         self.assertEqual(p.published_slots_for_date({'last_published_date':'2026-10-11','published_today_count':2}, '2026-10-12'), [])
 
+
+    def test_publish_window_ends_after_nov3_evening(self):
+        self.assertEqual(p.PUBLISH_WINDOW_END_IST, datetime(2026, 11, 3, 19, 45, tzinfo=IST))
+        self.assertTrue(p.publication_window_open(datetime(2026, 11, 3, 19, 45, tzinfo=IST)))
+        self.assertFalse(p.publication_window_open(datetime(2026, 11, 3, 19, 46, tzinfo=IST)))
+        self.assertFalse(p.publication_window_open(datetime(2026, 11, 4, 7, 30, tzinfo=IST)))
+
 if __name__ == '__main__':
     unittest.main()
