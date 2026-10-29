@@ -8,12 +8,12 @@ permissions:
 jobs:
   render:
     runs-on: ubuntu-24.04
-    timeout-minutes: 15
+    timeout-minutes: 200
     strategy:
       fail-fast: false
-      max-parallel: 4
+      max-parallel: 8
       matrix:
-        shard: [0]
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -23,14 +23,15 @@ jobs:
         run: |
           pip install playwright==1.56.0 requests edge-tts pillow
           python -m playwright install --with-deps chromium
-          ffmpeg -version | head -1
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -1; ffprobe -version | head -1
       - name: Render shard
         env:
           FISH_KEY_NELANDAR: ${{ secrets.FISH_KEY_NELANDAR }}
           WORK_DIR: ${{ runner.temp }}/work
         run: |
-          LO=$((20 + ${{ matrix.shard }} * 178)); HI=$((LO + 178))
-          python scripts/stock_worker.py $LO $((LO+1)) out || true
+          LO=$((20 + ${{ matrix.shard }} * 89)); HI=$((LO + 89))
+          python scripts/stock_worker.py $LO $HI out
       - uses: actions/upload-artifact@v4
         if: always()
         with:
