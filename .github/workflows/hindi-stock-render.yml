@@ -1,0 +1,39 @@
+name: Hindi stock render (create only, no publish)
+on:
+  push:
+    branches: [hindi-stock-render]
+    paths: ['.github/workflows/hindi-stock-render.yml', 'scripts/stock_worker.py', 'scripts/batch_make.py']
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        shard: [0, 1, 2, 3]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install
+        run: |
+          pip install playwright==1.56.0 requests edge-tts pillow
+          python -m playwright install --with-deps chromium
+          ffmpeg -version | head -1
+      - name: Render shard
+        env:
+          FISH_KEY_NELANDAR: ${{ secrets.FISH_KEY_NELANDAR }}
+          WORK_DIR: ${{ runner.temp }}/work
+        run: |
+          LO=$((20 + ${{ matrix.shard }} * 178)); HI=$((LO + 178))
+          python scripts/stock_worker.py $LO $HI out
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: hindi-stock-shard-${{ matrix.shard }}
+          path: out/
+          retention-days: 3
