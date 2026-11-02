@@ -1,0 +1,29 @@
+{
+  "slots": {
+    "manual:2026-11-02": {
+      "key": "manual:2026-11-02",
+      "slot": "manual",
+      "opens_at": "2026-11-02T02:56:11.171627+00:00",
+      "drift_seconds": 0,
+      "status": "pending",
+      "question_id": "q0098",
+      "run_id": "41380305373"
+    }
+  },
+  "published_ids": [],
+  "checks": [
+    {
+      "at": "2026-11-02T02:56:11.171627+00:00",
+      "run_id": "41380305373",
+      "event": "workflow_dispatch",
+      "slot": {
+        "key": "manual:2026-11-02",
+        "slot": "manual",
+        "opens_at": "2026-11-02T02:56:11.171627+00:00",
+        "drift_seconds": 0
+      },
+      "mode": "manual"
+    }
+  ],
+  "skipped_external": []
+}
