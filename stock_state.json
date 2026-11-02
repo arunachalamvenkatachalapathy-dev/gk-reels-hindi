@@ -10,7 +10,11 @@
       "run_id": "41380305373",
       "youtube_id": "0bOrK3EKSNA",
       "destinations": {
-        "youtube": "0bOrK3EKSNA"
+        "youtube": "0bOrK3EKSNA",
+        "instagram": {
+          "id": "18149445241577418",
+          "url": "https://www.instagram.com/reel/DfOSzrjE5o0/"
+        }
       },
       "published_at": "2026-11-02T02:56:25.106838+00:00"
     }
@@ -30,6 +34,13 @@
         "drift_seconds": 0
       },
       "mode": "manual"
+    },
+    {
+      "at": "2026-11-02T03:01:25.181689+00:00",
+      "run_id": "41380748943",
+      "event": "workflow_dispatch",
+      "slot": null,
+      "mode": "instagram-retry"
     }
   ],
   "skipped_external": []
