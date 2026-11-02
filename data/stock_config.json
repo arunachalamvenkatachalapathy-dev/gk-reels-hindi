@@ -1,0 +1,16 @@
+{
+  "drive_root_folder_id": "1yAWokBNxZG999OemhvxYx64I5Ql3lGre",
+  "channel_id": "UCpvGKLB9EVeJgYzVjkEZdqQ",
+  "slots": {
+    "morning": "07:30",
+    "afternoon": "19:30"
+  },
+  "window_minutes": 120,
+  "timezone": "Asia/Kolkata",
+  "skip_qid_range_end": 88,
+  "state_branch": "hi-stock-publication-state",
+  "state_file": "stock_state.json",
+  "recent_upload_scan": 100,
+  "facebook_enabled": false,
+  "instagram_enabled": false
+}
