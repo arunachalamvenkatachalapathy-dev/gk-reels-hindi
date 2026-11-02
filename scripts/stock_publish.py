@@ -32,8 +32,12 @@ def save(p, x):
 
 def persist(state_dir, state, config, note):
     save(state_dir / config["state_file"], state)
+    subprocess.run(["git", "-C", str(state_dir), "add", config["state_file"]],
+                   check=True, stdout=subprocess.DEVNULL)
+    dirty = subprocess.run(["git", "-C", str(state_dir), "diff", "--cached", "--quiet"]).returncode != 0
+    if not dirty:
+        return
     for args in (
-        ("add", config["state_file"]),
         ("commit", "-m", note),
         ("push", "origin", "HEAD:" + config["state_branch"]),
     ):
@@ -61,6 +65,8 @@ def select_slot(now, config, state):
 
 
 def select_run_slot(now, config, state, mode):
+    if mode == "instagram-retry":
+        return None
     if mode == "scheduled":
         return select_slot(now, config, state)
     local = now.astimezone(IST)
@@ -71,7 +77,7 @@ def dispatch_mode(event, mode=None):
     if event != "workflow_dispatch":
         return "scheduled"
     mode = mode or "manual"
-    if mode not in ("manual", "scheduled"):
+    if mode not in ("manual", "scheduled", "instagram-retry"):
         raise ValueError("Invalid dispatch mode")
     return mode
 
@@ -174,6 +180,77 @@ def manifest_candidates(stock, config):
     return out
 
 
+
+def ig_caption_for(seo):
+    cap = (seo.get("ig_caption") or "").strip()
+    if cap:
+        return cap[:2100]
+    title = seo.get("title", "").strip()
+    tags = seo.get("tags") or []
+    if isinstance(tags, str):
+        tags = [t.strip() for t in tags.split(",") if t.strip()]
+    hashtags = ["#" + re.sub(r"[^0-9A-Za-z]+", "", str(t)) for t in tags]
+    hashtags = [h for h in hashtags if len(h) > 1][:15]
+    return (title + "\n\n" + " ".join(hashtags)).strip()[:2100]
+
+
+def retry_instagram_failures(sd, state, config, drive, work):
+    # Re-attempt Instagram for published slots missing that destination (failed
+    # earlier or IG enabled after publish, today only). Re-fetches the exact
+    # reserved asset and adopts an already-posted reel by caption first.
+    if not config.get("instagram_enabled"):
+        return
+    today = datetime.now(IST).date().isoformat()
+    pending = []
+    for k, sl in sorted(state.get("slots", {}).items()):
+        if sl.get("status") != "published":
+            continue
+        errs = sl.get("destination_errors", {})
+        if "instagram" in errs:
+            pending.append((k, sl))
+        elif today in k and "instagram" not in sl.get("destinations", {}):
+            errs["instagram"] = "backfill: instagram enabled after publish"
+            pending.append((k, sl))
+    if not pending:
+        return
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from upload_instagram import upload_reel, find_recent_reel_by_caption
+    stock = list_stock(drive, config["drive_root_folder_id"])
+    by_qid = {}
+    for item in stock:
+        q = parse_manifest_name(item["name"])
+        if q:
+            by_qid[q] = item
+    for key, sl in pending[:2]:
+        qid = sl.get("question_id")
+        item = by_qid.get(qid)
+        if not item:
+            raise RuntimeError(f"Instagram retry for {key}: manifest {qid} not found in Drive")
+        doc = json.loads(download_file(drive, item["id"]).decode("utf-8"))
+        seo = doc.get("seo", {})
+        title = seo.get("title", "")
+        if not title.strip():
+            raise RuntimeError(f"Instagram retry for {key}: manifest {qid} has no title")
+        existing = find_recent_reel_by_caption(title, sl.get("published_at"))
+        if existing:
+            sl.setdefault("destinations", {})["instagram"] = existing
+            print(f"Instagram retry adopted existing reel for {qid}: {existing['id']}")
+        else:
+            video_item = find_video(drive, item["batch_folder_id"], qid)
+            if not video_item:
+                raise RuntimeError(f"Instagram retry for {key}: mp4 {qid} missing in Drive")
+            payload = download_file(drive, video_item["id"])
+            if len(payload) < 100000:
+                raise ValueError(f"Stock video suspiciously small for {qid}")
+            video_path = work / (qid + ".mp4")
+            video_path.write_bytes(payload)
+            media_id, permalink = upload_reel(str(video_path), ig_caption_for(seo),
+                                              "ig-host-" + key.replace(":", "-") + "-" + qid, qid + ".mp4")
+            sl.setdefault("destinations", {})["instagram"] = {"id": str(media_id), "url": permalink}
+        sl.get("destination_errors", {}).pop("instagram", None)
+        persist(sd, state, config, f"Record retried Hindi stock Instagram receipt for {qid}")
+        print(f"Instagram retry published {qid}: {sl['destinations']['instagram']}")
+
 def main():
     config = load(ROOT / "data/stock_config.json")
     sd = Path(os.environ["PUBLICATION_STATE_DIR"])
@@ -186,6 +263,11 @@ def main():
         {"at": now.isoformat(), "run_id": os.getenv("GITHUB_RUN_ID"), "event": os.getenv("GITHUB_EVENT_NAME"), "slot": slot, "mode": mode}
     )
     state["checks"] = state["checks"][-500:]
+    if config.get("instagram_enabled"):
+        retry_drive = drive_client()
+        retry_work = Path(os.environ.get("RUNNER_TEMP", "/tmp")) / "hi-stock-retry"
+        retry_work.mkdir(parents=True, exist_ok=True)
+        retry_instagram_failures(sd, state, config, retry_drive, retry_work)
     if not slot:
         persist(sd, state, config, "Record Hindi stock slot check")
         print("No active IST slot")
@@ -266,7 +348,19 @@ def main():
     state["slots"][slot["key"]].update(status="published", youtube_id=receipt, destinations=destinations, published_at=datetime.now(timezone.utc).isoformat())
     state.setdefault("published_ids", []).append(qid)
     persist(sd, state, config, "Record confirmed Hindi stock YouTube receipt")
-    if not config.get("instagram_enabled", False):
+    if config.get("instagram_enabled", False):
+        try:
+            from upload_instagram import upload_reel
+            media_id, permalink = upload_reel(str(video_path), ig_caption_for(seo),
+                                              "ig-host-" + slot["key"].replace(":", "-") + "-" + qid, qid + ".mp4")
+            destinations["instagram"] = {"id": str(media_id), "url": permalink}
+            state["slots"][slot["key"]]["destinations"] = destinations
+            persist(sd, state, config, "Record confirmed Hindi stock Instagram receipt")
+        except Exception as exc:
+            state["slots"][slot["key"]].setdefault("destination_errors", {})["instagram"] = str(exc)[:200]
+            persist(sd, state, config, "Record Hindi stock Instagram destination failure")
+            raise
+    else:
         print("Instagram disabled this run; YouTube only.")
     print(json.dumps({"question_id": qid, "youtube_id": receipt, "slot": slot["key"], "drift_seconds": slot["drift_seconds"]}))
 
