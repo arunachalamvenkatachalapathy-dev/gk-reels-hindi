@@ -28,7 +28,11 @@
       "run_id": "41458213792",
       "youtube_id": "y3hkxtvourc",
       "destinations": {
-        "youtube": "y3hkxtvourc"
+        "youtube": "y3hkxtvourc",
+        "instagram": {
+          "id": "17954245032297864",
+          "url": "https://www.instagram.com/reel/DfPeguKCfQD/"
+        }
       },
       "published_at": "2026-11-02T14:03:01.440426+00:00"
     }
