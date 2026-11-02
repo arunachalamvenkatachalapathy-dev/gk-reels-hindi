@@ -5,12 +5,19 @@
       "slot": "manual",
       "opens_at": "2026-11-02T02:56:11.171627+00:00",
       "drift_seconds": 0,
-      "status": "pending",
+      "status": "published",
       "question_id": "q0098",
-      "run_id": "41380305373"
+      "run_id": "41380305373",
+      "youtube_id": "0bOrK3EKSNA",
+      "destinations": {
+        "youtube": "0bOrK3EKSNA"
+      },
+      "published_at": "2026-11-02T02:56:25.106838+00:00"
     }
   },
-  "published_ids": [],
+  "published_ids": [
+    "q0098"
+  ],
   "checks": [
     {
       "at": "2026-11-02T02:56:11.171627+00:00",
