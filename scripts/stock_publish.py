@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 IST = timezone(timedelta(hours=5, minutes=30))
-ZIP_NAME = re.compile(r"^unused([A-Z]\d+)_\d+\.zip$")
+MANIFEST_NAME = re.compile(r"^(q\d{4})_seo_manifest\.json$")
 QID = re.compile(r"^q(\d{4})$")
 DRIVE_SCOPE = ["https://www.googleapis.com/auth/drive.readonly"]
 
@@ -106,35 +106,46 @@ def drive_client():
     return build("drive", "v3", credentials=creds)
 
 
-def list_stock(drive, folder_id):
+def drive_list(drive, q):
     items, token = [], None
     while True:
-        resp = (
-            drive.files()
-            .list(
-                q=f"'{folder_id}' in parents and trashed = false and name contains 'unused'",
-                fields="nextPageToken, files(id,name,md5Checksum,size)",
-                pageSize=1000,
-                pageToken=token,
-                orderBy="name",
-            )
-            .execute()
-        )
+        resp = drive.files().list(q=q, fields="nextPageToken, files(id,name,size,modifiedTime,mimeType)", pageSize=1000, pageToken=token, orderBy="name").execute()
         items.extend(resp.get("files", []))
         token = resp.get("nextPageToken")
         if not token:
             return items
 
 
-def download_zip(drive, file_id, dest):
-    from googleapiclient.http import MediaIoBaseDownload
+def list_stock(drive, root_folder_id):
+    """All q<id>_seo_manifest.json files across the batch subfolders, with their folder id."""
+    subs = [f for f in drive_list(drive, f"'{root_folder_id}' in parents and trashed = false") if f["mimeType"] == "application/vnd.google-apps.folder"]
+    out = []
+    for sub in sorted(subs, key=lambda f: f["name"]):
+        for f in drive_list(drive, f"'{sub['id']}' in parents and trashed = false and name contains '_seo_manifest.json'"):
+            if parse_manifest_name(f["name"]):
+                f["batch_folder_id"] = sub["id"]
+                out.append(f)
+    return out
 
+
+def find_video(drive, folder_id, qid):
+    """Newest q<id>.mp4 in the batch folder (Drive holds duplicate retry copies)."""
+    cands = drive_list(drive, f"'{folder_id}' in parents and trashed = false and name = '{qid}.mp4'")
+    if not cands:
+        return None
+    return sorted(cands, key=lambda f: f.get("modifiedTime", ""), reverse=True)[0]
+
+
+def download_file(drive, file_id):
+    import io
+    from googleapiclient.http import MediaIoBaseDownload
     request = drive.files().get_media(fileId=file_id)
-    with open(dest, "wb") as fh:
-        downloader = MediaIoBaseDownload(fh, request)
-        done = False
-        while not done:
-            _, done = downloader.next_chunk()
+    buf = io.BytesIO()
+    downloader = MediaIoBaseDownload(buf, request)
+    done = False
+    while not done:
+        _, done = downloader.next_chunk()
+    return buf.getvalue()
 
 
 def recent_titles(youtube, scan):
