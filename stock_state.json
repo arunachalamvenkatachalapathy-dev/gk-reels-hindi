@@ -35,6 +35,15 @@
         }
       },
       "published_at": "2026-11-02T14:03:01.440426+00:00"
+    },
+    "2026-11-03:morning": {
+      "key": "2026-11-03:morning",
+      "slot": "morning",
+      "opens_at": "2026-11-03T07:30:00+05:30",
+      "drift_seconds": 150,
+      "status": "pending",
+      "question_id": "q0106",
+      "run_id": "41563561987"
     }
   },
   "published_ids": [
@@ -78,6 +87,18 @@
       "run_id": "41539421770",
       "event": "schedule",
       "slot": null,
+      "mode": "scheduled"
+    },
+    {
+      "at": "2026-11-03T02:02:30.171451+00:00",
+      "run_id": "41563561987",
+      "event": "workflow_dispatch",
+      "slot": {
+        "key": "2026-11-03:morning",
+        "slot": "morning",
+        "opens_at": "2026-11-03T07:30:00+05:30",
+        "drift_seconds": 150
+      },
       "mode": "scheduled"
     }
   ],
