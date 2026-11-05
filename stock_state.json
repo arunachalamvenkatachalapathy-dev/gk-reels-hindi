@@ -136,7 +136,11 @@
       "run_id": "42041134141",
       "youtube_id": "KDGFuOVDjKo",
       "destinations": {
-        "youtube": "KDGFuOVDjKo"
+        "youtube": "KDGFuOVDjKo",
+        "instagram": {
+          "id": "18469698199187227",
+          "url": "https://www.instagram.com/reel/DfXM37snPqb/"
+        }
       },
       "published_at": "2026-11-05T14:02:43.003887+00:00"
     }
