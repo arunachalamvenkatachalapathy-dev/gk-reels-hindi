@@ -172,7 +172,11 @@
       "run_id": "42230374018",
       "youtube_id": "mAfuvOjHETA",
       "destinations": {
-        "youtube": "mAfuvOjHETA"
+        "youtube": "mAfuvOjHETA",
+        "instagram": {
+          "id": "18119873258588912",
+          "url": "https://www.instagram.com/reel/DfZxqzviU66/"
+        }
       },
       "published_at": "2026-11-06T14:02:49.543446+00:00"
     }
