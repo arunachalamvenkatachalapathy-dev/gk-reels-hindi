@@ -190,7 +190,11 @@
       "run_id": "42327176592",
       "youtube_id": "MJAF6QRxm2k",
       "destinations": {
-        "youtube": "MJAF6QRxm2k"
+        "youtube": "MJAF6QRxm2k",
+        "instagram": {
+          "id": "17920223523461402",
+          "url": "https://www.instagram.com/reel/DfbEKj7EqdV/"
+        }
       },
       "published_at": "2026-11-07T02:02:51.370563+00:00"
     }
