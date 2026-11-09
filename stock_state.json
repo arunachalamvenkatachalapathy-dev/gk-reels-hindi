@@ -280,7 +280,11 @@
       "run_id": "42630763675",
       "youtube_id": "uU7D6dPx9qo",
       "destinations": {
-        "youtube": "uU7D6dPx9qo"
+        "youtube": "uU7D6dPx9qo",
+        "instagram": {
+          "id": "18161470513503869",
+          "url": "https://www.instagram.com/reel/DfhgEOZlFXH/"
+        }
       },
       "published_at": "2026-11-09T14:02:44.893191+00:00"
     }
