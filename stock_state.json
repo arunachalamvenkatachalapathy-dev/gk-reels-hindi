@@ -298,7 +298,11 @@
       "run_id": "42739926806",
       "youtube_id": "xt3P-YT34Wo",
       "destinations": {
-        "youtube": "xt3P-YT34Wo"
+        "youtube": "xt3P-YT34Wo",
+        "instagram": {
+          "id": "17916636594472405",
+          "url": "https://www.instagram.com/reel/DfiycgEgD5T/"
+        }
       },
       "published_at": "2026-11-10T02:02:45.719056+00:00"
     }
