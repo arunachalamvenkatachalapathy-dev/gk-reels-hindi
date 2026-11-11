@@ -334,7 +334,11 @@
       "run_id": "42943214246",
       "youtube_id": "StLb6m_8Brc",
       "destinations": {
-        "youtube": "StLb6m_8Brc"
+        "youtube": "StLb6m_8Brc",
+        "instagram": {
+          "id": "17917347174502652",
+          "url": "https://www.instagram.com/reel/DflXSCjjbMu/"
+        }
       },
       "published_at": "2026-11-11T02:03:08.756098+00:00"
     }
