@@ -388,7 +388,11 @@
       "run_id": "43233043393",
       "youtube_id": "De6posYMuUY",
       "destinations": {
-        "youtube": "De6posYMuUY"
+        "youtube": "De6posYMuUY",
+        "instagram": {
+          "id": "18579633523077938",
+          "url": "https://www.instagram.com/reel/DfpOctboYac/"
+        }
       },
       "published_at": "2026-11-12T14:02:54.279702+00:00"
     }
