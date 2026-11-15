@@ -478,7 +478,11 @@
       "run_id": "43665863756",
       "youtube_id": "I-AUOSL_V-Y",
       "destinations": {
-        "youtube": "I-AUOSL_V-Y"
+        "youtube": "I-AUOSL_V-Y",
+        "instagram": {
+          "id": "18111579512211544",
+          "url": "https://www.instagram.com/reel/DfvqfRKDgfo/"
+        }
       },
       "published_at": "2026-11-15T02:02:55.600634+00:00"
     }
