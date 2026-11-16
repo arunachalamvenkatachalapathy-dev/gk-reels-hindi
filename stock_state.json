@@ -532,7 +532,11 @@
       "run_id": "43881677919",
       "youtube_id": "7XYXQoOoDZ4",
       "destinations": {
-        "youtube": "7XYXQoOoDZ4"
+        "youtube": "7XYXQoOoDZ4",
+        "instagram": {
+          "id": "18102059102650704",
+          "url": "https://www.instagram.com/reel/DfzhvAKFOYC/"
+        }
       },
       "published_at": "2026-11-16T14:03:17.060059+00:00"
     }
