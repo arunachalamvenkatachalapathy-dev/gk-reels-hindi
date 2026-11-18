@@ -604,7 +604,11 @@
       "run_id": "44320023366",
       "youtube_id": "bbXUU--cwfk",
       "destinations": {
-        "youtube": "bbXUU--cwfk"
+        "youtube": "bbXUU--cwfk",
+        "instagram": {
+          "id": "18191180854418463",
+          "url": "https://www.instagram.com/reel/Df4rSP_iddo/"
+        }
       },
       "published_at": "2026-11-18T14:03:31.500778+00:00"
     }
