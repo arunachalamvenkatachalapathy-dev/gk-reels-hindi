@@ -622,7 +622,11 @@
       "run_id": "44441376462",
       "youtube_id": "iA_0tsWmX8E",
       "destinations": {
-        "youtube": "iA_0tsWmX8E"
+        "youtube": "iA_0tsWmX8E",
+        "instagram": {
+          "id": "18456365902120949",
+          "url": "https://www.instagram.com/reel/Df59r-FESP5/"
+        }
       },
       "published_at": "2026-11-19T02:03:13.639458+00:00"
     }
