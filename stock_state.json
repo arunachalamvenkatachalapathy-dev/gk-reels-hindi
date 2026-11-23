@@ -786,7 +786,10 @@
       "destinations": {
         "youtube": "_KtOU3dZoyg"
       },
-      "published_at": "2026-11-23T14:11:07.670190+00:00"
+      "published_at": "2026-11-23T14:11:07.670190+00:00",
+      "destination_errors": {
+        "instagram": "Instagram failed to process the video container."
+      }
     }
   },
   "published_ids": [
