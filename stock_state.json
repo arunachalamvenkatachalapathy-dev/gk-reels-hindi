@@ -803,7 +803,11 @@
       "run_id": "45314640412",
       "youtube_id": "g57u5NwJ6LU",
       "destinations": {
-        "youtube": "g57u5NwJ6LU"
+        "youtube": "g57u5NwJ6LU",
+        "instagram": {
+          "id": "17878224219594685",
+          "url": "https://www.instagram.com/reel/DgG6kmGCSlP/"
+        }
       },
       "published_at": "2026-11-24T02:46:22.339836+00:00"
     }
