@@ -273,6 +273,28 @@ def retry_instagram_failures(sd, state, config, drive, work):
         persist(sd, state, config, f"Record retried Hindi stock Instagram receipt for {qid}")
         print(f"Instagram retry published {qid}: {sl['destinations']['instagram']}")
 
+
+def retry_instagram_failures_safely(sd, state, config, drive, work, mode):
+    # Recovery already checks recent Instagram captions before creating a post.
+    # An old destination failure must not prevent a new scheduled video.
+    try:
+        retry_instagram_failures(sd, state, config, drive, work)
+        return True
+    except Exception as exc:
+        state.setdefault("recovery_errors", []).append({
+            "at": datetime.now(timezone.utc).isoformat(),
+            "destination": "instagram",
+            "error": type(exc).__name__ + ": " + str(exc),
+            "run_id": os.getenv("GITHUB_RUN_ID"),
+        })
+        state["recovery_errors"] = state["recovery_errors"][-50:]
+        persist(sd, state, config, "Record failed Instagram recovery without blocking fresh stock")
+        print("Instagram recovery failed; receipt remains unresolved: " + str(exc))
+        if mode == "instagram-retry":
+            raise
+        return False
+
+
 def main():
     config = load(ROOT / "data/stock_config.json")
     sd = Path(os.environ["PUBLICATION_STATE_DIR"])
@@ -289,7 +311,7 @@ def main():
         retry_drive = drive_client()
         retry_work = Path(os.environ.get("RUNNER_TEMP", "/tmp")) / "hi-stock-retry"
         retry_work.mkdir(parents=True, exist_ok=True)
-        retry_instagram_failures(sd, state, config, retry_drive, retry_work)
+        retry_instagram_failures_safely(sd, state, config, retry_drive, retry_work, mode)
     if not slot:
         persist(sd, state, config, "Record Hindi stock slot check")
         print("No active IST slot")
