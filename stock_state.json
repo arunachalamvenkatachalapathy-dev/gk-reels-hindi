@@ -784,12 +784,14 @@
       "run_id": "45191378898",
       "youtube_id": "_KtOU3dZoyg",
       "destinations": {
-        "youtube": "_KtOU3dZoyg"
+        "youtube": "_KtOU3dZoyg",
+        "instagram": {
+          "id": "18121030822801816",
+          "url": "https://www.instagram.com/reel/DgG6dASJbkU/"
+        }
       },
       "published_at": "2026-11-23T14:11:07.670190+00:00",
-      "destination_errors": {
-        "instagram": "Instagram failed to process the video container."
-      }
+      "destination_errors": {}
     }
   },
   "published_ids": [
@@ -1665,6 +1667,18 @@
         "slot": "afternoon",
         "opens_at": "2026-11-23T19:30:00+05:30",
         "drift_seconds": 657
+      },
+      "mode": "scheduled"
+    },
+    {
+      "at": "2026-11-24T02:45:21.801111+00:00",
+      "run_id": "45314640412",
+      "event": "workflow_dispatch",
+      "slot": {
+        "key": "2026-11-24:morning",
+        "slot": "morning",
+        "opens_at": "2026-11-24T07:30:00+05:30",
+        "drift_seconds": 2722
       },
       "mode": "scheduled"
     }
