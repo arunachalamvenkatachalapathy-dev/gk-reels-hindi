@@ -17,6 +17,8 @@ Required secrets (env vars):
   GITHUB_REPOSITORY   provided automatically inside GitHub Actions ("owner/repo")
 """
 import os
+import hashlib
+from pathlib import Path
 import time
 import requests
 
@@ -49,6 +51,23 @@ def upload_to_github_release(video_path, tag_name, asset_name):
         resp = requests.get(f"{api}/releases/tags/{tag_name}", headers=_gh_headers())
         resp.raise_for_status()
         release = resp.json()
+
+    payload = Path(video_path).read_bytes()
+    expected_hash = hashlib.sha256(payload).hexdigest()
+    for asset in release.get("assets", []):
+        if asset.get("name") != asset_name:
+            continue
+        if asset.get("size") != len(payload):
+            raise ValueError("Existing release asset size mismatch")
+        digest = asset.get("digest")
+        if digest and digest != "sha256:" + expected_hash:
+            raise ValueError("Existing release asset hash mismatch")
+        # Anonymous full-byte verification: never forward auth to hosting.
+        hosted = requests.get(asset["browser_download_url"], timeout=60)
+        hosted.raise_for_status()
+        if hashlib.sha256(hosted.content).hexdigest() != expected_hash:
+            raise ValueError("Existing public asset hash mismatch")
+        return asset["browser_download_url"]
 
     upload_url = release["upload_url"].split("{")[0]
     with open(video_path, "rb") as f:
