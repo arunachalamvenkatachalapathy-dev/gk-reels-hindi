@@ -839,7 +839,11 @@
       "run_id": "45530235589",
       "youtube_id": "bnd61OuLHeo",
       "destinations": {
-        "youtube": "bnd61OuLHeo"
+        "youtube": "bnd61OuLHeo",
+        "instagram": {
+          "id": "17997936899846800",
+          "url": "https://www.instagram.com/reel/DgJajWqhMwu/"
+        }
       },
       "published_at": "2026-11-25T02:04:15.369580+00:00"
     }
