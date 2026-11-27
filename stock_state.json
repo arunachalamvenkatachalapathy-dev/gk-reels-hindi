@@ -929,7 +929,11 @@
       "run_id": "46012373545",
       "youtube_id": "d59Nq0leUy8",
       "destinations": {
-        "youtube": "d59Nq0leUy8"
+        "youtube": "d59Nq0leUy8",
+        "instagram": {
+          "id": "18143492554548137",
+          "url": "https://www.instagram.com/reel/DgP2b0UNq66/"
+        }
       },
       "published_at": "2026-11-27T14:03:28.117034+00:00"
     }
