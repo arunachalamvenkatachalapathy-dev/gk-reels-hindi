@@ -1935,6 +1935,13 @@
       "event": "workflow_dispatch",
       "slot": null,
       "mode": "instagram-retry"
+    },
+    {
+      "at": "2026-11-27T10:44:34.907684+00:00",
+      "run_id": "45984607772",
+      "event": "schedule",
+      "slot": null,
+      "mode": "scheduled"
     }
   ],
   "skipped_external": []
