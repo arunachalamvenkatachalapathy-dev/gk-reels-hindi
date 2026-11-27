@@ -1928,6 +1928,13 @@
         "drift_seconds": 222
       },
       "mode": "scheduled"
+    },
+    {
+      "at": "2026-11-27T02:21:16.355048+00:00",
+      "run_id": "45927794145",
+      "event": "workflow_dispatch",
+      "slot": null,
+      "mode": "instagram-retry"
     }
   ],
   "skipped_external": []
