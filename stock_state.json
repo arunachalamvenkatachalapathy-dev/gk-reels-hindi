@@ -960,9 +960,14 @@
       "slot": "afternoon",
       "opens_at": "2026-11-28T19:30:00+05:30",
       "drift_seconds": 177,
-      "status": "pending",
+      "status": "published",
       "question_id": "q0181",
-      "run_id": "46152604598"
+      "run_id": "46152604598",
+      "youtube_id": "PUd4iEy9DHo",
+      "destinations": {
+        "youtube": "PUd4iEy9DHo"
+      },
+      "published_at": "2026-11-28T14:03:06.604246+00:00"
     }
   },
   "published_ids": [
@@ -1018,7 +1023,8 @@
     "q0174",
     "q0178",
     "q0179",
-    "q0180"
+    "q0180",
+    "q0181"
   ],
   "checks": [
     {
